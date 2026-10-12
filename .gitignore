@@ -1,0 +1,21 @@
+# Live results and private configuration stay local.
+/results/
+/private/
+/backups/
+/config.local.*
+*.pcap
+*.pcapng
+*.pem
+*.key
+*.p12
+*.pfx
+*.pub
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+*.zip
+*.tar.gz
