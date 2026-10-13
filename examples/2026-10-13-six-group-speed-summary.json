@@ -1,0 +1,1514 @@
+{
+  "schema_version": 1,
+  "type": "manually_curated_sanitized_six_group_measurement",
+  "date": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "status": "Measurements and successful rechecks complete; intermittent startup failures and real live-stream acceptance remain unresolved",
+  "production_parameter_changes_during_measurements": 0,
+  "shared_au_capacity": {
+    "groups": 5,
+    "independent_exit_or_capacity_per_group": false,
+    "tested_sequentially": true,
+    "simultaneous_multi_group_capacity_tested": false
+  },
+  "measurement_conditions": {
+    "ip_version": 4,
+    "http_version": "1.1",
+    "tls_certificate_validation": true,
+    "automatic_retries": 0,
+    "explicit_proxy": false,
+    "source_interface_binding": true,
+    "source_address_guard_interval_seconds": 0.5,
+    "target_ipv4_pinned": true,
+    "connection_phase_budget_including_tls_seconds": 5,
+    "curl_transaction_budget_seconds": 90,
+    "test_rate_limit_bytes_per_second": null,
+    "single_rounds": 3,
+    "parallel_streams": 4,
+    "parallel_rounds": 1,
+    "completion_rule": "curl/process exit 0, HTTP 200, exact object bytes and verified source; parallel round goodput requires every stream complete",
+    "goodput_rule": "complete object bits divided by actual round wall time including startup and response; single medians exclude incomplete rounds but retain failures in denominator",
+    "https_load_admission_rule": "request start in associated transfer round [start, end-5s]; retain all admitted outcomes; empty window is not a passing result"
+  },
+  "series": {
+    "initial_16MiB_aborted": {
+      "object_bytes": 16777216,
+      "original_planned_streams": 84,
+      "started_streams": 32,
+      "complete_uploads": 14,
+      "http_403_downloads": 15,
+      "us_connection_phase_timeouts": 2,
+      "controlled_cancelled_uploads": 1,
+      "remaining_streams_not_started": 52,
+      "refusal_body_bytes": 1,
+      "included_in_later_speed_tables": false,
+      "cause_confirmed": false,
+      "followup_object_checks": "same AU source and pinned CF target: 1 MiB, decimal 10 MB and 32 MiB exact HTTP 200; 16 MiB recheck HTTP 403"
+    },
+    "cloudflare_10MB_baseline": {
+      "service": "Cloudflare speed test __down/__up",
+      "object_bytes": 10000000,
+      "window": {
+        "started_at": "2026-10-13T21:13:25+08:00",
+        "ended_at": "2026-10-13T21:21:27+08:00"
+      },
+      "planned_streams": 84,
+      "complete_streams": 73,
+      "failed_streams": 11,
+      "unstarted_or_unrecorded_streams": 0,
+      "completed_object_payload_bytes": 730000000,
+      "all_transfers_passed": false,
+      "independent_data_integrity_audit_passed": true,
+      "failure_counts": {
+        "http_429_downloads": 7,
+        "us_connection_phase_timeouts": 4
+      },
+      "rate_limit_response": {
+        "retry_after_seconds": 3413,
+        "extra_header_diagnostic_requests": 1,
+        "download_requests_stopped": true,
+        "bypass_attempted": false,
+        "quota_scope_confirmed": false
+      },
+      "idle_https": {
+        "attempts": 120,
+        "successful": 120
+      },
+      "strict_loaded_https": {
+        "attempts": 78,
+        "successful": 78,
+        "failures": 0,
+        "timeouts": 0,
+        "all_transfer_groups_have_admitted_samples": false
+      },
+      "raw_cancelled_probe_rows_retained": 12,
+      "planned_stop_cancelled_outside_strict_windows": 10,
+      "other_cancelled_rows_retained": 2,
+      "non_cancelled_https_failures": 0,
+      "groups": [
+        {
+          "role": "AU-main",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 40000000,
+              "round_wall_goodput_mbps": [
+                31.907300915166
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 31.907300915166,
+                "min": 31.907300915166,
+                "max": 31.907300915166
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 40000000,
+              "round_wall_goodput_mbps": [
+                44.82194482417943
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 44.82194482417943,
+                "min": 44.82194482417943,
+                "max": 44.82194482417943
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 30000000,
+              "round_wall_goodput_mbps": [
+                29.166113915392934,
+                18.14824393048862,
+                23.937617971411477
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 23.937617971411477,
+                "min": 18.14824393048862,
+                "max": 29.166113915392934
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 30000000,
+              "round_wall_goodput_mbps": [
+                21.263279802281712,
+                28.299134471506907,
+                29.648763151573352
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 28.299134471506907,
+                "min": 21.263279802281712,
+                "max": 29.648763151573352
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 23.937617971411477,
+              "min": 18.14824393048862,
+              "max": 29.166113915392934
+            },
+            "parallel_download": {
+              "median": 31.907300915166,
+              "min": 31.907300915166,
+              "max": 31.907300915166
+            },
+            "single_upload": {
+              "median": 28.299134471506907,
+              "min": 21.263279802281712,
+              "max": 29.648763151573352
+            },
+            "parallel_upload": {
+              "median": 44.82194482417943,
+              "min": 44.82194482417943,
+              "max": 44.82194482417943
+            }
+          },
+          "strict_loaded_https_attempts": 7,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 0,
+          "planned_stop_cancelled_outside_strict_windows": 0,
+          "idle_https": {
+            "attempts": 20,
+            "successful": 20,
+            "failed": 0,
+            "failed_excluding_cancelled": 0,
+            "timeouts": 0,
+            "cancelled": 0,
+            "cold_or_reconnect_attempts": 1,
+            "cold_or_reconnect_failed": 0,
+            "warm_attempts": 19,
+            "warm_successful": 19,
+            "warm_failed": 0,
+            "warm_success_latency_ms": {
+              "median": 329.536,
+              "min": 258.286,
+              "max": 362.447
+            },
+            "all_success_latency_ms": {
+              "median": 330.344,
+              "min": 258.286,
+              "max": 792.755
+            }
+          }
+        },
+        {
+          "role": "AU-group-2",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 40000000,
+              "round_wall_goodput_mbps": [
+                47.03950044270049
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 47.03950044270049,
+                "min": 47.03950044270049,
+                "max": 47.03950044270049
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 40000000,
+              "round_wall_goodput_mbps": [
+                37.250413137640535
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 37.250413137640535,
+                "min": 37.250413137640535,
+                "max": 37.250413137640535
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 30000000,
+              "round_wall_goodput_mbps": [
+                16.51380275009642,
+                27.072769874293453,
+                22.935769130967227
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 22.935769130967227,
+                "min": 16.51380275009642,
+                "max": 27.072769874293453
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 30000000,
+              "round_wall_goodput_mbps": [
+                25.384944171225964,
+                25.104883495933816,
+                27.59254168749449
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 25.384944171225964,
+                "min": 25.104883495933816,
+                "max": 27.59254168749449
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 22.935769130967227,
+              "min": 16.51380275009642,
+              "max": 27.072769874293453
+            },
+            "parallel_download": {
+              "median": 47.03950044270049,
+              "min": 47.03950044270049,
+              "max": 47.03950044270049
+            },
+            "single_upload": {
+              "median": 25.384944171225964,
+              "min": 25.104883495933816,
+              "max": 27.59254168749449
+            },
+            "parallel_upload": {
+              "median": 37.250413137640535,
+              "min": 37.250413137640535,
+              "max": 37.250413137640535
+            }
+          },
+          "strict_loaded_https_attempts": 6,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 3,
+          "planned_stop_cancelled_outside_strict_windows": 3,
+          "idle_https": {
+            "attempts": 20,
+            "successful": 20,
+            "failed": 0,
+            "failed_excluding_cancelled": 0,
+            "timeouts": 0,
+            "cancelled": 0,
+            "cold_or_reconnect_attempts": 1,
+            "cold_or_reconnect_failed": 0,
+            "warm_attempts": 19,
+            "warm_successful": 19,
+            "warm_failed": 0,
+            "warm_success_latency_ms": {
+              "median": 281.625,
+              "min": 242.453,
+              "max": 379.074
+            },
+            "all_success_latency_ms": {
+              "median": 294.339,
+              "min": 242.453,
+              "max": 760.021
+            }
+          }
+        },
+        {
+          "role": "AU-group-3",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 40000000,
+              "round_wall_goodput_mbps": [
+                35.81974307560943
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 35.81974307560943,
+                "min": 35.81974307560943,
+                "max": 35.81974307560943
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 40000000,
+              "round_wall_goodput_mbps": [
+                50.786100730440346
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 50.786100730440346,
+                "min": 50.786100730440346,
+                "max": 50.786100730440346
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 30000000,
+              "round_wall_goodput_mbps": [
+                24.798485184588948,
+                23.768262120685975,
+                25.477949744598188
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 24.798485184588948,
+                "min": 23.768262120685975,
+                "max": 25.477949744598188
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 30000000,
+              "round_wall_goodput_mbps": [
+                24.560871134568483,
+                29.5043449798916,
+                30.49394134202612
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 29.5043449798916,
+                "min": 24.560871134568483,
+                "max": 30.49394134202612
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 24.798485184588948,
+              "min": 23.768262120685975,
+              "max": 25.477949744598188
+            },
+            "parallel_download": {
+              "median": 35.81974307560943,
+              "min": 35.81974307560943,
+              "max": 35.81974307560943
+            },
+            "single_upload": {
+              "median": 29.5043449798916,
+              "min": 24.560871134568483,
+              "max": 30.49394134202612
+            },
+            "parallel_upload": {
+              "median": 50.786100730440346,
+              "min": 50.786100730440346,
+              "max": 50.786100730440346
+            }
+          },
+          "strict_loaded_https_attempts": 6,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 2,
+          "planned_stop_cancelled_outside_strict_windows": 2,
+          "idle_https": {
+            "attempts": 20,
+            "successful": 20,
+            "failed": 0,
+            "failed_excluding_cancelled": 0,
+            "timeouts": 0,
+            "cancelled": 0,
+            "cold_or_reconnect_attempts": 1,
+            "cold_or_reconnect_failed": 0,
+            "warm_attempts": 19,
+            "warm_successful": 19,
+            "warm_failed": 0,
+            "warm_success_latency_ms": {
+              "median": 329.212,
+              "min": 251.744,
+              "max": 408.088
+            },
+            "all_success_latency_ms": {
+              "median": 334.13599999999997,
+              "min": 251.744,
+              "max": 790.636
+            }
+          }
+        },
+        {
+          "role": "AU-group-4",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 40000000,
+              "round_wall_goodput_mbps": [
+                53.61939429423819
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 53.61939429423819,
+                "min": 53.61939429423819,
+                "max": 53.61939429423819
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 40000000,
+              "round_wall_goodput_mbps": [
+                35.197990739974784
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 35.197990739974784,
+                "min": 35.197990739974784,
+                "max": 35.197990739974784
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 30000000,
+              "round_wall_goodput_mbps": [
+                23.508833756420326,
+                17.297272520152173,
+                19.760622291564534
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 19.760622291564534,
+                "min": 17.297272520152173,
+                "max": 23.508833756420326
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 30000000,
+              "round_wall_goodput_mbps": [
+                26.833542229717555,
+                26.20407198990713,
+                24.63021105531165
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 26.20407198990713,
+                "min": 24.63021105531165,
+                "max": 26.833542229717555
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 19.760622291564534,
+              "min": 17.297272520152173,
+              "max": 23.508833756420326
+            },
+            "parallel_download": {
+              "median": 53.61939429423819,
+              "min": 53.61939429423819,
+              "max": 53.61939429423819
+            },
+            "single_upload": {
+              "median": 26.20407198990713,
+              "min": 24.63021105531165,
+              "max": 26.833542229717555
+            },
+            "parallel_upload": {
+              "median": 35.197990739974784,
+              "min": 35.197990739974784,
+              "max": 35.197990739974784
+            }
+          },
+          "strict_loaded_https_attempts": 5,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 2,
+          "planned_stop_cancelled_outside_strict_windows": 2,
+          "idle_https": {
+            "attempts": 20,
+            "successful": 20,
+            "failed": 0,
+            "failed_excluding_cancelled": 0,
+            "timeouts": 0,
+            "cancelled": 0,
+            "cold_or_reconnect_attempts": 1,
+            "cold_or_reconnect_failed": 0,
+            "warm_attempts": 19,
+            "warm_successful": 19,
+            "warm_failed": 0,
+            "warm_success_latency_ms": {
+              "median": 293.827,
+              "min": 235.221,
+              "max": 850.21
+            },
+            "all_success_latency_ms": {
+              "median": 296.86699999999996,
+              "min": 235.221,
+              "max": 850.21
+            }
+          }
+        },
+        {
+          "role": "AU-group-5",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 0,
+              "recorded_failed_streams": 4,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": false,
+              "complete_object_payload_bytes": 0,
+              "round_wall_goodput_mbps": [],
+              "round_wall_goodput_summary_mbps": {
+                "median": null,
+                "min": null,
+                "max": null
+              },
+              "outcomes": {
+                "unexpected_http_status": 4
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 40000000,
+              "round_wall_goodput_mbps": [
+                24.263786024500106
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 24.263786024500106,
+                "min": 24.263786024500106,
+                "max": 24.263786024500106
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 0,
+              "recorded_failed_streams": 3,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": false,
+              "complete_object_payload_bytes": 0,
+              "round_wall_goodput_mbps": [],
+              "round_wall_goodput_summary_mbps": {
+                "median": null,
+                "min": null,
+                "max": null
+              },
+              "outcomes": {
+                "unexpected_http_status": 3
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 30000000,
+              "round_wall_goodput_mbps": [
+                23.096283705566037,
+                21.088737717719038,
+                20.51733498407995
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 21.088737717719038,
+                "min": 20.51733498407995,
+                "max": 23.096283705566037
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": null,
+              "min": null,
+              "max": null
+            },
+            "parallel_download": {
+              "median": null,
+              "min": null,
+              "max": null
+            },
+            "single_upload": {
+              "median": 21.088737717719038,
+              "min": 20.51733498407995,
+              "max": 23.096283705566037
+            },
+            "parallel_upload": {
+              "median": 24.263786024500106,
+              "min": 24.263786024500106,
+              "max": 24.263786024500106
+            }
+          },
+          "strict_loaded_https_attempts": 9,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 2,
+          "planned_stop_cancelled_outside_strict_windows": 2,
+          "idle_https": {
+            "attempts": 20,
+            "successful": 20,
+            "failed": 0,
+            "failed_excluding_cancelled": 0,
+            "timeouts": 0,
+            "cancelled": 0,
+            "cold_or_reconnect_attempts": 1,
+            "cold_or_reconnect_failed": 0,
+            "warm_attempts": 19,
+            "warm_successful": 19,
+            "warm_failed": 0,
+            "warm_success_latency_ms": {
+              "median": 306.808,
+              "min": 240.372,
+              "max": 459.597
+            },
+            "all_success_latency_ms": {
+              "median": 309.282,
+              "min": 240.372,
+              "max": 634.437
+            }
+          }
+        },
+        {
+          "role": "US-main",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 2,
+              "recorded_failed_streams": 2,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": false,
+              "complete_object_payload_bytes": 20000000,
+              "round_wall_goodput_mbps": [],
+              "round_wall_goodput_summary_mbps": {
+                "median": null,
+                "min": null,
+                "max": null
+              },
+              "outcomes": {
+                "timeout_no_payload": 2,
+                "complete": 2
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 40000000,
+              "round_wall_goodput_mbps": [
+                48.04227118868296
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 48.04227118868296,
+                "min": 48.04227118868296,
+                "max": 48.04227118868296
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 2,
+              "recorded_failed_streams": 1,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": false,
+              "complete_object_payload_bytes": 20000000,
+              "round_wall_goodput_mbps": [
+                5.778736252368373,
+                5.369741358218328
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 5.5742388052933505,
+                "min": 5.369741358218328,
+                "max": 5.778736252368373
+              },
+              "outcomes": {
+                "complete": 2,
+                "timeout_no_payload": 1
+              }
+            },
+            {
+              "direction": "upload",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 2,
+              "recorded_failed_streams": 1,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": false,
+              "complete_object_payload_bytes": 20000000,
+              "round_wall_goodput_mbps": [
+                16.75971465416281,
+                17.238399742188257
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 16.999057198175535,
+                "min": 16.75971465416281,
+                "max": 17.238399742188257
+              },
+              "outcomes": {
+                "complete": 2,
+                "timeout_no_payload": 1
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 5.5742388052933505,
+              "min": 5.369741358218328,
+              "max": 5.778736252368373
+            },
+            "parallel_download": {
+              "median": null,
+              "min": null,
+              "max": null
+            },
+            "single_upload": {
+              "median": 16.999057198175535,
+              "min": 16.75971465416281,
+              "max": 17.238399742188257
+            },
+            "parallel_upload": {
+              "median": 48.04227118868296,
+              "min": 48.04227118868296,
+              "max": 48.04227118868296
+            }
+          },
+          "strict_loaded_https_attempts": 45,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 3,
+          "planned_stop_cancelled_outside_strict_windows": 1,
+          "idle_https": {
+            "attempts": 20,
+            "successful": 20,
+            "failed": 0,
+            "failed_excluding_cancelled": 0,
+            "timeouts": 0,
+            "cancelled": 0,
+            "cold_or_reconnect_attempts": 1,
+            "cold_or_reconnect_failed": 0,
+            "warm_attempts": 19,
+            "warm_successful": 19,
+            "warm_failed": 0,
+            "warm_success_latency_ms": {
+              "median": 331.605,
+              "min": 251.337,
+              "max": 934.39
+            },
+            "all_success_latency_ms": {
+              "median": 332.53,
+              "min": 251.337,
+              "max": 1760.269
+            }
+          }
+        }
+      ]
+    },
+    "ovh_10MiB_download_recheck": {
+      "service": "OVH official static 10Mb.dat object",
+      "object_bytes": 10485760,
+      "window": {
+        "started_at": "2026-10-13T21:32:45+08:00",
+        "ended_at": "2026-10-13T21:38:46+08:00"
+      },
+      "planned_streams": 42,
+      "complete_streams": 42,
+      "failed_streams": 0,
+      "unstarted_or_unrecorded_streams": 0,
+      "completed_object_payload_bytes": 440401920,
+      "all_transfers_passed": true,
+      "independent_data_integrity_audit_passed": true,
+      "strict_loaded_https": {
+        "attempts": 152,
+        "successful": 152,
+        "failures": 0,
+        "timeouts": 0
+      },
+      "raw_cancelled_probe_rows_retained": 2,
+      "planned_stop_cancelled_outside_strict_windows": 2,
+      "non_cancelled_https_failures": 0,
+      "groups": [
+        {
+          "role": "AU-main",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 41943040,
+              "round_wall_goodput_mbps": [
+                26.924364644123866
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 26.924364644123866,
+                "min": 26.924364644123866,
+                "max": 26.924364644123866
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 31457280,
+              "round_wall_goodput_mbps": [
+                11.414164413311049,
+                12.237118489142837,
+                10.621437355199173
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 11.414164413311049,
+                "min": 10.621437355199173,
+                "max": 12.237118489142837
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 11.414164413311049,
+              "min": 10.621437355199173,
+              "max": 12.237118489142837
+            },
+            "parallel_download": {
+              "median": 26.924364644123866,
+              "min": 26.924364644123866,
+              "max": 26.924364644123866
+            }
+          },
+          "strict_loaded_https_attempts": 14,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 0,
+          "planned_stop_cancelled_outside_strict_windows": 0
+        },
+        {
+          "role": "AU-group-2",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 41943040,
+              "round_wall_goodput_mbps": [
+                26.632785101293116
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 26.632785101293116,
+                "min": 26.632785101293116,
+                "max": 26.632785101293116
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 31457280,
+              "round_wall_goodput_mbps": [
+                13.445201601561308,
+                13.584153240543493,
+                11.690802363141609
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 13.445201601561308,
+                "min": 11.690802363141609,
+                "max": 13.584153240543493
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 13.445201601561308,
+              "min": 11.690802363141609,
+              "max": 13.584153240543493
+            },
+            "parallel_download": {
+              "median": 26.632785101293116,
+              "min": 26.632785101293116,
+              "max": 26.632785101293116
+            }
+          },
+          "strict_loaded_https_attempts": 13,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 0,
+          "planned_stop_cancelled_outside_strict_windows": 0
+        },
+        {
+          "role": "AU-group-3",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 41943040,
+              "round_wall_goodput_mbps": [
+                24.104970140283953
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 24.104970140283953,
+                "min": 24.104970140283953,
+                "max": 24.104970140283953
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 31457280,
+              "round_wall_goodput_mbps": [
+                12.092369971591674,
+                11.23103009921347,
+                12.213396083787078
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 12.092369971591674,
+                "min": 11.23103009921347,
+                "max": 12.213396083787078
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 12.092369971591674,
+              "min": 11.23103009921347,
+              "max": 12.213396083787078
+            },
+            "parallel_download": {
+              "median": 24.104970140283953,
+              "min": 24.104970140283953,
+              "max": 24.104970140283953
+            }
+          },
+          "strict_loaded_https_attempts": 16,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 0,
+          "planned_stop_cancelled_outside_strict_windows": 0
+        },
+        {
+          "role": "AU-group-4",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 41943040,
+              "round_wall_goodput_mbps": [
+                28.993006917292163
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 28.993006917292163,
+                "min": 28.993006917292163,
+                "max": 28.993006917292163
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 31457280,
+              "round_wall_goodput_mbps": [
+                13.008999919727374,
+                11.858646638865014,
+                12.00459434505958
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 12.00459434505958,
+                "min": 11.858646638865014,
+                "max": 13.008999919727374
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 12.00459434505958,
+              "min": 11.858646638865014,
+              "max": 13.008999919727374
+            },
+            "parallel_download": {
+              "median": 28.993006917292163,
+              "min": 28.993006917292163,
+              "max": 28.993006917292163
+            }
+          },
+          "strict_loaded_https_attempts": 13,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 0,
+          "planned_stop_cancelled_outside_strict_windows": 0
+        },
+        {
+          "role": "AU-group-5",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 41943040,
+              "round_wall_goodput_mbps": [
+                16.807321730179286
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 16.807321730179286,
+                "min": 16.807321730179286,
+                "max": 16.807321730179286
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 31457280,
+              "round_wall_goodput_mbps": [
+                12.77567546363708,
+                12.540864989087378,
+                11.507710107674315
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 12.540864989087378,
+                "min": 11.507710107674315,
+                "max": 12.77567546363708
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 12.540864989087378,
+              "min": 11.507710107674315,
+              "max": 12.77567546363708
+            },
+            "parallel_download": {
+              "median": 16.807321730179286,
+              "min": 16.807321730179286,
+              "max": 16.807321730179286
+            }
+          },
+          "strict_loaded_https_attempts": 20,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 1,
+          "planned_stop_cancelled_outside_strict_windows": 1
+        },
+        {
+          "role": "US-main",
+          "objects": [
+            {
+              "direction": "download",
+              "streams_per_round": 4,
+              "planned_rounds": 1,
+              "planned_streams": 4,
+              "recorded_streams": 4,
+              "verified_completed_streams": 4,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 41943040,
+              "round_wall_goodput_mbps": [
+                8.28368100278413
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 8.28368100278413,
+                "min": 8.28368100278413,
+                "max": 8.28368100278413
+              },
+              "outcomes": {
+                "complete": 4
+              }
+            },
+            {
+              "direction": "download",
+              "streams_per_round": 1,
+              "planned_rounds": 3,
+              "planned_streams": 3,
+              "recorded_streams": 3,
+              "verified_completed_streams": 3,
+              "recorded_failed_streams": 0,
+              "not_started_or_not_recorded_streams": 0,
+              "all_completed": true,
+              "complete_object_payload_bytes": 31457280,
+              "round_wall_goodput_mbps": [
+                4.2491668610654685,
+                4.256280309420962,
+                4.75234688788372
+              ],
+              "round_wall_goodput_summary_mbps": {
+                "median": 4.256280309420962,
+                "min": 4.2491668610654685,
+                "max": 4.75234688788372
+              },
+              "outcomes": {
+                "complete": 3
+              }
+            }
+          ],
+          "wall_goodput_mbps": {
+            "single_download": {
+              "median": 4.256280309420962,
+              "min": 4.2491668610654685,
+              "max": 4.75234688788372
+            },
+            "parallel_download": {
+              "median": 8.28368100278413,
+              "min": 8.28368100278413,
+              "max": 8.28368100278413
+            }
+          },
+          "strict_loaded_https_attempts": 76,
+          "strict_loaded_https_failures": 0,
+          "strict_loaded_https_timeouts": 0,
+          "raw_cancelled_probe_rows_retained": 1,
+          "planned_stop_cancelled_outside_strict_windows": 1
+        }
+      ],
+      "specific_socket_proxy_mapping_proven_by_exit_probe": false
+    },
+    "us_cloudflare_upload_recheck": {
+      "role": "US-main",
+      "service": "Cloudflare speed test __up",
+      "object_bytes": 10000000,
+      "window": {
+        "started_at": "2026-10-13T21:42:40+08:00",
+        "ended_at": "2026-10-13T21:43:11+08:00"
+      },
+      "planned_streams": 7,
+      "complete_streams": 7,
+      "failed_streams": 0,
+      "completed_object_payload_bytes": 70000000,
+      "all_transfers_passed": true,
+      "before_after_expected_exit_role_verified": true,
+      "single_upload_wall_goodput_mbps": {
+        "median": 17.174977261525783,
+        "min": 12.549452767696781,
+        "max": 20.628440940827875
+      },
+      "parallel_upload_wall_goodput_mbps": 46.259086971102775,
+      "raw_https": {
+        "recorded": 35,
+        "successful": 34,
+        "planned_stop_cancelled_outside_strict_window": 1,
+        "non_cancelled_failures": 0,
+        "timeouts": 0,
+        "warm_success_max_ms": 1660.943,
+        "cold_or_reconnect_success_max_ms": 3687.01
+      },
+      "strict_loaded_https": {
+        "attempts": 2,
+        "successful": 2,
+        "failures": 0,
+        "small_denominator": true
+      },
+      "prior_failures_overwritten": false
+    }
+  },
+  "functional_acceptance": {
+    "new_au_groups_added": 4,
+    "independent_ipv4_subnets": true,
+    "cross_group_forwarding_rejections_verified": 12,
+    "new_group_management_port_rejections_verified": 16,
+    "new_group_ipv6_advertising_and_assignment_disabled": true,
+    "client_link_local_ipv6_not_claimed_disabled": true,
+    "new_group_management_ports_tested": [
+      22,
+      80
+    ],
+    "previous_au_client_associations_retained": 2,
+    "previous_us_clients_briefly_disconnected_during_prior_configuration_reload": 5,
+    "previous_us_clients_reconnected": 5,
+    "zero_interruption_claim": false,
+    "reference": "../docs/segmented-au-acceptance.md"
+  },
+  "cleanup": {
+    "management_network_restored": true,
+    "config_hashes_unchanged": true,
+    "unchanged_config_count": 5,
+    "active_5g_ap_count": 6,
+    "ap_ifindices_unchanged": true,
+    "expected_service_pids_present": true,
+    "unexpected_test_process_count": 0,
+    "remaining_payload_count": 0,
+    "diagnostic_payload_removed": true
+  },
+  "limitations": [
+    "Different endpoint, size and time series are not pooled into one throughput or A/B gain.",
+    "AU groups share the existing exit and bandwidth; sequential speeds are not additive.",
+    "A separate exit probe verifies that request only; it does not identify every OVH download proxy socket.",
+    "Some CF transfers have no strict load-probe admission samples; the US upload recheck has only two.",
+    "Successful requests still showed second-scale warm and cold/reconnect tails.",
+    "US startup timeouts and CF refusals/quotas remain unlocalized; later complete transfers do not erase failures.",
+    "No new production parameter change or configuration A/B was made to attribute a speed gain.",
+    "Real phone streaming, simultaneous groups, peak hours and maximum capacity remain unaccepted.",
+    "Raw configurations, addresses, SSIDs, MACs, credentials and unredacted logs remain private."
+  ]
+}
