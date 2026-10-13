@@ -171,5 +171,10 @@
     "path_kind": "Fixed Xray RAW transport through a SOCKS entrance; actual sending congestion control checked",
     "transport_proxy": true,
     "not_bare_iperf3": true
+  },
+  "subsequent_progress": {
+    "document": "docs/latest-progress.md",
+    "speed_snapshot": "examples/2026-10-13-speed-summary.json",
+    "note": "This object remains the historical phase snapshot. Later measurements and this speed task cleanup are recorded separately; no original pending item is silently rewritten."
   }
 }

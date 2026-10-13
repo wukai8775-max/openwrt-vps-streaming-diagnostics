@@ -1,0 +1,263 @@
+{
+  "format": "curated-speed-snapshot",
+  "format_version": 1,
+  "record_date": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "measurement_window": {
+    "first_transfer_at": "2026-10-13T09:44:16+08:00",
+    "last_transfer_at": "2026-10-13T09:58:52+08:00"
+  },
+  "snapshot_not_live_state": true,
+  "provenance": "Curated numeric facts from completed local speed tasks and a separate offline audit. Raw logs, credentials, and identifying network details remain private.",
+  "method": {
+    "path": "Client Wi-Fi through the selected proxy node to the public HTTPS test service",
+    "client_platform": "macOS",
+    "target_service_host": "speed.cloudflare.com",
+    "same_pinned_target_ipv4_across_nodes": true,
+    "tls_certificate_verification": true,
+    "ip_version": 4,
+    "http_version": "HTTP/1.1",
+    "object_bytes_per_stream": 33554432,
+    "timeout_seconds_per_round": 90,
+    "single_stream_rounds_per_direction_per_node": 3,
+    "parallel_streams_per_group": 4,
+    "parallel_groups_per_direction_per_node": 1,
+    "test_pacing_limit_applied": false,
+    "source_binding_and_repeated_source_guard": true,
+    "source_and_same_service_egress_verified": true,
+    "primary_rate_unit": "Mbps",
+    "primary_rate_definition": "full object bytes / actual round wall time; includes connection and response wait",
+    "speed_measurement_tool": "Local task-specific uncapped fixed-object runner; not the repository paced upload tool",
+    "small_request_tool": "Repository tools/probe.py HTTPS subset, with a fixed peer and full-transaction deadline",
+    "full_router_vps_tcp_audit_in_this_round": false
+  },
+  "transfer_accounting": {
+    "attempted_transfers": 28,
+    "completed_transfers": 28,
+    "failed_transfers": 0,
+    "payload_bytes": 939524096,
+    "payload_mib": 896,
+    "protocol_and_retransmission_overhead_included_in_payload": false
+  },
+  "production_parameter_changes": 0,
+  "new_configuration_ab_experiment": false,
+  "nodes": {
+    "AU": {
+      "role_label": "AU",
+      "same_service_egress_verified": true,
+      "idle_https": {
+        "attempts": 30,
+        "successes": 30,
+        "failures": 0,
+        "warm_attempts": 29,
+        "warm_successes": 29,
+        "warm_failures": 0,
+        "warm_median_ms": 247.33,
+        "warm_max_ms": 338.962,
+        "warm_p95_ms": 317.595
+      },
+      "tests": {
+        "download": {
+          "complete": 3,
+          "attempted": 3,
+          "median_mbps": 21.091819789461486,
+          "min_mbps": 15.80341585233987,
+          "max_mbps": 27.455967193911693,
+          "round_rates_mbps": [
+            27.455967193911693,
+            15.80341585233987,
+            21.091819789461486
+          ],
+          "concurrent_https": {
+            "attempts": 25,
+            "successes": 25,
+            "failures": 0,
+            "warm_attempts": 24,
+            "warm_successes": 24,
+            "warm_failures": 0,
+            "warm_median_ms": 241.8115,
+            "warm_max_ms": 369.419,
+            "warm_p95_ms": 269.864
+          }
+        },
+        "upload": {
+          "complete": 3,
+          "attempted": 3,
+          "median_mbps": 29.254866382503476,
+          "min_mbps": 21.23568871926874,
+          "max_mbps": 30.487413592531045,
+          "round_rates_mbps": [
+            30.487413592531045,
+            29.254866382503476,
+            21.23568871926874
+          ],
+          "concurrent_https": {
+            "attempts": 15,
+            "successes": 15,
+            "failures": 0,
+            "warm_attempts": 14,
+            "warm_successes": 14,
+            "warm_failures": 0,
+            "warm_median_ms": 331.52700000000004,
+            "warm_max_ms": 606.164
+          }
+        },
+        "parallel-download": {
+          "complete": 4,
+          "attempted": 4,
+          "median_mbps": 29.759456128809582,
+          "min_mbps": 29.759456128809582,
+          "max_mbps": 29.759456128809582,
+          "round_rates_mbps": [
+            29.759456128809582
+          ],
+          "concurrent_https": {
+            "attempts": 31,
+            "successes": 31,
+            "failures": 0,
+            "warm_attempts": 30,
+            "warm_successes": 30,
+            "warm_failures": 0,
+            "warm_median_ms": 255.216,
+            "warm_max_ms": 1168.78,
+            "warm_p95_ms": 837.515
+          }
+        },
+        "parallel-upload": {
+          "complete": 4,
+          "attempted": 4,
+          "median_mbps": 57.01802569802936,
+          "min_mbps": 57.01802569802936,
+          "max_mbps": 57.01802569802936,
+          "round_rates_mbps": [
+            57.01802569802936
+          ],
+          "concurrent_https": {
+            "attempts": 14,
+            "successes": 14,
+            "failures": 0,
+            "warm_attempts": 13,
+            "warm_successes": 13,
+            "warm_failures": 0,
+            "warm_median_ms": 239.296,
+            "warm_max_ms": 386.409
+          }
+        }
+      }
+    },
+    "US": {
+      "role_label": "US",
+      "same_service_egress_verified": true,
+      "idle_https": {
+        "attempts": 30,
+        "successes": 30,
+        "failures": 0,
+        "warm_attempts": 29,
+        "warm_successes": 29,
+        "warm_failures": 0,
+        "warm_median_ms": 327.169,
+        "warm_max_ms": 1384.029,
+        "warm_p95_ms": 369.035
+      },
+      "tests": {
+        "download": {
+          "complete": 3,
+          "attempted": 3,
+          "median_mbps": 18.27207470193004,
+          "min_mbps": 7.1077284408007575,
+          "max_mbps": 34.17154808783811,
+          "round_rates_mbps": [
+            34.17154808783811,
+            7.1077284408007575,
+            18.27207470193004
+          ],
+          "concurrent_https": null,
+          "concurrent_https_unavailable_reason": "No valid paired load-window probe group for this single-stream test; no loaded latency estimate is inferred."
+        },
+        "upload": {
+          "complete": 3,
+          "attempted": 3,
+          "median_mbps": 36.84243954701691,
+          "min_mbps": 33.842362643679024,
+          "max_mbps": 39.422499365453376,
+          "round_rates_mbps": [
+            36.84243954701691,
+            39.422499365453376,
+            33.842362643679024
+          ],
+          "concurrent_https": null,
+          "concurrent_https_unavailable_reason": "No valid paired load-window probe group for this single-stream test; no loaded latency estimate is inferred."
+        },
+        "parallel-download": {
+          "complete": 4,
+          "attempted": 4,
+          "median_mbps": 39.156545803833964,
+          "min_mbps": 39.156545803833964,
+          "max_mbps": 39.156545803833964,
+          "round_rates_mbps": [
+            39.156545803833964
+          ],
+          "concurrent_https": {
+            "attempts": 22,
+            "successes": 22,
+            "failures": 0,
+            "warm_attempts": 22,
+            "warm_successes": 22,
+            "warm_failures": 0,
+            "warm_median_ms": 228.0095,
+            "warm_max_ms": 238.945,
+            "warm_p95_ms": 238.726
+          }
+        },
+        "parallel-upload": {
+          "complete": 4,
+          "attempted": 4,
+          "median_mbps": 71.28725427924606,
+          "min_mbps": 71.28725427924606,
+          "max_mbps": 71.28725427924606,
+          "round_rates_mbps": [
+            71.28725427924606
+          ],
+          "concurrent_https": {
+            "attempts": 10,
+            "successes": 10,
+            "failures": 0,
+            "warm_attempts": 9,
+            "warm_successes": 9,
+            "warm_failures": 0,
+            "warm_median_ms": 236.058,
+            "warm_max_ms": 697.542
+          }
+        }
+      }
+    }
+  },
+  "concurrent_probe_admission": {
+    "transaction_timeout_seconds": 5,
+    "rule": "Per actual transfer round, admit probe starts from round start through round end minus 5 seconds; retain all admitted successes and failures.",
+    "warm_phase_reported_separately": true,
+    "planned_probe_stops_are_business_failures": false
+  },
+  "cleanup": {
+    "client_restored_to_this_test_initial_network_and_egress": true,
+    "remaining_task_test_processes": 0,
+    "remaining_synthetic_payload_files": 0,
+    "older_overnight_original_network_restoration_claimed": false
+  },
+  "pending_verification": [
+    "Real phones and real streaming platform at the intended bitrate and device concurrency",
+    "Peak-hour and original-fault-time regression",
+    "Maximum path capacity and any provider-side shaping",
+    "Exact damage location and mechanisms behind all latency tails"
+  ],
+  "interpretation_limits": [
+    "This is an observed morning snapshot, not a real-time status feed or all-day speed guarantee.",
+    "Single-stream statistics use three completed tasks; four-stream figures use one aggregate group.",
+    "The public test service, client Wi-Fi, proxy and network path all contribute to measured speed; no bare VPS link-capacity claim is made.",
+    "This round used no pacing cap; the older overnight three-by-five-Mbps workload remains a separate paced stability test.",
+    "HTTPS warm response time is not ICMP ping or video-packet loss.",
+    "Router telemetry did not cover the full measurement after the management path became unavailable; sender congestion control, CPU, queues and retransmissions were not comprehensively re-audited.",
+    "The uncapped speed runner was local; this result does not establish live coverage of every public toolkit script or mode.",
+    "Client restoration refers to this speed task initial network; it does not resolve the older overnight original-network restoration item."
+  ]
+}
