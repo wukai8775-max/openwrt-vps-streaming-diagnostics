@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 公开资料边界 / Redaction guidance
+    url: https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics/blob/main/SECURITY.md
+    about: 发布前先在本地脱敏；请勿发送凭据、完整配置、原始日志或抓包。
+  - name: 最新测量快照 / Latest measured progress
+    url: https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics/blob/main/docs/latest-progress.md
+    about: 查阅成功与失败分母、证据范围及尚未完成的业务验收。

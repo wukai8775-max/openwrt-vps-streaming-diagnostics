@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+<title id="title">OpenWrt / VPS Network Diagnostics</title><desc id="desc">Original repository share cover: read-only snapshots, bounded tests, sanitized evidence, verification and rollback guides.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#15372d"/><stop offset="1" stop-color="#071714"/></linearGradient><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#a6c9bb" stroke-opacity=".07"/></pattern></defs>
+<rect width="1280" height="640" fill="url(#bg)"/><rect width="1280" height="640" fill="url(#grid)"/>
+<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">
+<rect x="64" y="62" width="230" height="34" rx="17" fill="#c8ef9a" fill-opacity=".12"/><text x="83" y="85" font-size="14" font-weight="700" letter-spacing="2" fill="#c8ef9a">OPEN SOURCE TOOLKIT</text>
+<text x="62" y="188" font-size="62" font-weight="750" letter-spacing="-2" fill="#f8f6ed">OpenWrt / VPS</text>
+<text x="62" y="266" font-size="62" font-weight="750" letter-spacing="-2" fill="#c8ef9a">Network Diagnostics</text>
+<text x="64" y="328" font-size="32" font-weight="600" fill="#ecf3e6">网络慢与直播卡顿 · 分层排查</text>
+<text x="64" y="374" font-size="25" fill="#b6cdc3">Find the failing layer. Keep the evidence.</text>
+<g fill="#112d24" stroke="#44614f"><rect x="64" y="429" width="270" height="65" rx="13"/><rect x="353" y="429" width="270" height="65" rx="13"/><rect x="642" y="429" width="270" height="65" rx="13"/><rect x="931" y="429" width="285" height="65" rx="13"/></g>
+<g font-size="20" font-weight="600" fill="#dcebd8"><text x="85" y="469">Read-only snapshots</text><text x="376" y="469">Bounded tests</text><text x="664" y="469">Sanitized evidence</text><text x="953" y="469">Verify + rollback</text></g>
+<path d="M64 533H1216" stroke="#365744"/><text x="64" y="576" font-size="17" fill="#b6cdc3">github.com/wukai8775-max/openwrt-vps-streaming-diagnostics</text><text x="1216" y="576" font-size="17" text-anchor="end" fill="#c8ef9a">MIT · Python 3.10+</text>
+</g></svg>

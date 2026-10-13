@@ -1,0 +1,82 @@
+name: 脱敏故障报告 / Diagnostic report
+description: 提交能复现的网络故障、测试结果或诊断工具问题；不要上传秘密或原始日志。
+title: "[Diagnostic] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先阅读 [公开边界](https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics/blob/main/SECURITY.md)。这是公开 Issue，资料会被其他人看到。
+
+        **禁止粘贴或上传密码、私钥、公钥身份信息、UUID、节点分享链接、Cookie、token、完整配置、配置备份、原始日志及抓包。** 用 `router`、`client-A`、`node-A` 等角色标签替代真实 IP、SSID、MAC、主机名和个人路径；必要指标在本地脱敏后，只提供最小片段或合成复现。
+
+        不要在 Issue 中发送 SSH 凭据，也不要用未经脱敏的截图或附件替代下方字段。维护者不会接入你的设备或替你处理公开的秘密。
+  - type: input
+    id: roles
+    attributes:
+      label: 对象与路径角色 / Roles and path
+      description: 只填角色关系，不填真实地址、SSID 或 MAC。
+      placeholder: "client-A → router → node-A → target-A；有线接入；代理路径"
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: 系统和工具版本 / Versions
+      description: 填 OpenWrt/KWRT、内核、代理客户端及测试工具版本；不知道的项目写 unknown。请勿粘贴完整配置。
+      placeholder: "Router OS / kernel: …\nProxy software: …\nClient OS / curl / iperf3: …\nRepository commit or release: …"
+    validations:
+      required: true
+  - type: dropdown
+    id: direction
+    attributes:
+      label: 本次测量方向 / Test direction
+      description: 下载与上传分别报告，不合并不同测试层的速度。
+      options:
+        - 本地接入 / client ↔ router
+        - 跨境连接 / router ↔ node
+        - 节点到目标 / node ↔ target
+        - 完整代理业务 / client via proxy ↔ target
+        - 诊断工具的离线复现 / offline tool reproduction
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 最小复现与测试条件 / Reproduction and conditions
+      description: 给出已脱敏的步骤或命令；仅允许无凭据的测试 URL。注明方向、单连接/并发、对象字节数、时间预算、限速、重试及窗口。
+      placeholder: "步骤: …\n测试目标角色和无凭据 URL: …\n对象字节数 / 连接数: …\n连接预算 / 总预算 / 流量预算: …\n限速 / 自动重试: …\n测量日期、时区与窗口: …"
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: 完成、失败与数值 / Completion and failures
+      description: 保留全部尝试及失败类型。只计算完整任务的吞吐；超时、接口拒绝和取消单列。无需上传原始日志。
+      placeholder: "成功/尝试: …/…；失败/尝试: …/…；未启动: …\n失败类型及各自次数: …\nHTTP 状态 / curl 退出类型: …\n预期与实际完整对象字节数: …\n完整任务耗时及 goodput: …\n来源和出口核对方式（角色标签）: …"
+    validations:
+      required: true
+  - type: textarea
+    id: expectation
+    attributes:
+      label: 预期与实际业务表现 / Expected and observed behavior
+      description: 区分测量事实、怀疑原因和真实业务是否验收。不能复现时也请如实说明。
+      placeholder: "预期: …\n实际: …\n已经确认的事实: …\n尚待验证的假设: …\n持续会话、直播或高峰是否测过: …"
+    validations:
+      required: true
+  - type: textarea
+    id: changes_and_rollback
+    attributes:
+      label: 已尝试改动与回滚 / Changes and rollback
+      description: 无生产改动请写“无”。有改动时说明唯一变量、确认生效的方法和脱敏恢复步骤；不要粘贴配置备份。
+      placeholder: "已尝试改动: …\n如何确认作用于目标流量: …\n如何恢复与管理入口角色: …\n当前保留状态: …"
+    validations:
+      required: true
+  - type: checkboxes
+    id: public_boundary
+    attributes:
+      label: 发布前确认 / Before submitting
+      options:
+        - label: 我已在本地脱敏，内容和附件均无凭据、真实网络标识、完整配置、原始日志或抓包。
+          required: true
+        - label: 我保留了失败分母，并区分已观察结果、机制假设和未完成的业务验收。
+          required: true

@@ -1,170 +1,122 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="OpenWrt / VPS 网络排障工具箱：分层观察接入、路由器、代理与目标服务的原创流程示意" width="100%">
+</p>
+
+<p align="center">
+  <strong>简体中文</strong> · <a href="README.en.md">English</a> ·
+  <a href="docs/quick-start.md">15 分钟入门</a> ·
+  <a href="docs/decision-tree.md">排障路径</a> ·
+  <a href="docs/latest-progress.md">最新证据</a> ·
+  <a href="docs/share-kit.md">分享与 Agent 交接</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics/actions/workflows/ci.yml"><img src="https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics/actions/workflows/ci.yml/badge.svg" alt="Offline verification"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB.svg" alt="Python 3.10 or newer">
+</p>
+
 # OpenWrt / VPS 直播网络排障工具箱
 
-面向 **OpenWrt/Kwrt → PassWall/Xray → Linux VPS → 目标服务** 的慢速、卡顿、超时与高延迟问题。把接入、转发、跨境 TCP、代理处理和目标服务分开验证，再决定保留、修改或回滚。
+面向 **OpenWrt/Kwrt → PassWall/Xray → Linux VPS → 目标服务** 的网络慢、连接超时与直播卡顿。先找到受影响的层，保留每次成功和失败，再决定是否需要一项可恢复的改动。
 
-仓库包含 AU/US 双线路的脱敏案例、可执行的受限测试工具和验收模板。优先目标是直播稳定：**一次只主测一条线，最多做一项有证据的生产改动；没有合理候选时保留现状。**
+**从你的症状开始：**
 
-## 最新进度：2026-10-13 晚间六组测速
+| 你遇到的问题 | 第一份有用的证据 | 入口 |
+|---|---|---|
+| Wi-Fi 能连接，但代理网站打不开 | 接入、DHCP、DNS、本地代理入口与防火墙分别检查 | [快速定位](docs/decision-tree.md) |
+| 已启用 BBR，下载仍然慢 | 固定完整对象、实际发送 socket、两端资源与路径 | [采集与测量](docs/measurement-guide.md) |
+| 测速能完成，直播还是卡顿 | 负载下小请求、重连与真实业务持续会话 | [验收与恢复](docs/acceptance-and-rollback.md) |
 
-四个新增 AU 接入组已完成独立网段和组间隔离验收。随后逐组完成六组实际 Wi-Fi 路径的不限测试速率测速，**本轮新增生产参数改动 0**。AU 五组共享原节点、出口和带宽，顺序测得的速度不能相加作为同时可用容量。
+工具提供只读快照、有预算的传输测试和保留失败分母的离线汇总。它不会自动修改 sysctl、队列、路由或防火墙；实际测速会产生流量，应安排在合适的业务时段。
 
-以下下载使用相同 OVH 10 MiB 静态对象，六组 **42/42 完整完成**；上传使用 CF 10 MB 对象，AU 来自首轮完整上传记录，US 来自另一次 **7/7** 独立上传复核。下载与上传使用不同服务，不能合并速度或成功率。单连接列为三次中位数；四连接列为一组并发总速度。
+## 先运行一个离线示例
 
-| 公开角色 | 单连接下载 | 单连接上传 | 四连接下载总速度 | 四连接上传总速度 |
-|---|---:|---:|---:|---:|
-| AU-main | 11.4 Mbps | 28.3 Mbps | 26.9 Mbps | 44.8 Mbps |
-| AU-group-2 | 13.4 Mbps | 25.4 Mbps | 26.6 Mbps | 37.3 Mbps |
-| AU-group-3 | 12.1 Mbps | 29.5 Mbps | 24.1 Mbps | 50.8 Mbps |
-| AU-group-4 | 12.0 Mbps | 26.2 Mbps | 29.0 Mbps | 35.2 Mbps |
-| AU-group-5 | 12.5 Mbps | 21.1 Mbps | 16.8 Mbps | 24.3 Mbps |
-| US-main | 4.3 Mbps | 17.2 Mbps | 8.3 Mbps | 46.3 Mbps |
-
-**原 CF 六组 10 MB 首轮为 73/84，失败仍保留：AU-group-5 七条下载 HTTP 429，US 四条连接阶段超时。** 更早的 16 MiB 对象还出现 HTTP 403。遵守下载端点的 `Retry-After` 后停止请求，再用独立目标复核；后来的完整传输不能证明这些拒绝、间歇超时或延迟问题已修复。HTTPS 仍观察到秒级长尾；手机持续直播、多组同时直播和高峰表现待验收。
-
-电脑已恢复管理网络；五份路由配置与测速前完全一致，六个无线接口及代理服务保持运行，本轮测速进程和临时负载文件已清理。完整条件、失败分母、响应时间和证据限制见 **[最新进度](docs/latest-progress.md)**，分组配置及短暂 US 认证刷新记录见 **[分组接入与隔离验收](docs/segmented-au-acceptance.md)**；Agent 可直接读取 **[六组机器可读摘要](examples/2026-10-13-six-group-speed-summary.json)**。上午双线路 **28/28** 的 [历史测速快照](examples/2026-10-13-speed-summary.json) 和夜间受限负载记录均单独保留。这些是带时间戳的测量，不是实时状态或全天速度保证。
-
-## 从这里开始
-
-| 你的问题 | 先看哪里 |
-|---|---|
-| 想知道最新测速、保留状态和待验收项 | [最新进度](docs/latest-progress.md) |
-| 想把同一节点分成多个隔离接入组 | [分组接入与隔离验收](docs/segmented-au-acceptance.md) |
-| Wi-Fi 能连接，但国外网站打不开 | [快速定位与误判清单](docs/decision-tree.md) |
-| 能打开，下载很慢或小请求突然卡住 | 按下面四步采集，再查 [案例](docs/case-study.md) |
-| 想复现之前做了哪些修复和参数优化 | [AU/US 历史案例](docs/case-study.md) |
-| 有半天时间，想做一次有效定位 | [八小时执行手册](docs/eight-hour-playbook.md) |
-| 准备改参数 | 先填 [单项实验卡](docs/experiment-card.md) |
-| 准备宣布直播问题解决 | [验收与恢复](docs/acceptance-and-rollback.md) |
-
-## 快速开始：先获得可比较的证据
-
-客户端需要 **Python 3.10+、curl 8.4+**，不需要 pip 安装依赖。Linux/OpenWrt 两端快照只需要 POSIX shell；`ss`、`tc` 等缺少时会明确标为不可用。旧 curl 不会静默取消大小保护。
+需要 **Python 3.10+**，不用安装 pip 依赖；实际传输另需 **curl 8.4+**。
 
 ```sh
 git clone https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics.git
 cd openwrt-vps-streaming-diagnostics
-python3 -m unittest discover -s tests -v
 python3 tools/summarize.py examples/synthetic-downloads.jsonl
-umask 077
-mkdir -p results
 ```
 
-合成示例应显示 3 次尝试、2 次完整、1 次部分超时。它只演示失败分母与完整样本统计，没有发起网络请求。[机器可读历史案例](examples/case-summary.json) 则是独立格式的人工脱敏摘要，不是新工具的输出。
+预期结果为 **3 次尝试、2 次完整、1 次部分超时**。汇总只读本地合成文件，不联系路由器、VPS 或测速端点；部分下载继续保留为失败。
 
-**示例中的 SSH 别名、源地址、端点和端口都要换成自己的。** `192.0.2.10` / `203.0.113.20` 是文档保留地址，不能用于真实测试。SSH 使用已经正常工作的系统认证，不向脚本提供密码或私钥内容。
-
-### 1. 确认对象，保存两端只读快照
-
-通过系统网络设置或现有接入工具，确认测试设备连接的是目标 SSID/网段。记录它实际获得的 IPv4，沿用可登录的 SSH 别名。业务端口与 SSH 端口不同。
+先预览计划，再准备自己的测试对象：
 
 ```sh
-ROUTER='your-router-alias'
-VPS='your-vps-alias'
-
-ssh "$ROUTER" 'sh -s -- --port 8443' < tools/snapshot.sh > results/router-before.txt
-ssh "$VPS" 'sh -s -- --port 8443' < tools/snapshot.sh > results/vps-before.txt
+python3 tools/download-test.py \
+  --url https://download.example.invalid/fixed-10mb.bin \
+  --source 192.0.2.10 --bytes 10000000 --repeat 5 --timeout 90 \
+  --object-id demo-10MB --group demo-A0 --dry-run
 ```
 
-以上 `8443` 是示例业务端口，要在所有相关 SSH 命令中替换为实际端口。
+这个 dry-run 的 `network_requests` 应为 **0**。域名与来源是文档保留示例，不能直接去掉 `--dry-run` 进行实测。
 
-同步下载期间，另开两个终端采样。各终端重新设置对应的 SSH 别名：
+**下一步：[15 分钟入门](docs/quick-start.md)**，核对设备角色、实际来源、现有 SSH 入口和恢复方法。15 分钟是入门预算，根因定位的时间取决于现有证据。
 
-```sh
-ssh "$ROUTER" 'sh -s -- --port 8443 --count 300 --interval 2' \
-  < tools/sample.sh > results/router-sample.txt
-ssh "$VPS" 'sh -s -- --port 8443 --count 300 --interval 2' \
-  < tools/sample.sh > results/vps-sample.txt
-```
+## 一次调查怎样走完
 
-核对目标业务连接及其流量变化。**默认 BBR、监听 socket 或出口 IP，单独都不足以证明实际下载发送连接正在使用 BBR。** 查看活动发送 socket 的算法、RTT、cwnd、重传与队列。完整配置备份另走你已有的管理流程，保存在私密位置；快照工具不会备份配置。
-
-采样的 600 秒上限是 `count × interval` 配置预算，采集命令会增加耗时，不是进程硬截止时间。完整结束标记仅说明采集流程走完；缺失指标仍属不可用。系统 counters 需要增量比较，不能直接换算成某条代理连接的丢包率。
-
-### 2. 固定对象，完整测五次
-
-优先使用自己控制的、已知精确大小的 HTTPS 文件。没有自控对象时，可用下面的公共接口初筛；限流、挑战页、非 200 或大小不符都要记录，换对象后重建基线。
-
-```sh
-SOURCE='192.0.2.10'
-TEST_URL='https://speed.cloudflare.com/__down?bytes=10000000'
-
-python3 tools/download-test.py --url "$TEST_URL" --bytes 10000000 \
-  --source "$SOURCE" --repeat 5 --object-id fixed-10MB --group A0 --dry-run
-
-# 确认计划和流量预算后，去掉 --dry-run 实际执行。
-python3 tools/download-test.py --url "$TEST_URL" --bytes 10000000 \
-  --source "$SOURCE" --repeat 5 --object-id fixed-10MB --group A0 > results/A0.jsonl
-python3 tools/summarize.py results/A0.jsonl > results/A0-summary.json
-```
-
-每次最大 90 秒，IPv4、HTTP/1.1、TLS 验证、没有重试和重定向。只有 **curl 退出 0 + HTTP 200 + 精确完成全部字节 + 源地址核对通过** 才算完成。失败分母不会被丢掉，部分下载不冒充完整任务吞吐。
-
-`--object-id` 是人工设定的安全对象标签；只有实际 URL/查询、大小和服务语义相同才能沿用它。汇总按对象标签、大小、超时、绑定、目标与限速条件分组；工具不保存完整 URL，也不能替你证明不同 URL 内容一致。没有固定 `--resolve` 时，远端地址变化会提示重建固定目标基线。
-
-`--source` 绑定地址，`--interface` 可替代它强制指定接口；只用接口时，结果的 `local_ipv4` 仍需核实。`--resolve` 可选固定目标 IPv4，同时保留原域名的证书验证。源绑定不保证 DNS 走相同接口；固定 `--resolve` 可减少 DNS/目标变化，但透明代理策略仍要核对。`--noproxy '*'` 只禁用 curl 显式代理。[curl 官方选项说明](https://curl.se/docs/manpage.html#--interface)
-
-### 3. 把本地、跨境、目标侧和完整代理分开
-
-| 独立测试 | 主要检查 |
-|---|---|
-| 客户端 ↔ 路由器 | 接入质量、接口与本地处理；先核实 ICMP 是否允许 |
-| 路由器 ↔ VPS | 两端 TCP 传输；有现成 iperf3 才进入受控测试 |
-| VPS → 同一个固定对象 | 目标服务及 VPS 出口是否也慢 |
-| 客户端经代理 → 同一对象 | 完整业务路径；与前三层交叉解释 |
-
-不要把四段的速率混成一个平均值。裸 TCP 与 Xray 端口、分流及处理不同；详细 iperf、短抓包和单项实验边界见 [八小时手册](docs/eight-hour-playbook.md)。
-
-### 4. 受限持续上传与小请求回归
-
-选择自己控制、支持 POST 请求体并返回 HTTP 200 的接收端。公共测速接收端可能有限流或使用条款。先从短时间和低负载开始，业务受影响就停止。
-
-```sh
-UPLOAD_URL='https://your-controlled-endpoint.example/upload'
-
-python3 tools/upload-test.py --url "$UPLOAD_URL" --source "$SOURCE" \
-  --flows 3 --duration 60 --mbps 5 --object-id upload-zero --group load0 --dry-run
-
-python3 tools/upload-test.py --url "$UPLOAD_URL" --source "$SOURCE" \
-  --flows 3 --duration 60 --mbps 5 --object-id upload-zero --group load0 > results/load0.jsonl
-```
-
-这里的 **5 Mbps 是每条测试流的目标上限**；三条合计约 15 Mbps。工具不会给生产线路设置 15/20 Mbps 限速，也不测线路最大能力。`--duration` 上限 600 秒，启动和收尾开销另计，单组 payload 最多 2 GiB；协议、响应和重传开销另计。`Ctrl-C` 会清理本工具创建的 curl 子进程及临时负载文件。
-
-在另一个终端运行小请求探针。必须替换实际目标 IPv4 和正确的 HTTPS 域名；默认 `/generate_204` 与状态 204 也应与接收端契约一致：
-
-```sh
-python3 tools/probe.py https --source "$SOURCE" \
-  --server-ip 203.0.113.20 --host your-probe-host.example \
-  --path /generate_204 --status 204 --samples 120 --dry-run
-
-python3 tools/probe.py stun --source "$SOURCE" \
-  --server-ip 203.0.113.20 --port 3478 --samples 120 --timeout 2.5 --dry-run
-```
-
-去掉 `--dry-run` 并分别重定向到私密结果文件才会发起探测。HTTPS 使用固定 IPv4、证书验证、持久连接和整个请求的截止时间，报告冷连接/重连；STUN 为每次请求生成独立事务 ID，忽略过期回复，可用 `--expect-exit` 核对该探针出口。探针超时率是请求指标，不能替代视频包丢失率。[STUN 协议](https://www.rfc-editor.org/rfc/rfc8489.html)
-
-## 这次案例做到哪一步
-
-- AU、US 的 VPS 发送端由 CUBIC 改为 BBR；保留原代理传输与 `fq_codel`。AU 还刷新了旧连接池，确认新发送连接实际使用 BBR。
-- 此前修复了隔离网段对路由器本地代理/DNS 重定向端口的阻断。它恢复连通性，与后续 BBR 的吞吐改善分阶段记录。
-- 原来 32 MiB 对象在 45 秒预算内超时，调整后的同对象能够完成。案例保留部分失败与完整成功的差别，没有宣称永久固定倍数提速。
-- 夜间在保留配置上完成三组约十分钟、三条约 5 Mbps 上行测试，9/9 完成；负载稳态准入窗口的小 HTTPS 1721/1721 成功，STUN 1741/1743 响应。夜间新增生产参数改动 **0**。
-- 小流长尾与部分代理 TCP 重传恢复相关；具体损伤位置、全部超时原因、实际手机直播及高峰表现仍未证明。
-
-上述是 **2026-10-13 上午测速前的历史阶段记录**，完整数值及当时决定见 [脱敏案例](docs/case-study.md)。后续不限速测速、最新清理状态和当前证据缺口见 [最新进度](docs/latest-progress.md)；仓库不会实时读取设备，后续状态变化需要重新采集。
-
-## 工具与验证范围
-
-| 文件 | 用途 | 会修改生产配置吗 |
+| 阶段 | 要得到的结果 | 对应资料 |
 |---|---|---|
-| `tools/snapshot.sh` | 两端只读快照，缺工具明确报告 | 否 |
-| `tools/sample.sh` | 受限时间采样原始 counters、CPU 与目标 socket | 否 |
-| `tools/download-test.py` | 精确固定对象完成测试 | 否；会产生受限流量 |
-| `tools/upload-test.py` | 有预算的并行 POST 流 | 否；会产生受限流量 |
-| `tools/probe.py` | HTTPS / STUN 小请求延迟、超时与重连 | 否；会产生少量流量 |
-| `tools/summarize.py` | 离线汇总，完整样本时间与全部失败分母 | 否 |
-| `tools/check-publication.py` | 检查已跟踪文件中的常见误提交 | 否；不能替代人工脱敏 |
+| 观察 | 知道测的是哪条连接、哪个方向，有当前快照 | [采集与测量](docs/measurement-guide.md) |
+| 定位 | 把本地接入、代理、跨境 TCP 和目标服务分开 | [决策树](docs/decision-tree.md) |
+| 实验 | 一项假设、一项改动、明确生效证据与恢复方法 | [实验卡](docs/experiment-card.md) |
+| 验收 | 同条件复测、真实业务回归、清理与交接 | [验收规则](docs/acceptance-and-rollback.md) |
 
-新工具箱由历史测试逻辑整理、通用化，通用验证使用**离线合成数据、假 curl、假 Linux 命令与 dry-run**；GitHub Actions 仅执行离线测试。上午不限速吞吐由本地专用测速程序测量，仓库 `tools/probe.py` 的 HTTPS 子功能参与了实际小请求测试。这不代表其他公开工具或模式均已生产实测；各项覆盖范围见 [最新进度](docs/latest-progress.md)。
+有半天时间时，按 [八小时手册](docs/eight-hour-playbook.md) 完成一条主线路的一次调查。没有合理候选改动，就保留现状，继续收集能够区分原因的证据。
 
-原始配置、SSH 密钥、密码、节点凭据、实际 IP/SSID/MAC、本机路径和完整抓包没有纳入仓库。真实日志也可能含网络标识，请阅读 [公开边界](SECURITY.md)。许可证为 [MIT](LICENSE)。
+## 最新证据 · 2026-10-13
+
+下面是分别保存的测量快照，仓库不实时监控设备。
+
+| 独立批次 | 完整 / 尝试 | 保留的结论 |
+|---|---:|---|
+| CF 六组，固定 10 MB 双向传输 | **73/84** | 一个 AU 组七条下载收到 HTTP 429，US 四条连接阶段超时 |
+| OVH 六组，固定 10 MiB 下载复核 | **42/42** | 独立目标完整完成；不覆盖 CF 原失败 |
+| US 单独 CF 上传复核 | **7/7** | 后续上传完成；间歇连接失败原因仍待定位 |
+
+更早的 16 MiB 对象试验包含 HTTP 403 和两次 US 连接阶段超时。不同对象、目标和时段分别记录；后续成功不抹掉前面的失败。
+
+**US 下载偏慢与秒级响应长尾仍有记录；真实手机直播、多组同时直播和高峰表现待验收。** 五个 AU 组共享原节点、出口及带宽，顺序测得的速度不能相加作为同时可用容量。本轮速度测量新增生产参数改动为 0，收尾已核对管理接入恢复、配置不变及临时测试清理。
+
+[完整速度与响应记录](docs/latest-progress.md) · [机器可读摘要](examples/2026-10-13-six-group-speed-summary.json) · [AU 分组与隔离验收](docs/segmented-au-acceptance.md) · [此前修复案例](docs/case-study.md)
+
+## 工具和实际执行入口
+
+| 工具 | 用途 | 配置修改 |
+|---|---|---|
+| `tools/snapshot.sh` | 两端只读快照；缺少指标明确报告 | 无 |
+| `tools/sample.sh` | 有次数预算的 CPU、计数器、队列与 socket 采样 | 无 |
+| `tools/download-test.py` | 固定 HTTPS 对象完成测试，绑定来源并核对精确字节 | 无；产生有预算的流量 |
+| `tools/upload-test.py` | 声明负载与流量预算的并行 POST 测试 | 无；产生有预算的流量 |
+| `tools/probe.py` | HTTPS / STUN 请求响应、超时与重连 | 无；产生探测流量 |
+| `tools/summarize.py` | 离线汇总完整任务及全部失败分母 | 无 |
+| `tools/check-publication.py` | 检查暂存文件的常见误提交 | 无；仍需人工脱敏 |
+
+完整对象要求 **退出成功 + HTTP 200 + 精确字节 + 所要求的来源核对**。系统默认 BBR 不代表实际发送连接使用 BBR；一次出口查询也不能证明其他 socket 的精确代理映射。HTTPS 超时率不能替代视频包丢失率，公共端点的拒绝与限流必须单独记录。
+
+### 实际采集与测速
+
+SSH 快照、固定对象、受限上传及小请求的完整命令已集中在 **[采集与测量指南](docs/measurement-guide.md)**。所有实际地址、对象和别名都要换成自己的；原始结果保存在私有 `results/`。
+
+通用验证使用合成数据、假 curl、假 Linux 命令和 dry-run。GitHub Actions 只跑离线检查；实际运行覆盖按工具与模式区分，见 [最新进度](docs/latest-progress.md)。
+
+```sh
+python3 -m unittest discover -s tests -v
+sh -n tools/snapshot.sh
+sh -n tools/sample.sh
+python3 tools/check-publication.py
+git diff --check
+```
+
+## 反馈、复用与分享
+
+- **遇到同类问题：** 用 [脱敏故障表单](https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics/issues/new?template=diagnostic-report.yml) 提交版本、条件、完整成功与失败次数、已做改动和恢复状态。
+- **交给其他 Agent：** 先读取本页、[最新进度](docs/latest-progress.md) 和机器可读摘要；核对自己的环境，重建基线，再决定是否干预。[复制交接提示](docs/share-kit.md#给其他-agent-的复制入口)
+- **分享给社区：** [中文、英文与技术群分享草稿](docs/share-kit.md)，配 [原创分享封面](assets/social-preview.png)。
+- **参与维护：** [贡献指南](CONTRIBUTING.md) · [公开边界](SECURITY.md) · [发布记录](CHANGELOG.md)。
+
+只公开人工审核后的脱敏资料。密码、私钥、完整分享链接、真实地址、SSID、MAC、完整配置和原始日志留在私有位置。
+
+首页参考高关注项目的信息层次和导航，图形与文案为本仓库原创；见 [排版参考与设计说明](docs/design-notes.md)。许可证为 [MIT](LICENSE)。

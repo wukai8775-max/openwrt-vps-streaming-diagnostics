@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-labelledby="title desc">
+  <title id="title">OpenWrt / VPS 网络排障工具箱</title>
+  <desc id="desc">原创流程示意：观察接入、路由器、代理和目标服务，记录完整成功与失败，验证业务并保留恢复方法。这是工具流程示意，不是实时仪表盘。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102c28"/><stop offset="1" stop-color="#071714"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#87b3a8" stroke-opacity=".07"/></pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#a9d6c6" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1280" height="420" rx="22" fill="url(#bg)"/>
+  <rect width="1280" height="420" rx="22" fill="url(#grid)"/>
+  <circle cx="1220" cy="-22" r="215" fill="#b7ed76" opacity=".04"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">
+    <rect x="48" y="38" width="214" height="30" rx="15" fill="#c8ef9a" fill-opacity=".10" stroke="#c8ef9a" stroke-opacity=".25"/>
+    <circle cx="66" cy="53" r="4" fill="#c8ef9a"/>
+    <text x="80" y="58" font-size="12" font-weight="700" letter-spacing="1.7" fill="#d8f6b7">OPEN SOURCE TOOLKIT</text>
+    <text x="48" y="130" font-size="48" font-weight="720" letter-spacing="-1.4" fill="#f8f6ed">OpenWrt / VPS</text>
+    <text x="48" y="183" font-size="43" font-weight="700" letter-spacing="-1.2" fill="#c8ef9a">Network Diagnostics</text>
+    <text x="50" y="230" font-size="25" font-weight="600" fill="#f1f5e9">网络排障工具箱</text>
+    <text x="50" y="270" font-size="20" fill="#b4cbc2">Find the failing layer.</text>
+    <text x="50" y="298" font-size="20" fill="#b4cbc2">Keep every success and failure.</text>
+    <g font-size="13" fill="#cfdfd6">
+      <rect x="48" y="348" width="170" height="31" rx="8" fill="#173b31"/><text x="63" y="368">Read-only snapshots</text>
+      <rect x="228" y="348" width="130" height="31" rx="8" fill="#173b31"/><text x="244" y="368">Bounded tests</text>
+      <rect x="368" y="348" width="145" height="31" rx="8" fill="#173b31"/><text x="383" y="368">Rollback guides</text>
+    </g>
+    <rect x="706" y="46" width="524" height="332" rx="20" fill="#102a23" stroke="#335448"/>
+    <text x="734" y="80" font-size="12" font-weight="700" letter-spacing="1.7" fill="#92b3a5">DIAGNOSTIC PATH · 流程示意</text>
+    <g fill="#122f27" stroke="#426453">
+      <rect x="734" y="106" width="213" height="78" rx="12"/><rect x="987" y="106" width="213" height="78" rx="12"/>
+      <rect x="734" y="220" width="213" height="78" rx="12"/><rect x="987" y="220" width="213" height="78" rx="12"/>
+    </g>
+    <g fill="#c8ef9a" font-size="12" font-weight="600"><text x="752" y="131">01 / ACCESS</text><text x="1005" y="131">02 / ROUTER</text><text x="752" y="245">03 / PROXY + TCP</text><text x="1005" y="245">04 / DESTINATION</text></g>
+    <g fill="#eef4e9" font-size="20" font-weight="600"><text x="752" y="161">Client / Wi-Fi</text><text x="1005" y="161">DNS / Firewall</text><text x="752" y="275">Xray / VPS</text><text x="1005" y="275">Target service</text></g>
+    <path d="M954 145H980" fill="none" stroke="#a9d6c6" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M1093 192V204H840V214" fill="none" stroke="#a9d6c6" stroke-opacity=".6" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M954 259H980" fill="none" stroke="#a9d6c6" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M734 325H1200" stroke="#335448"/>
+    <text x="734" y="352" font-size="14" fill="#b4cbc2">Measure → Isolate → Verify → Recover</text>
+  </g>
+</svg>
