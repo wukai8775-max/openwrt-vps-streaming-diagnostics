@@ -63,7 +63,7 @@ Follow the [15-minute orientation guide](docs/quick-start.md) (Chinese) for prot
 | Review measured results and unresolved issues | [Latest progress](docs/latest-progress.md) |
 | Build isolated access groups on the same node | [Segmented AU acceptance](docs/segmented-au-acceptance.md) |
 
-Detailed runbooks and the historical case are currently in Chinese. Commands, tool output and the [latest machine-readable summary](examples/2026-10-13-six-group-speed-summary.json) are readable independently of those narratives.
+Detailed runbooks and the historical case are currently in Chinese. Commands, tool output and the [latest machine-readable summary](examples/2026-10-14-us-diagnosis-summary.json) are readable independently of those narratives.
 
 ## What the tools do
 
@@ -81,21 +81,21 @@ A transfer is complete only when curl exits successfully, HTTP status is 200, th
 
 Source binding alone does not prove a transparent proxy mapping or the DNS path. A system default of BBR does not prove that the active sending connection uses BBR. HTTPS request timeouts are not video-packet loss. Public endpoints can refuse or rate-limit tests; preserve those outcomes and respect the service response.
 
-## Latest measured evidence · 2026-10-13
+## Latest measured evidence · 2026-10-14
 
 The current evidence contains separate batches, not a combined all-pass result:
 
 | Batch | Complete / attempted | Interpretation |
 |---|---:|---|
-| Cloudflare, six groups, fixed 10 MB download/upload | **73/84** | Seven AU-group-5 downloads received HTTP 429; four US-main transfers timed out in the connection phase |
-| OVH, six groups, fixed 10 MiB downloads | **42/42** | All six groups completed the independent target; this does not erase the earlier failures |
-| Separate US-main Cloudflare upload recheck | **7/7** | Later uploads completed; the original intermittent connection failure is still unresolved |
+| US VPS direct downloads, two targets | **6/6** | Median task goodput approximately 54.6 / 86.0 Mbps |
+| Router downloads through the same US node | **6/6** | Approximately 4.3 / 8.4 Mbps, with Wi-Fi removed from the test path |
+| Actual US client, two download targets and CF upload | **9/9** | Download medians approximately 8.5 / 10.4 Mbps; upload 19.2 Mbps, maximum single round 22.7 Mbps |
 
-An earlier 16 MiB object trial also produced HTTP 403 responses and two US connection-stage timeouts. It is retained separately. The 10 MB and 10 MiB objects, endpoints and time windows are different; their speeds and success rates are not pooled.
+This narrows the investigation to the router upstream, US proxy connection and cross-border segment. Shared-WAN background traffic, the precise public-network location and mechanism remain unconfirmed. Router goodput uses curl's full transaction time; VPS/client goodput uses independent wall time. Sequential layer comparisons are not a parameter A/B experiment or evidence of an optimization gain.
 
-Five AU groups share the original node, exit and bandwidth. Sequential group measurements are not additive simultaneous capacity. US downloads remained slower at both targets, and second-scale request tails were observed. **Real-phone live streaming, simultaneous streams and peak-hour behavior remain unaccepted.**
+US downloads remained slower at both targets, and second-scale connection startup was observed. **Real-phone live streaming, simultaneous streams and peak-hour behavior remain unaccepted.** A 15-second connection budget is a diagnostic condition, not a production fix. One router transaction completed after TLS startup exceeded the old five-second budget. The earlier six-group CF **73/84**, OVH **42/42**, separate US upload **7/7**, refusals and timeouts remain in the historical record.
 
-No new production parameter changes were made during this six-group speed-test round. Read the [timestamped progress report](docs/latest-progress.md) for conditions, raw failure categories, cleanup and evidence limits. This repository is a saved report, not live monitoring or an all-day speed guarantee.
+No new production parameter changes were made. Read the [layer diagnosis](docs/us-diagnosis-2026-10-14.md), [machine-readable summary](examples/2026-10-14-us-diagnosis-summary.json) and [timestamped progress report](docs/latest-progress.md) for conditions, cleanup and evidence limits. This repository is a saved report, not live monitoring or an all-day speed guarantee.
 
 ## Case router and firmware
 

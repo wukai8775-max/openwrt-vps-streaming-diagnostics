@@ -1,0 +1,867 @@
+{
+  "schema_version": 1,
+  "type": "manually_curated_sanitized_us_layer_diagnosis",
+  "date": "2026-10-14",
+  "timezone": "Asia/Shanghai",
+  "role": "US-main",
+  "status": "Layer diagnosis and cleanup verified; retain production settings; precise upstream cause, peak-hour performance and real live-stream acceptance remain unresolved",
+  "measurement_window": {
+    "started_at": "2026-10-14T10:47:07.459+08:00",
+    "last_followup_at": "2026-10-14T11:01:23.703+08:00",
+    "includes_intervals_between_sequential_stages": true
+  },
+  "production_parameter_changes": 0,
+  "production_decision": "retain current settings; no candidate production change has sufficient evidence",
+  "measurement_conditions": {
+    "ip_version": 4,
+    "http_version": "1.1",
+    "tls_certificate_validation": true,
+    "automatic_retries": 0,
+    "target_address_pinned": true,
+    "client_source_interface_bound": true,
+    "client_exact_source_guard_interval_seconds": 0.5,
+    "connection_phase_budget_including_tls_seconds": 15,
+    "curl_transaction_budget_seconds": 60,
+    "test_rate_limit_bytes_per_second": null,
+    "single_connection_rounds_per_series": 3,
+    "parallel_transfer_test_performed": false,
+    "completion_rule": "process/curl exit 0, HTTP 200 and exact expected object bytes; actual client source and pinned peer verified",
+    "goodput_comparison_limit": "VPS and client have independently measured wall time; router uses curl whole-transaction time. Compare only the large layer difference, not fine differences or optimization gains.",
+    "routing_confirmation_limit": "Client target/source and before/after exit checks were verified. Router test used a loopback-only diagnostic Xray clone with all non-inbound configuration equal; actual business-socket correlation is private.",
+    "sequential_not_simultaneous": true,
+    "not_a_configuration_A_B_test": true,
+    "background_wan_competition_excluded": false
+  },
+  "object_totals": {
+    "planned_transfers": 21,
+    "recorded_transfers": 21,
+    "complete_transfers": 21,
+    "failed_transfers": 0,
+    "complete_object_payload_bytes": 214371840
+  },
+  "series": [
+    {
+      "role": "US-main",
+      "layer": "vps_direct",
+      "target_service": "OVH",
+      "direction": "download",
+      "object_bytes": 10485760,
+      "streams_per_round": 1,
+      "planned_rounds": 3,
+      "recorded_rounds": 3,
+      "complete_rounds": 3,
+      "failed_rounds": 0,
+      "unrecorded_rounds": 0,
+      "goodput_time_basis": "independent Python monotonic wall time for the entire subprocess; includes startup and collection overhead",
+      "complete_task_goodput_mbps": {
+        "median": 54.57453925745292,
+        "min": 54.13345942310047,
+        "max": 54.58902479775333
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10485760,
+          "independent_wall_seconds": 1.537091858976055,
+          "complete_task_goodput_mbps": 54.57453925745292,
+          "dns_seconds": 1.5e-05,
+          "tcp_ready_seconds": 0.082205,
+          "tls_ready_seconds": 0.16971,
+          "first_byte_seconds": 0.274979,
+          "curl_transaction_seconds": 1.521684
+        },
+        {
+          "round": 2,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10485760,
+          "independent_wall_seconds": 1.5366839820053428,
+          "complete_task_goodput_mbps": 54.58902479775333,
+          "dns_seconds": 2.4e-05,
+          "tcp_ready_seconds": 0.081589,
+          "tls_ready_seconds": 0.171162,
+          "first_byte_seconds": 0.275566,
+          "curl_transaction_seconds": 1.513469
+        },
+        {
+          "round": 3,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10485760,
+          "independent_wall_seconds": 1.5496160949987825,
+          "complete_task_goodput_mbps": 54.13345942310047,
+          "dns_seconds": 2.1e-05,
+          "tcp_ready_seconds": 0.082343,
+          "tls_ready_seconds": 0.170862,
+          "first_byte_seconds": 0.27631,
+          "curl_transaction_seconds": 1.524863
+        }
+      ]
+    },
+    {
+      "role": "US-main",
+      "layer": "vps_direct",
+      "target_service": "Cloudflare",
+      "direction": "download",
+      "object_bytes": 10000000,
+      "streams_per_round": 1,
+      "planned_rounds": 3,
+      "recorded_rounds": 3,
+      "complete_rounds": 3,
+      "failed_rounds": 0,
+      "unrecorded_rounds": 0,
+      "goodput_time_basis": "independent Python monotonic wall time for the entire subprocess; includes startup and collection overhead",
+      "complete_task_goodput_mbps": {
+        "median": 85.98463923198449,
+        "min": 83.47284828865735,
+        "max": 87.59156227987899
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": 0.913329981995048,
+          "complete_task_goodput_mbps": 87.59156227987899,
+          "dns_seconds": 1.5e-05,
+          "tcp_ready_seconds": 0.000721,
+          "tls_ready_seconds": 0.038683,
+          "first_byte_seconds": 0.0798,
+          "curl_transaction_seconds": 0.896757
+        },
+        {
+          "round": 2,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": 0.9303987399907783,
+          "complete_task_goodput_mbps": 85.98463923198449,
+          "dns_seconds": 1.6e-05,
+          "tcp_ready_seconds": 0.000831,
+          "tls_ready_seconds": 0.061781,
+          "first_byte_seconds": 0.096538,
+          "curl_transaction_seconds": 0.91333
+        },
+        {
+          "round": 3,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": 0.9583954739791807,
+          "complete_task_goodput_mbps": 83.47284828865735,
+          "dns_seconds": 1.5e-05,
+          "tcp_ready_seconds": 0.000646,
+          "tls_ready_seconds": 0.046477,
+          "first_byte_seconds": 0.125761,
+          "curl_transaction_seconds": 0.944498
+        }
+      ]
+    },
+    {
+      "role": "US-main",
+      "layer": "router_temporary_loopback_socks",
+      "target_service": "OVH",
+      "direction": "download",
+      "object_bytes": 10485760,
+      "streams_per_round": 1,
+      "planned_rounds": 3,
+      "recorded_rounds": 3,
+      "complete_rounds": 3,
+      "failed_rounds": 0,
+      "unrecorded_rounds": 0,
+      "goodput_time_basis": "curl time_total for the complete transaction, including connection startup; independent subprocess wall time was not measured",
+      "complete_task_goodput_mbps": {
+        "median": 4.301999613012206,
+        "min": 4.09020181937402,
+        "max": 12.400845880986822
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10485760,
+          "independent_wall_seconds": null,
+          "complete_task_goodput_mbps": 4.301999613012206,
+          "dns_seconds": 0.000816,
+          "tcp_ready_seconds": 0.000465,
+          "tls_ready_seconds": 3.663997,
+          "first_byte_seconds": 4.641827,
+          "curl_transaction_seconds": 19.499323
+        },
+        {
+          "round": 2,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10485760,
+          "independent_wall_seconds": null,
+          "complete_task_goodput_mbps": 4.09020181937402,
+          "dns_seconds": 0.000799,
+          "tcp_ready_seconds": 0.000502,
+          "tls_ready_seconds": 6.50699,
+          "first_byte_seconds": 7.170818,
+          "curl_transaction_seconds": 20.509032
+        },
+        {
+          "round": 3,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10485760,
+          "independent_wall_seconds": null,
+          "complete_task_goodput_mbps": 12.400845880986822,
+          "dns_seconds": 0.000628,
+          "tcp_ready_seconds": 0.000398,
+          "tls_ready_seconds": 0.972222,
+          "first_byte_seconds": 1.363205,
+          "curl_transaction_seconds": 6.764545
+        }
+      ]
+    },
+    {
+      "role": "US-main",
+      "layer": "router_temporary_loopback_socks",
+      "target_service": "Cloudflare",
+      "direction": "download",
+      "object_bytes": 10000000,
+      "streams_per_round": 1,
+      "planned_rounds": 3,
+      "recorded_rounds": 3,
+      "complete_rounds": 3,
+      "failed_rounds": 0,
+      "unrecorded_rounds": 0,
+      "goodput_time_basis": "curl time_total for the complete transaction, including connection startup; independent subprocess wall time was not measured",
+      "complete_task_goodput_mbps": {
+        "median": 8.383598244558364,
+        "min": 5.438726424310672,
+        "max": 11.873942662511974
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": null,
+          "complete_task_goodput_mbps": 5.438726424310672,
+          "dns_seconds": 0.000854,
+          "tcp_ready_seconds": 0.000495,
+          "tls_ready_seconds": 0.973087,
+          "first_byte_seconds": 1.233883,
+          "curl_transaction_seconds": 14.709326
+        },
+        {
+          "round": 2,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": null,
+          "complete_task_goodput_mbps": 11.873942662511974,
+          "dns_seconds": 0.000773,
+          "tcp_ready_seconds": 0.000461,
+          "tls_ready_seconds": 0.731132,
+          "first_byte_seconds": 0.999571,
+          "curl_transaction_seconds": 6.737442
+        },
+        {
+          "round": 3,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": null,
+          "complete_task_goodput_mbps": 8.383598244558364,
+          "dns_seconds": 0.000673,
+          "tcp_ready_seconds": 0.000434,
+          "tls_ready_seconds": 1.967099,
+          "first_byte_seconds": 2.55981,
+          "curl_transaction_seconds": 9.542442
+        }
+      ]
+    },
+    {
+      "role": "US-main",
+      "layer": "client_transparent_proxy",
+      "target_service": "Cloudflare",
+      "direction": "download",
+      "object_bytes": 10000000,
+      "streams_per_round": 1,
+      "planned_rounds": 3,
+      "recorded_rounds": 3,
+      "complete_rounds": 3,
+      "failed_rounds": 0,
+      "unrecorded_rounds": 0,
+      "goodput_time_basis": "independent Python monotonic transfer-round wall time; includes child startup, source guards and cleanup",
+      "complete_task_goodput_mbps": {
+        "median": 8.509756956818746,
+        "min": 7.240831028290294,
+        "max": 12.385350279364147
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": 6.45924404199468,
+          "complete_task_goodput_mbps": 12.385350279364147,
+          "dns_seconds": 4.9e-05,
+          "tcp_ready_seconds": 0.002339,
+          "tls_ready_seconds": 0.961721,
+          "first_byte_seconds": 1.224818,
+          "curl_transaction_seconds": 6.386409,
+          "actual_source_matches_expected": true,
+          "actual_target_matches_pin": true
+        },
+        {
+          "round": 2,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": 9.400973542011343,
+          "complete_task_goodput_mbps": 8.509756956818746,
+          "dns_seconds": 9e-06,
+          "tcp_ready_seconds": 0.003021,
+          "tls_ready_seconds": 0.698101,
+          "first_byte_seconds": 0.993452,
+          "curl_transaction_seconds": 9.356679,
+          "actual_source_matches_expected": true,
+          "actual_target_matches_pin": true
+        },
+        {
+          "round": 3,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": 11.048455582989845,
+          "complete_task_goodput_mbps": 7.240831028290294,
+          "dns_seconds": 1.2e-05,
+          "tcp_ready_seconds": 0.002572,
+          "tls_ready_seconds": 1.007663,
+          "first_byte_seconds": 1.283615,
+          "curl_transaction_seconds": 10.810705,
+          "actual_source_matches_expected": true,
+          "actual_target_matches_pin": true
+        }
+      ]
+    },
+    {
+      "role": "US-main",
+      "layer": "client_transparent_proxy",
+      "target_service": "OVH",
+      "direction": "download",
+      "object_bytes": 10485760,
+      "streams_per_round": 1,
+      "planned_rounds": 3,
+      "recorded_rounds": 3,
+      "complete_rounds": 3,
+      "failed_rounds": 0,
+      "unrecorded_rounds": 0,
+      "goodput_time_basis": "independent Python monotonic transfer-round wall time; includes child startup, source guards and cleanup",
+      "complete_task_goodput_mbps": {
+        "median": 10.380081579247834,
+        "min": 7.818248223722658,
+        "max": 12.927673580766848
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10485760,
+          "independent_wall_seconds": 6.48887670901604,
+          "complete_task_goodput_mbps": 12.927673580766848,
+          "dns_seconds": 6e-06,
+          "tcp_ready_seconds": 0.002515,
+          "tls_ready_seconds": 1.116867,
+          "first_byte_seconds": 1.745224,
+          "curl_transaction_seconds": 6.445667,
+          "actual_source_matches_expected": true,
+          "actual_target_matches_pin": true
+        },
+        {
+          "round": 2,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10485760,
+          "independent_wall_seconds": 8.081447083008243,
+          "complete_task_goodput_mbps": 10.380081579247834,
+          "dns_seconds": 1.2e-05,
+          "tcp_ready_seconds": 0.003238,
+          "tls_ready_seconds": 1.16196,
+          "first_byte_seconds": 1.560133,
+          "curl_transaction_seconds": 8.013159,
+          "actual_source_matches_expected": true,
+          "actual_target_matches_pin": true
+        },
+        {
+          "round": 3,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10485760,
+          "independent_wall_seconds": 10.729523750022054,
+          "complete_task_goodput_mbps": 7.818248223722658,
+          "dns_seconds": 1.3e-05,
+          "tcp_ready_seconds": 0.002762,
+          "tls_ready_seconds": 2.434121,
+          "first_byte_seconds": 3.159661,
+          "curl_transaction_seconds": 10.689959,
+          "actual_source_matches_expected": true,
+          "actual_target_matches_pin": true
+        }
+      ]
+    },
+    {
+      "role": "US-main",
+      "layer": "client_transparent_proxy",
+      "target_service": "Cloudflare",
+      "direction": "upload",
+      "object_bytes": 10000000,
+      "streams_per_round": 1,
+      "planned_rounds": 3,
+      "recorded_rounds": 3,
+      "complete_rounds": 3,
+      "failed_rounds": 0,
+      "unrecorded_rounds": 0,
+      "goodput_time_basis": "independent Python monotonic transfer-round wall time; includes child startup, source guards and cleanup",
+      "complete_task_goodput_mbps": {
+        "median": 19.17417181385376,
+        "min": 17.41386145001402,
+        "max": 22.737370781063895
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": 4.594041375006782,
+          "complete_task_goodput_mbps": 17.41386145001402,
+          "dns_seconds": 6e-06,
+          "tcp_ready_seconds": 0.002492,
+          "tls_ready_seconds": 1.013022,
+          "first_byte_seconds": 4.524226,
+          "curl_transaction_seconds": 4.524293,
+          "actual_source_matches_expected": true,
+          "actual_target_matches_pin": true
+        },
+        {
+          "round": 2,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": 4.17227929198998,
+          "complete_task_goodput_mbps": 19.17417181385376,
+          "dns_seconds": 1.1e-05,
+          "tcp_ready_seconds": 0.003326,
+          "tls_ready_seconds": 0.713831,
+          "first_byte_seconds": 4.119204,
+          "curl_transaction_seconds": 4.119229,
+          "actual_source_matches_expected": true,
+          "actual_target_matches_pin": true
+        },
+        {
+          "round": 3,
+          "completed": true,
+          "http_status": 200,
+          "process_exit": 0,
+          "transferred_bytes": 10000000,
+          "independent_wall_seconds": 3.518436708021909,
+          "complete_task_goodput_mbps": 22.737370781063895,
+          "dns_seconds": 7e-06,
+          "tcp_ready_seconds": 0.00307,
+          "tls_ready_seconds": 0.827624,
+          "first_byte_seconds": 3.492134,
+          "curl_transaction_seconds": 3.492175,
+          "actual_source_matches_expected": true,
+          "actual_target_matches_pin": true
+        }
+      ]
+    }
+  ],
+  "https_response_probes": {
+    "service": "Google HTTPS small response",
+    "meaning": "HTTP request completion time, including network and response processing; not an ICMP RTT or video packet-loss rate",
+    "idle": {
+      "attempts": 30,
+      "successful": 30,
+      "failed": 0,
+      "timeouts": 0,
+      "cancelled": 0,
+      "warm_attempts": 29,
+      "warm_successful": 29,
+      "warm_failed": 0,
+      "successful_warm_elapsed_ms": {
+        "median": 240.683,
+        "min": 229.545,
+        "max": 573.082
+      },
+      "successful_all_elapsed_ms": {
+        "median": 240.71249999999998,
+        "min": 229.545,
+        "max": 2256.058
+      },
+      "cold_or_reconnect_attempts": 1
+    },
+    "idle_cold_successful_elapsed_ms": [
+      2256.058
+    ],
+    "strict_load_admission_rule": "request starts in its transfer round [start, end-5s]; every admitted success/failure retained; an empty window is not a pass",
+    "loaded_series": {
+      "cf_download": {
+        "strict_window": {
+          "attempts": 11,
+          "successful": 11,
+          "failed": 0,
+          "timeouts": 0,
+          "cancelled": 0,
+          "warm_attempts": 11,
+          "warm_successful": 11,
+          "warm_failed": 0,
+          "successful_warm_elapsed_ms": {
+            "median": 245.995,
+            "min": 236.715,
+            "max": 686.115
+          },
+          "successful_all_elapsed_ms": {
+            "median": 245.995,
+            "min": 236.715,
+            "max": 686.115
+          },
+          "cold_or_reconnect_attempts": 0
+        },
+        "strict_samples_per_transfer_round": [
+          1,
+          4,
+          6
+        ],
+        "raw_probe_outcomes": {
+          "attempts": 34,
+          "successful": 34,
+          "failed": 0,
+          "timeouts": 0,
+          "cancelled": 0,
+          "warm_attempts": 33,
+          "warm_successful": 33,
+          "warm_failed": 0,
+          "successful_warm_elapsed_ms": {
+            "median": 245.625,
+            "min": 236.715,
+            "max": 695.5
+          },
+          "successful_all_elapsed_ms": {
+            "median": 245.6455,
+            "min": 236.715,
+            "max": 1013.149
+          },
+          "cold_or_reconnect_attempts": 1
+        },
+        "planned_stop_cancelled_outside_strict_window": 0,
+        "other_cancelled_outcomes_retained": 0,
+        "load_coverage_established": true
+      },
+      "ovh_download": {
+        "strict_window": {
+          "attempts": 10,
+          "successful": 10,
+          "failed": 0,
+          "timeouts": 0,
+          "cancelled": 0,
+          "warm_attempts": 10,
+          "warm_successful": 10,
+          "warm_failed": 0,
+          "successful_warm_elapsed_ms": {
+            "median": 230.72449999999998,
+            "min": 226.883,
+            "max": 655.445
+          },
+          "successful_all_elapsed_ms": {
+            "median": 230.72449999999998,
+            "min": 226.883,
+            "max": 655.445
+          },
+          "cold_or_reconnect_attempts": 0
+        },
+        "strict_samples_per_transfer_round": [
+          1,
+          3,
+          6
+        ],
+        "raw_probe_outcomes": {
+          "attempts": 32,
+          "successful": 32,
+          "failed": 0,
+          "timeouts": 0,
+          "cancelled": 0,
+          "warm_attempts": 31,
+          "warm_successful": 31,
+          "warm_failed": 0,
+          "successful_warm_elapsed_ms": {
+            "median": 231.075,
+            "min": 226.883,
+            "max": 655.445
+          },
+          "successful_all_elapsed_ms": {
+            "median": 231.09199999999998,
+            "min": 226.883,
+            "max": 1237.74
+          },
+          "cold_or_reconnect_attempts": 1
+        },
+        "planned_stop_cancelled_outside_strict_window": 0,
+        "other_cancelled_outcomes_retained": 0,
+        "load_coverage_established": true
+      },
+      "cf_upload": {
+        "strict_window": {
+          "attempts": 0,
+          "successful": 0,
+          "failed": 0,
+          "timeouts": 0,
+          "cancelled": 0,
+          "warm_attempts": 0,
+          "warm_successful": 0,
+          "warm_failed": 0,
+          "successful_warm_elapsed_ms": {
+            "median": null,
+            "min": null,
+            "max": null
+          },
+          "successful_all_elapsed_ms": {
+            "median": null,
+            "min": null,
+            "max": null
+          },
+          "cold_or_reconnect_attempts": 0
+        },
+        "strict_samples_per_transfer_round": [
+          0,
+          0,
+          0
+        ],
+        "raw_probe_outcomes": {
+          "attempts": 20,
+          "successful": 19,
+          "failed": 1,
+          "timeouts": 0,
+          "cancelled": 1,
+          "warm_attempts": 18,
+          "warm_successful": 18,
+          "warm_failed": 0,
+          "successful_warm_elapsed_ms": {
+            "median": 228.43900000000002,
+            "min": 225.754,
+            "max": 237.391
+          },
+          "successful_all_elapsed_ms": {
+            "median": 229.096,
+            "min": 225.754,
+            "max": 1223.748
+          },
+          "cold_or_reconnect_attempts": 1
+        },
+        "planned_stop_cancelled_outside_strict_window": 1,
+        "other_cancelled_outcomes_retained": 0,
+        "load_coverage_established": false
+      }
+    },
+    "strict_loaded_combined": {
+      "attempts": 21,
+      "successful": 21,
+      "failed": 0,
+      "timeouts": 0,
+      "cancelled": 0,
+      "warm_attempts": 21,
+      "warm_successful": 21,
+      "warm_failed": 0,
+      "successful_warm_elapsed_ms": {
+        "median": 244.959,
+        "min": 226.883,
+        "max": 686.115
+      },
+      "successful_all_elapsed_ms": {
+        "median": 244.959,
+        "min": 226.883,
+        "max": 686.115
+      },
+      "cold_or_reconnect_attempts": 0
+    },
+    "fresh_cold_followup": {
+      "separate_from_idle_series": true,
+      "attempts": 5,
+      "successful": 5,
+      "failed": 0,
+      "total_seconds": {
+        "median": 1.225433,
+        "min": 0.924548,
+        "max": 2.950441
+      },
+      "tls_ready_seconds": {
+        "median": 0.749072,
+        "min": 0.702703,
+        "max": 2.059578
+      },
+      "round_total_seconds": [
+        0.924548,
+        1.225433,
+        2.950441,
+        2.400014,
+        0.965141
+      ]
+    }
+  },
+  "other_observations": {
+    "successful_router_ovh_tls_ready_seconds": 6.50699,
+    "this_request_would_exceed_prior_connection_budget_seconds": 5,
+    "widening_test_budget_is_not_a_production_fix": true,
+    "router_dns_queries": {
+      "attempts": 3,
+      "successful_noerror": 3,
+      "query_ms": [
+        264,
+        2,
+        3
+      ],
+      "includes_possible_cache_effects": true,
+      "root_cause_established": false
+    },
+    "tcp_business_socket_baseline_approximate_ms": {
+      "low": 208,
+      "high": 250,
+      "meaning": "observed stable-phase business-socket smoothed RTT range, not a route guarantee or measured physical minimum; occasional much larger tails also observed"
+    },
+    "mac_direct_business_port_probe": {
+      "attempts": 5,
+      "successful": 0,
+      "refused": 5,
+      "usable_as_public_path_reachability_or_rtt_evidence": false,
+      "limitation": "Client network isolation or interception can reject this probe locally; rejection location was not established by this standalone result."
+    },
+    "existing_tcp_settings": {
+      "system_default_congestion_control": "bbr",
+      "sampled_business_socket_congestion_control": [
+        "bbr"
+      ],
+      "server_root_qdisc": "fq_codel",
+      "visible_local_twenty_mbps_shaping_found": false,
+      "provider_side_policy_excluded": false
+    },
+    "fixed_twenty_mbps_cap": {
+      "supported_by_this_run": false,
+      "client_single_upload_wall_goodput_max_mbps": 22.737370781063895,
+      "interpretation": "A successful single transfer exceeded 20 Mbps. This contradicts a strict constant ceiling in this short run, but does not exclude policies with bursts or a longer averaging window."
+    },
+    "resource_and_wireless_coverage": {
+      "router_client_load_covered": true,
+      "router_client_directions": [
+        "cloudflare_download",
+        "ovh_download",
+        "cloudflare_upload"
+      ],
+      "router_sampled_cpu_busy_peak_percent_by_direction": [
+        15.34,
+        7.65,
+        6.47
+      ],
+      "router_us_ap_and_bridge_interface_error_or_drop_increments_observed": false,
+      "client_station_rssi_dbm_approximate_range": [
+        -58,
+        -51
+      ],
+      "client_station_driver_retry_and_failure_counters_increased": true,
+      "driver_counters_are_calibrated_video_packet_loss": false,
+      "wireless_as_sole_explanation_supported": false,
+      "wireless_additional_effect_excluded": false,
+      "client_background_traffic_excluded": false,
+      "server_router_proxy_windows_partially_covered": true,
+      "server_client_idle_covered": true,
+      "server_client_object_load_guarded_sample_points": {
+        "cloudflare_download": 0,
+        "ovh_download": 0,
+        "cloudflare_upload": 0
+      },
+      "server_sampled_router_object_window_cpu_active_peak_percent": 4.0201005025125625,
+      "server_sampled_router_object_window_cpu_steal_peak_percent": 2.4630541871921183,
+      "server_observed_local_qdisc_drop_or_requeue_increment": 0,
+      "server_entire_client_load_resource_limits_excluded": false,
+      "cross_device_clock_offset_independently_calibrated": false,
+      "server_time_window_boundary_guard_seconds": 1,
+      "server_business_peer_group_includes_background_sockets": true,
+      "server_router_proxy_window_send_queue_backlog_and_retransmission_recovery_observed": true,
+      "exact_test_flow_link_loss_rate_established": false,
+      "limitation": "Socket counters may include background flows and repeated lifetime observations. Do not derive exact video or link packet-loss rates from them. CPU observations prove only the measured windows."
+    }
+  },
+  "preserved_prior_failures": {
+    "previous_date": "2026-10-13",
+    "effective_cloudflare_baseline_us_connection_phase_timeouts": 4,
+    "prior_connection_budget_seconds": 5,
+    "overwritten": false,
+    "reference": "2026-10-13-six-group-speed-summary.json"
+  },
+  "conclusion": {
+    "supported": "Both fixed-object comparisons show the router US proxy path remains slow without Wi-Fi, while the VPS accesses the same objects much faster. Prioritize the router upstream US proxy/cross-border portion and background WAN competition. Wireless can still add an effect; it is not excluded.",
+    "not_proven": [
+      "precise public-path damage location",
+      "specific packet-size or congestion-control failure",
+      "operator or provider fault",
+      "background WAN competition excluded",
+      "production optimization benefit",
+      "upload-load latency acceptance",
+      "phone/live-stream or peak-hour acceptance",
+      "wireless additional effect excluded",
+      "server resource state during the client object-load stages"
+    ]
+  },
+  "cleanup": {
+    "status": "verified",
+    "router_final_readback_at": "2026-10-14T11:07:38+08:00",
+    "management_network_restored": true,
+    "production_configuration_hashes_unchanged": true,
+    "router_production_configuration_files_checked": 5,
+    "uci_pending_changes": 0,
+    "production_processes_unchanged": true,
+    "router_radio_interfaces_configuration_unchanged": true,
+    "router_radio_interfaces_checked": 7,
+    "temporary_listener_removed": true,
+    "private_diagnostic_configuration_clone_removed": true,
+    "temporary_watchdog_stopped": true,
+    "router_test_collectors_stopped": true,
+    "router_test_collector_directories_removed": true,
+    "server_test_collectors_stopped": true,
+    "server_test_collector_directories_removed": true,
+    "server_business_configuration_and_unit_unchanged": true,
+    "server_business_process_and_restart_count_unchanged": true,
+    "task_owned_ssh_agent_and_control_connection_closed": true,
+    "system_ssh_agent_modified": false,
+    "test_payload_removed": true,
+    "raw_evidence_remains_private": true
+  },
+  "next_validation": [
+    "Correlate test-flow sockets and background traffic before choosing a single reversible production intervention.",
+    "Repeat at the original fault time or peak time if the complaint persists.",
+    "Use real phones and the intended streaming platform to accept sustained sessions and reconnect behavior."
+  ],
+  "privacy": "Only role labels, public test-service brands, object sizes and numeric results published; raw configurations, addresses, network names, device identifiers and credentials remain private."
+}
