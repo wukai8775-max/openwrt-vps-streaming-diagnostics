@@ -63,7 +63,7 @@ Follow the [15-minute orientation guide](docs/quick-start.md) (Chinese) for prot
 | Review measured results and unresolved issues | [Latest progress](docs/latest-progress.md) |
 | Build isolated access groups on the same node | [Segmented AU acceptance](docs/segmented-au-acceptance.md) |
 
-Detailed runbooks and the historical case are currently in Chinese. Commands, tool output and the [latest machine-readable summary](examples/2026-10-14-us-diagnosis-summary.json) are readable independently of those narratives.
+Detailed runbooks and the historical case are currently in Chinese. Commands, tool output and the [latest machine-readable summary](examples/2026-10-14-us-transport-load-summary.json) are readable independently of those narratives.
 
 ## What the tools do
 
@@ -82,6 +82,14 @@ A transfer is complete only when curl exits successfully, HTTP status is 200, th
 Source binding alone does not prove a transparent proxy mapping or the DNS path. A system default of BBR does not prove that the active sending connection uses BBR. HTTPS request timeouts are not video-packet loss. Public endpoints can refuse or rate-limit tests; preserve those outcomes and respect the service response.
 
 ## Latest measured evidence · 2026-10-14
+
+**Current decision: keep production settings; reject MSS 1200.** Five follow-up pairs completed **4/5** original-condition objects and **3/5** candidate objects. The candidate was about **18.45% slower** by paired complete-only median time. A paced 15 Mbps direct-TCP test received approximately **4.194 Mbps downstream / 14.670 Mbps upstream**. Synchronized sockets attributed part of an 11-second startup to outer TCP establishment and reply recovery; the exact public-network impairment location remains unproven.
+
+Two actual-client upload conditions each lasted approximately **54 seconds**, completing **4/4** streams at group task goodput **4.969 / 14.915 Mbps**. Strict load probes completed HTTPS **91/91** and STUN **97/97**, with maximum response times still **2.037 / 1.379 seconds**. The 5 Mbps per-stream limit is a test budget, not a production setting. Production changes: **0**. AU reference probes completed **72/72** during the observation period and **30/30** around the MSS pairs. Phone/platform, peak-hour and long-duration acceptance remain pending.
+
+Read the [transport and short-load report](docs/us-transport-and-load-2026-10-14.md), [latest machine-readable evidence](examples/2026-10-14-us-transport-load-summary.json) and [timestamped progress](docs/latest-progress.md). Earlier failures stay in their original batches.
+
+### Earlier phase: sequential layer comparison
 
 The current evidence contains separate batches, not a combined all-pass result:
 
