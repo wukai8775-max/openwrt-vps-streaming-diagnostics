@@ -97,6 +97,10 @@ Five AU groups share the original node, exit and bandwidth. Sequential group mea
 
 No new production parameter changes were made during this six-group speed-test round. Read the [timestamped progress report](docs/latest-progress.md) for conditions, raw failure categories, cleanup and evidence limits. This repository is a saved report, not live monitoring or an all-day speed guarantee.
 
+## Case router and firmware
+
+Read back on **2026-10-14**: **Ruijie RG-X60 Pro**, running **Kwrt 25.12-SNAPSHOT**, reported build revision `10.08.2026`, Linux kernel `6.12.112`. The [environment record](docs/environment.md) includes the target, board and field sources. This records the currently running system; the historical test windows and results remain separate.
+
 ## Run offline checks
 
 ```sh

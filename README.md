@@ -82,6 +82,10 @@ python3 tools/download-test.py \
 
 [完整速度与响应记录](docs/latest-progress.md) · [机器可读摘要](examples/2026-10-13-six-group-speed-summary.json) · [AU 分组与隔离验收](docs/segmented-au-acceptance.md) · [此前修复案例](docs/case-study.md)
 
+## 本案例的路由器与固件
+
+2026-10-14 从设备读回：**锐捷 / Ruijie RG-X60 Pro**，运行 **Kwrt 25.12-SNAPSHOT**；构建标识 `10.08.2026`，Linux 内核 `6.12.112`。完整字段和核验来源见 [环境记录](docs/environment.md)。这是当前运行版本的核对，历史测速日期与结论继续分别保留。
+
 ## 工具和实际执行入口
 
 | 工具 | 用途 | 配置修改 |
