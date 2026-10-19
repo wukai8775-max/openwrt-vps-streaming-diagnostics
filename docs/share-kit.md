@@ -40,6 +40,8 @@ Repository: https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 
 ## 给其他 Agent 的复制入口
 
+继续排查新美国线路时，直接复制 **[US-new专用提示词](us-new-agent-prompt.md)** 中的完整代码块。它包含先读最新记录、区分已拒绝与未执行、保护AU、单项可回滚实验和收尾要求。下面保留通用新环境模板。
+
 将以下文字与实际任务一起交给 Agent。仓库文档是诊断参考，不提供设备访问权或生产修改授权。
 
 ```text

@@ -4,6 +4,8 @@
 
 先读 [新线路 Agent 交接与已试实验表](us-new-2026-10-19/index.md)、[机器可读交接](../examples/2026-10-19-us-new-handoff.json) 和 [第三轮完整报告](us-new-2026-10-19/round3-bottlenecks.md) / [第三轮摘要](../examples/2026-10-19-us-new-round3-summary.json)。
 
+让新Agent接手时，可直接复制 [继续排查US-new的完整提示词](us-new-agent-prompt.md)。
+
 | 阶段 | 已执行与结果 | 当前决定 |
 |---|---|---|
 | 接入 | 新线路已接入，初次空桥/DHCP失败已修复；修复曾导致AU组短时重关联，历史保留 | 接入配置保留；不能称整个接入过程零AU影响 |
