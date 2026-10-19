@@ -1,0 +1,696 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "status": "complete_no_production_parameter_change_retained",
+  "scope": "US-new throughput investigation; public redacted snapshot",
+  "advertised_bandwidth": {
+    "mbps": 200,
+    "interpretation": "Plan label; no verified dedicated or China end-to-end 200 Mbps commitment",
+    "source": "https://wepc.au/index.php/store/us-los-9929"
+  },
+  "vps_origin_download": {
+    "attempts": 3,
+    "successes": 3,
+    "rows": [
+      {
+        "label": "cf_1",
+        "success": true,
+        "exit_code": 0,
+        "status": 200,
+        "bytes": 25000000,
+        "expected_bytes": 25000000,
+        "seconds": 1.523028,
+        "transaction_mbps": 131.3173493855661
+      },
+      {
+        "label": "cf_2",
+        "success": true,
+        "exit_code": 0,
+        "status": 200,
+        "bytes": 25000000,
+        "expected_bytes": 25000000,
+        "seconds": 1.167849,
+        "transaction_mbps": 171.25501670164553
+      },
+      {
+        "label": "google_range",
+        "success": true,
+        "exit_code": 0,
+        "status": 206,
+        "bytes": 10000000,
+        "expected_bytes": 10000000,
+        "seconds": 0.556057,
+        "transaction_mbps": 143.8701428091005
+      }
+    ]
+  },
+  "vps_origin_upload": {
+    "attempts": 2,
+    "successes": 2,
+    "object_bytes_each": 16777216,
+    "temporary_payload_removed": true,
+    "rows": [
+      {
+        "attempt": 1,
+        "success": true,
+        "exit_code": 0,
+        "http_status": 200,
+        "uploaded_bytes": 16777216,
+        "seconds": 0.967282,
+        "upload_mbps": 138.75759912827903
+      },
+      {
+        "attempt": 2,
+        "success": true,
+        "exit_code": 0,
+        "http_status": 200,
+        "uploaded_bytes": 16777216,
+        "seconds": 0.743742,
+        "upload_mbps": 180.46275186825537
+      }
+    ]
+  },
+  "mac_independent_xray_parallel": {
+    "measurement_phase": "A0, not the clean CUBIC/BBR comparison",
+    "streams": 4,
+    "bytes_per_stream": 10000000,
+    "attempts": 4,
+    "successes": 4,
+    "aggregate_mbps": 61.45504075243822,
+    "wall_seconds": 5.20705862500472
+  },
+  "router_local_socks_cubic": {
+    "attempts": 6,
+    "successes": 6,
+    "rows": [
+      {
+        "label": "single_1",
+        "expected_bytes": 25000000,
+        "downloaded_bytes": 25000000,
+        "success": true,
+        "exit_code": 0,
+        "http_status": 200,
+        "seconds": 5.801764,
+        "ttfb_seconds": 1.101875,
+        "transaction_mbps": 34.47227429450767,
+        "post_ttfb_mbps": 42.55419649272567
+      },
+      {
+        "label": "single_2",
+        "expected_bytes": 25000000,
+        "downloaded_bytes": 25000000,
+        "success": true,
+        "exit_code": 0,
+        "http_status": 200,
+        "seconds": 5.643186,
+        "ttfb_seconds": 1.188479,
+        "transaction_mbps": 35.440972528638966,
+        "post_ttfb_mbps": 44.896331004485816
+      },
+      {
+        "label": "parallel_1",
+        "expected_bytes": 10000000,
+        "downloaded_bytes": 10000000,
+        "success": true,
+        "exit_code": 0,
+        "http_status": 200,
+        "seconds": 9.922593,
+        "ttfb_seconds": 0.958179,
+        "transaction_mbps": 8.062408686922863,
+        "post_ttfb_mbps": 8.924175077143914
+      },
+      {
+        "label": "parallel_2",
+        "expected_bytes": 10000000,
+        "downloaded_bytes": 10000000,
+        "success": true,
+        "exit_code": 0,
+        "http_status": 200,
+        "seconds": 3.069719,
+        "ttfb_seconds": 0.932206,
+        "transaction_mbps": 26.061017311356512,
+        "post_ttfb_mbps": 37.4266729605855
+      },
+      {
+        "label": "parallel_3",
+        "expected_bytes": 10000000,
+        "downloaded_bytes": 10000000,
+        "success": true,
+        "exit_code": 0,
+        "http_status": 200,
+        "seconds": 3.358879,
+        "ttfb_seconds": 0.969452,
+        "transaction_mbps": 23.81747005474148,
+        "post_ttfb_mbps": 33.480830341332876
+      },
+      {
+        "label": "parallel_4",
+        "expected_bytes": 10000000,
+        "downloaded_bytes": 10000000,
+        "success": true,
+        "exit_code": 0,
+        "http_status": 200,
+        "seconds": 9.003254,
+        "ttfb_seconds": 1.102364,
+        "transaction_mbps": 8.885676223285493,
+        "post_ttfb_mbps": 10.125441564178212
+      }
+    ]
+  },
+  "clean_wifi_cc_comparison": {
+    "sequence": [
+      "A1 cubic",
+      "B1 bbr",
+      "A2 cubic",
+      "B2 bbr"
+    ],
+    "object_bytes_each": 25000000,
+    "cubic": {
+      "attempts": 5,
+      "successes": 5,
+      "median_transaction_mbps": 35.81777349556397,
+      "batches": [
+        {
+          "attempts": 3,
+          "successes": 3,
+          "rows": [
+            {
+              "label": "single_1",
+              "expected_bytes": 25000000,
+              "downloaded_bytes": 25000000,
+              "success": true,
+              "exit_code": 0,
+              "http_status": 200,
+              "seconds": 7.023512,
+              "ttfb_seconds": 1.283277,
+              "transaction_mbps": 28.475782486026933,
+              "post_ttfb_mbps": 34.8417791257675
+            },
+            {
+              "label": "single_2",
+              "expected_bytes": 25000000,
+              "downloaded_bytes": 25000000,
+              "success": true,
+              "exit_code": 0,
+              "http_status": 200,
+              "seconds": 5.665251,
+              "ttfb_seconds": 1.000082,
+              "transaction_mbps": 35.30293715141659,
+              "post_ttfb_mbps": 42.87090135427034
+            },
+            {
+              "label": "single_3",
+              "expected_bytes": 25000000,
+              "downloaded_bytes": 25000000,
+              "success": true,
+              "exit_code": 0,
+              "http_status": 200,
+              "seconds": 5.58382,
+              "ttfb_seconds": 0.950268,
+              "transaction_mbps": 35.81777349556397,
+              "post_ttfb_mbps": 43.16343056039945
+            }
+          ]
+        },
+        {
+          "attempts": 2,
+          "successes": 2,
+          "rows": [
+            {
+              "label": "single_1",
+              "expected_bytes": 25000000,
+              "downloaded_bytes": 25000000,
+              "success": true,
+              "exit_code": 0,
+              "http_status": 200,
+              "seconds": 5.382413,
+              "ttfb_seconds": 1.010993,
+              "transaction_mbps": 37.158055318311696,
+              "post_ttfb_mbps": 45.75172369619026
+            },
+            {
+              "label": "single_2",
+              "expected_bytes": 25000000,
+              "downloaded_bytes": 25000000,
+              "success": true,
+              "exit_code": 0,
+              "http_status": 200,
+              "seconds": 5.05143,
+              "ttfb_seconds": 0.934197,
+              "transaction_mbps": 39.592748983951076,
+              "post_ttfb_mbps": 48.576313266701206
+            }
+          ]
+        }
+      ]
+    },
+    "bbr": {
+      "attempts": 5,
+      "successes": 5,
+      "median_transaction_mbps": 32.679220607124364,
+      "batches": [
+        {
+          "attempts": 3,
+          "successes": 3,
+          "rows": [
+            {
+              "label": "single_1",
+              "expected_bytes": 25000000,
+              "downloaded_bytes": 25000000,
+              "success": true,
+              "exit_code": 0,
+              "http_status": 200,
+              "seconds": 6.527706,
+              "ttfb_seconds": 1.074126,
+              "transaction_mbps": 30.63863476694569,
+              "post_ttfb_mbps": 36.67315781560002
+            },
+            {
+              "label": "single_2",
+              "expected_bytes": 25000000,
+              "downloaded_bytes": 25000000,
+              "success": true,
+              "exit_code": 0,
+              "http_status": 200,
+              "seconds": 6.433682,
+              "ttfb_seconds": 0.972321,
+              "transaction_mbps": 31.0863981154182,
+              "post_ttfb_mbps": 36.62090823148296
+            },
+            {
+              "label": "single_3",
+              "expected_bytes": 25000000,
+              "downloaded_bytes": 25000000,
+              "success": true,
+              "exit_code": 0,
+              "http_status": 200,
+              "seconds": 6.120097,
+              "ttfb_seconds": 1.072577,
+              "transaction_mbps": 32.679220607124364,
+              "post_ttfb_mbps": 39.62341902558087
+            }
+          ]
+        },
+        {
+          "attempts": 2,
+          "successes": 2,
+          "rows": [
+            {
+              "label": "single_1",
+              "expected_bytes": 25000000,
+              "downloaded_bytes": 25000000,
+              "success": true,
+              "exit_code": 0,
+              "http_status": 200,
+              "seconds": 5.740948,
+              "ttfb_seconds": 1.028939,
+              "transaction_mbps": 34.8374519330257,
+              "post_ttfb_mbps": 42.44474066157344
+            },
+            {
+              "label": "single_2",
+              "expected_bytes": 25000000,
+              "downloaded_bytes": 25000000,
+              "success": true,
+              "exit_code": 0,
+              "http_status": 200,
+              "seconds": 5.756084,
+              "ttfb_seconds": 1.004076,
+              "transaction_mbps": 34.74584457071857,
+              "post_ttfb_mbps": 42.08747123321341
+            }
+          ]
+        }
+      ]
+    },
+    "paired_order_comparisons": [
+      {
+        "pair": 1,
+        "cubic_mbps": 28.475782486026933,
+        "bbr_mbps": 30.63863476694569,
+        "bbr_faster": true
+      },
+      {
+        "pair": 2,
+        "cubic_mbps": 35.30293715141659,
+        "bbr_mbps": 31.0863981154182,
+        "bbr_faster": false
+      },
+      {
+        "pair": 3,
+        "cubic_mbps": 35.81777349556397,
+        "bbr_mbps": 32.679220607124364,
+        "bbr_faster": false
+      },
+      {
+        "pair": 4,
+        "cubic_mbps": 37.158055318311696,
+        "bbr_mbps": 34.8374519330257,
+        "bbr_faster": false
+      },
+      {
+        "pair": 5,
+        "cubic_mbps": 39.592748983951076,
+        "bbr_mbps": 34.74584457071857,
+        "bbr_faster": false
+      }
+    ],
+    "bbr_pair_wins": 1,
+    "pair_count": 5,
+    "bbr_median_throughput_change_percent": -8.76255719476342,
+    "decision": "Reject BBR listener candidate; exact original config restored",
+    "statistical_scope": "Five small sequential matched-order comparisons, not randomized or a statistical-significance claim"
+  },
+  "cc_actual_socket_proof": {
+    "bbr_observed_on_accepted_business_connections": true,
+    "sample_count": 181,
+    "elapsed_seconds": 360.028,
+    "periods": [
+      {
+        "samples": 37,
+        "cc_counts": {
+          "cubic": 47
+        },
+        "active_socket_samples": 8,
+        "rtt_ms_minmax": [
+          176.142,
+          238.985
+        ],
+        "sender_observed_receive_window_bytes_minmax": [
+          1283776,
+          1328256
+        ],
+        "active_samples_with_rwnd_limited": 7
+      },
+      {
+        "samples": 43,
+        "cc_counts": {
+          "bbr": 10
+        },
+        "active_socket_samples": 7,
+        "rtt_ms_minmax": [
+          207.762,
+          258.628
+        ],
+        "sender_observed_receive_window_bytes_minmax": [
+          1283776,
+          1328256
+        ],
+        "active_samples_with_rwnd_limited": 7
+      },
+      {
+        "samples": 52,
+        "cc_counts": {
+          "cubic": 7
+        },
+        "active_socket_samples": 4,
+        "rtt_ms_minmax": [
+          172.412,
+          187.554
+        ],
+        "sender_observed_receive_window_bytes_minmax": [
+          1188608,
+          1328256
+        ],
+        "active_samples_with_rwnd_limited": 4
+      },
+      {
+        "samples": 48,
+        "cc_counts": {
+          "bbr": 6
+        },
+        "active_socket_samples": 4,
+        "rtt_ms_minmax": [
+          183.972,
+          218.428
+        ],
+        "sender_observed_receive_window_bytes_minmax": [
+          1329600,
+          1329600
+        ],
+        "active_samples_with_rwnd_limited": 4
+      },
+      {
+        "samples": 1,
+        "cc_counts": {},
+        "active_socket_samples": 0,
+        "rtt_ms_minmax": null,
+        "sender_observed_receive_window_bytes_minmax": null,
+        "active_samples_with_rwnd_limited": 0
+      }
+    ]
+  },
+  "receive_window_evidence": {
+    "typical_sender_observed_window_bytes": [
+      1283776,
+      1329600
+    ],
+    "representative_rtt_ms_approx": [
+      185,
+      259
+    ],
+    "interpretation": "Receiver window limits contributed to the sampled single-flow behavior; not proof of the sole bottleneck or a high-loss diagnosis",
+    "pending_causal_experiment": false
+  },
+  "confounders_and_failures": [
+    {
+      "type": "A0_resource_competition",
+      "description": "Unattended OS updates and I/O pressure overlapped earlier A0 measurements; updates ended before clean CC tests, with clean I/O much lower. Preserve A0 and do not use it as clean CC benefit evidence."
+    },
+    {
+      "type": "public_endpoint_rejection",
+      "measurement": {
+        "attempts": 1,
+        "successes": 0,
+        "rows": [
+          {
+            "label": "single_1",
+            "expected_bytes": 100000000,
+            "downloaded_bytes": 1,
+            "success": false,
+            "exit_code": 0,
+            "http_status": 403,
+            "seconds": 0.903954,
+            "ttfb_seconds": 0.903777,
+            "goodput_excluded_reason": "Object incomplete or rejected; no completed-object goodput reported."
+          }
+        ]
+      },
+      "description": "100 MB request got HTTP 403 and one byte; keep as 0/1 failed object test. Endpoint rejection is not a transport-throughput or network-failure measurement."
+    }
+  ],
+  "router_clean_observation": {
+    "sample_count": 161,
+    "elapsed_s": 348.39,
+    "CPU_busy_percent_median": 3.797,
+    "CPU_busy_percent_max": 12.98,
+    "mem_available_kb_min": 247352,
+    "softnet_dropped_delta": 0,
+    "softnet_time_squeeze_delta": 0,
+    "AU_PID_starttime_and_ifindex_guard_identical_all_samples": true,
+    "no_router_config_mutation": true
+  },
+  "last_verified_cc_rollback": {
+    "choice": "original",
+    "changed": true,
+    "only_configuration_delta": "restored_exact_original",
+    "system_default_cc": "cubic",
+    "service_active": true,
+    "rollback_copy_retained": true,
+    "qdisc_or_buffer_settings_changed": false
+  },
+  "receive_buffer_experiment": {
+    "status": "rejected_after_two_successes_and_one_timeout",
+    "scope": "Only US runtime sockets using SO_RCVBUFFORCE; no UCI, global socket settings or shared Lua generator modification",
+    "watchdogs": {
+      "minimum_available_memory_mib": 160,
+      "au_invariants_monitored": true,
+      "planned_automatic_rollback_deadline_seconds": 210
+    },
+    "production_retention_decision": "Rejected. Exact original US runtime restored; original US service active and automatic receive buffers re-observed.",
+    "attempts": 3,
+    "successes": 2,
+    "rows": [
+      {
+        "label": "single_1",
+        "expected_bytes": 25000000,
+        "downloaded_bytes": 25000000,
+        "success": true,
+        "exit_code": 0,
+        "http_status": 200,
+        "seconds": 4.513505,
+        "ttfb_seconds": 1.332068,
+        "completed_transaction_mbps": 44.31146082700695
+      },
+      {
+        "label": "single_2",
+        "expected_bytes": 25000000,
+        "downloaded_bytes": 25000000,
+        "success": true,
+        "exit_code": 0,
+        "http_status": 200,
+        "seconds": 4.468402,
+        "ttfb_seconds": 1.125957,
+        "completed_transaction_mbps": 44.75873030224228
+      },
+      {
+        "label": "single_3",
+        "expected_bytes": 25000000,
+        "downloaded_bytes": 10308947,
+        "success": false,
+        "exit_code": 28,
+        "http_status": 200,
+        "seconds": 60.006805,
+        "ttfb_seconds": 1.020822,
+        "partial_attempt_mbps_not_completed_throughput": 1.3743703901582496
+      }
+    ],
+    "router_observation_reported_by": "router audit agent through main implementation thread",
+    "effective_receive_buffer_bytes": 16777216,
+    "highest_receiver_window_bytes": 8382848,
+    "au_light_https_seconds": [
+      0.626218,
+      0.619497,
+      0.64478
+    ],
+    "server_observed_receive_window_bytes_approx": [
+      5500000,
+      7940000
+    ],
+    "server_delivery_rate_mbps_approx": [
+      98,
+      109
+    ],
+    "negative_observation": "Backpressure stall and rwnd_limited observed; third object timed out despite HTTP 200 and was incomplete.",
+    "deadline_timing_relationship": "Measured clock alignment supports timeout preceding watchdog rollback; no sole-cause attribution.",
+    "rollback_reported_by_main_thread": "Verified against protected redacted experiment summary",
+    "minimum_available_memory_kib": 231216,
+    "minimum_available_memory_mib": 225.796875,
+    "timeout_preceded_watchdog_rollback": true,
+    "conservative_timing_margin_seconds_approx": 0.94,
+    "original_runtime_exactly_restored": true,
+    "us_only_restart_verified": true,
+    "rollback_complete": true,
+    "watchdog_active_after_restore": false,
+    "sampling_active_after_restore": false,
+    "fresh_automatic_receive_buffer_bytes_observed": [
+      131072,
+      1021957,
+      3916736
+    ],
+    "fresh_receiver_window_max_bytes": 1331136,
+    "au_uci_shared_config_hashes_unchanged": true,
+    "au_process_starttimes_and_five_ifindexes_unchanged": true,
+    "au_original_station_association_boottimes_unchanged": true,
+    "pending_uci_count": 0
+  },
+  "final_cleanup": {
+    "management_subnet_reacquired": true,
+    "router_http_from_wifi_reachable": true,
+    "temporary_mac_socks_listener_absent": true,
+    "private_permissions_findings": 0,
+    "load_payload_files_absent": true,
+    "system_proxy_changed": false
+  },
+  "limitations": [
+    "No China end-to-end 200 Mbps guarantee established",
+    "No high-loss root cause established",
+    "No phone livestream acceptance",
+    "No authenticated Claude long-session acceptance",
+    "No peak-hour acceptance",
+    "No rollback rehearsal of complete router recovery"
+  ],
+  "retention_decision": {
+    "bbr_listener": "rejected and exact original restored",
+    "forced_receive_buffer": "rejected, no persistence",
+    "production_configuration": "Exact original server configuration, CUBIC default and observed current CC, exact original router US runtime; no production parameter candidate retained",
+    "global_sysctl_changed": false,
+    "qdisc_changed": false,
+    "uci_changed": false,
+    "shared_lua_generator_changed": false,
+    "claim_of_200mbps_china_path": false,
+    "stable_parameter_speedup_established": false
+  },
+  "final_server": {
+    "production_config_exactly_original": true,
+    "service_active": true,
+    "service_enabled": true,
+    "listener443_present": true,
+    "system_default_cc": "cubic",
+    "observed_current_cc": [
+      "cubic"
+    ],
+    "unused_test_bbr_module_removed": true,
+    "test_bbr_module_still_loaded": false,
+    "persistent_bbr_module_file_added": false,
+    "global_sysctl_qdisc_or_buffer_changes": false
+  },
+  "final_recovery_wifi": {
+    "actual_wifi_subnet_verified": true,
+    "system_proxy_bypassed": true,
+    "expected_egress": true,
+    "https_attempts": 11,
+    "https_successes": 11,
+    "small_https_seconds": {
+      "attempts": 5,
+      "successes": 5,
+      "minimum": 1.416395,
+      "maximum": 1.731713,
+      "median": 1.521714,
+      "values": [
+        1.731713,
+        1.421677,
+        1.416395,
+        1.521714,
+        1.524872
+      ]
+    },
+    "download_5mb_mbps": {
+      "attempts": 3,
+      "successes": 3,
+      "minimum": 13.244176,
+      "maximum": 14.600944,
+      "median": 13.998632,
+      "values": [
+        14.600944,
+        13.998632,
+        13.244176
+      ]
+    },
+    "upload_8mib_mbps": {
+      "attempts": 3,
+      "successes": 3,
+      "minimum": 18.23332,
+      "maximum": 22.045576,
+      "median": 18.839,
+      "values": [
+        18.23332,
+        22.045576,
+        18.839
+      ]
+    },
+    "udp_attempts": 5,
+    "udp_successes": 5,
+    "udp_dns_success": true,
+    "literal_ipv6_unavailable": true,
+    "ipv6_curl_exit": 7
+  },
+  "path_guard_event": {
+    "source": "main implementation thread",
+    "initial_final_guard_found_management_wifi": true,
+    "wrong_path_throughput_test_started": false,
+    "rejoined_us_new_before_final_acceptance": true,
+    "cause_of_wifi_state_change": "Not established; do not infer network reconnect cause from guard result"
+  },
+  "conclusion": "Small-object methodology and sampled receive-window limits contributed to explaining the China proxy single-flow gap. No stable parameter speedup was retained; the 200 Mbps gap and sole impairment cause remain unresolved.",
+  "public_snapshot": {
+    "date": "2026-10-19",
+    "route_role": "US-new",
+    "phase": "round1",
+    "network_identifiers": "Replaced by role labels; no actual SSID or node endpoint published.",
+    "private_evidence_filenames": "Omitted; originals retained privately.",
+    "scope": "Historical measurement snapshot; not live device state.",
+    "report": "docs/us-new-2026-10-19/round1-throughput.md"
+  }
+}

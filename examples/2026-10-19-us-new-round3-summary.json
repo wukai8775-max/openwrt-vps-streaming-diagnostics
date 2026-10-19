@@ -1,0 +1,653 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "decision": "retain_original_configuration_no_new_performance_parameter_justified",
+  "persistent_changes": false,
+  "temporary_us_forward_exception_used": true,
+  "temporary_exception_removed_and_original_chain_restored": true,
+  "production_services_or_radios_restarted": false,
+  "measurements": {
+    "data_requests_total": 12,
+    "data_requests_successful": 12,
+    "configuration_scope": "Original router receive-memory vector retained; temporary source-only forwarding exception used for direct Mac comparison was removed and original chain restored.",
+    "rows": {
+      "R3-A0-wifi": {
+        "attempts": 5,
+        "successes": 5,
+        "object_bytes_each": 25000000,
+        "rows": [
+          {
+            "group": "fresh_1",
+            "index": 1,
+            "success": true,
+            "exit_code": 0,
+            "status": 200,
+            "bytes": 25000000,
+            "seconds": 8.264519,
+            "ttfb_seconds": 0.905941,
+            "mbps": 24.19983546531867,
+            "connection_reused": false,
+            "new_connections": 1
+          },
+          {
+            "group": "fresh_2",
+            "index": 1,
+            "success": true,
+            "exit_code": 0,
+            "status": 200,
+            "bytes": 25000000,
+            "seconds": 6.080837,
+            "ttfb_seconds": 1.172955,
+            "mbps": 32.890209028789954,
+            "connection_reused": false,
+            "new_connections": 1
+          },
+          {
+            "group": "reuse",
+            "index": 1,
+            "success": true,
+            "exit_code": 0,
+            "status": 200,
+            "bytes": 25000000,
+            "seconds": 14.799614,
+            "ttfb_seconds": 1.069256,
+            "mbps": 13.51386596974759,
+            "connection_reused": false,
+            "new_connections": 1
+          },
+          {
+            "group": "reuse",
+            "index": 2,
+            "success": true,
+            "exit_code": 0,
+            "status": 200,
+            "bytes": 25000000,
+            "seconds": 4.582171,
+            "ttfb_seconds": 0.327087,
+            "mbps": 43.64743262527741,
+            "connection_reused": true,
+            "new_connections": 0
+          },
+          {
+            "group": "reuse",
+            "index": 3,
+            "success": true,
+            "exit_code": 0,
+            "status": 200,
+            "bytes": 25000000,
+            "seconds": 5.307844,
+            "ttfb_seconds": 0.563052,
+            "mbps": 37.68008253445278,
+            "connection_reused": true,
+            "new_connections": 0
+          }
+        ],
+        "groups": [
+          {
+            "name": "fresh_1",
+            "planned": 1,
+            "observed": 1,
+            "successes": 1,
+            "wall_seconds": 8.290794750035275,
+            "complete": true,
+            "same_client_tcp_port": true,
+            "aggregate_mbps": 24.123139702517552,
+            "process_exit_code": 0
+          },
+          {
+            "name": "fresh_2",
+            "planned": 1,
+            "observed": 1,
+            "successes": 1,
+            "wall_seconds": 6.10077741695568,
+            "complete": true,
+            "same_client_tcp_port": true,
+            "aggregate_mbps": 32.78270724058002,
+            "process_exit_code": 0
+          },
+          {
+            "name": "reuse",
+            "planned": 3,
+            "observed": 3,
+            "successes": 3,
+            "wall_seconds": 24.71140795899555,
+            "complete": true,
+            "same_client_tcp_port": true,
+            "aggregate_mbps": 24.280283867094894,
+            "process_exit_code": 0
+          }
+        ]
+      },
+      "R3-Mac-A0": {
+        "attempts": 4,
+        "successes": 4,
+        "object_bytes_each": 25000000,
+        "rows": [
+          {
+            "group": "fresh_1",
+            "index": 1,
+            "success": true,
+            "exit_code": 0,
+            "status": 200,
+            "bytes": 25000000,
+            "seconds": 15.000357,
+            "ttfb_seconds": 1.235662,
+            "mbps": 13.333016007552354,
+            "connection_reused": false,
+            "new_connections": 1
+          },
+          {
+            "group": "reuse",
+            "index": 1,
+            "success": true,
+            "exit_code": 0,
+            "status": 200,
+            "bytes": 25000000,
+            "seconds": 6.763234,
+            "ttfb_seconds": 1.039647,
+            "mbps": 29.571651668417804,
+            "connection_reused": false,
+            "new_connections": 1
+          },
+          {
+            "group": "reuse",
+            "index": 2,
+            "success": true,
+            "exit_code": 0,
+            "status": 200,
+            "bytes": 25000000,
+            "seconds": 3.476263,
+            "ttfb_seconds": 0.500566,
+            "mbps": 57.53304626261017,
+            "connection_reused": true,
+            "new_connections": 0
+          },
+          {
+            "group": "reuse",
+            "index": 3,
+            "success": true,
+            "exit_code": 0,
+            "status": 200,
+            "bytes": 25000000,
+            "seconds": 4.523293,
+            "ttfb_seconds": 0.263166,
+            "mbps": 44.21557480357784,
+            "connection_reused": true,
+            "new_connections": 0
+          }
+        ],
+        "groups": [
+          {
+            "name": "fresh_1",
+            "planned": 1,
+            "observed": 1,
+            "successes": 1,
+            "wall_seconds": 15.019868584000506,
+            "complete": true,
+            "same_client_tcp_port": true,
+            "aggregate_mbps": 13.315695732054833,
+            "process_exit_code": 0
+          },
+          {
+            "name": "reuse",
+            "planned": 3,
+            "observed": 3,
+            "successes": 3,
+            "wall_seconds": 14.78364287497243,
+            "complete": true,
+            "same_client_tcp_port": true,
+            "aggregate_mbps": 40.585395972717514,
+            "process_exit_code": 0
+          }
+        ]
+      },
+      "R3-google-A0": {
+        "success": true,
+        "attempts": 1,
+        "successes": 1,
+        "bytes": 25000000,
+        "status": 206,
+        "exit_code": 0,
+        "seconds": 10.447338,
+        "ttfb_seconds": 3.638469,
+        "complete_transaction_mbps": 19.14363256936839,
+        "source_matches": true,
+        "strong_etag_matches": true,
+        "content_range_matches": true,
+        "expected_egress": true
+      },
+      "R3-Mac-google-A0": {
+        "success": true,
+        "attempts": 1,
+        "successes": 1,
+        "bytes": 25000000,
+        "status": 206,
+        "exit_code": 0,
+        "seconds": 4.785702,
+        "ttfb_seconds": 0.952734,
+        "complete_transaction_mbps": 41.79115206086798,
+        "source_matches": true,
+        "strong_etag_matches": true,
+        "content_range_matches": true,
+        "expected_egress": true
+      },
+      "R3-upload-A0": {
+        "label": "R3-upload-A0",
+        "planned": 1,
+        "attempts": 1,
+        "successes": 1,
+        "success": true,
+        "expected_bytes": 8388608,
+        "source_subnet_verified": true,
+        "expected_egress": true,
+        "exit_code": 0,
+        "status": 200,
+        "uploaded_bytes": 8388608,
+        "source_matches": true,
+        "seconds": 3.928479,
+        "complete_upload_mbps": 17.082658199267456,
+        "payload_removed": true
+      }
+    },
+    "mac_us_new_link": {
+      "power_on": true,
+      "rssi_dbm": "-49",
+      "noise_dbm": "0",
+      "transmit_rate_mbps": 600,
+      "phy_mode": "6",
+      "channel": "36",
+      "noise_measurement_valid": false,
+      "interpretation": "One read-only PHY snapshot; transmit PHY rate is not payload goodput. Zero noise reading unavailable; no SNR derived."
+    },
+    "google_same_locked_object": true,
+    "sampling_scope": "Every data phase fell within both independent formal passive windows; preparation captures excluded.",
+    "temporary_forward_exception_removal": "Router final audit confirms own rule removed, own timer/descendants exited, original forward chain restored; original rmem and AU/US invariants passed.",
+    "temporary_forward_exception_removed": true,
+    "router_original_rmem_retained": true,
+    "root_measured_au_us_light_https_seconds": [
+      0.669,
+      0.938
+    ]
+  },
+  "server": {
+    "formal_capture_samples": 90,
+    "formal_capture_elapsed_seconds": 180,
+    "all_workload_phases_covered": true,
+    "service_pid_and_config_unchanged": true,
+    "parameters_unchanged": true,
+    "parameters": {
+      "net.ipv4.tcp_rmem": "4096\t131072\t3141312",
+      "net.ipv4.tcp_wmem": "4096\t16384\t3141312",
+      "net.ipv4.tcp_mem": "4599\t6135\t9198",
+      "net.ipv4.tcp_congestion_control": "cubic",
+      "net.core.default_qdisc": "fq_codel"
+    },
+    "cpu_idle_median_percent": 97.494,
+    "steal_max_percent": 0.253,
+    "minimum_mem_available_kib": 240744,
+    "io_pressure_average_max_percent": 0,
+    "origin_destination_groups_same_in_both_paths": true,
+    "origin_recvq_peak_mb_approx": [
+      2.5,
+      2.9
+    ],
+    "original_router_receive_window_bytes_approx": [
+      1283776,
+      1329600
+    ],
+    "mac_direct_receive_window_max_bytes": 4194240,
+    "mac_direct_cf_observed_retransmitted_byte_increments": [
+      782520,
+      1626052
+    ],
+    "original_router_material_sndbuf_limiting_not_reproduced": true,
+    "missing_kernel_fields_not_filled_as_zero": true,
+    "collector_and_timeout_processes_exited": true,
+    "representative_outer_large_flow_count": 7,
+    "representative_outer_large_flows_mss": 1440,
+    "representative_outer_large_flows_pmtu": 1500,
+    "origin_leg_observed_mss": {
+      "CF": 1388,
+      "Google": 1400
+    },
+    "origin_leg_observed_pmtu": 1500,
+    "protected_remote_diagnostic_source_and_logs_retained": true
+  },
+  "router": {
+    "formal_sample_count": 68,
+    "rmem_all_original": true,
+    "mem_min_kib": 233288,
+    "cpu_whole_window_busy_percent": {
+      "cpu": 8.391956936572583,
+      "cpu0": 8.176064769941274,
+      "cpu1": 8.039829302987197,
+      "cpu2": 8.667160521967064,
+      "cpu3": 8.668906988665489
+    },
+    "cpu_max_interval_busy_percent": {
+      "cpu": 17.767441860465116,
+      "cpu0": 19.06614785992218,
+      "cpu1": 20.0,
+      "cpu2": 21.238938053097346,
+      "cpu3": 26.136363636363637
+    },
+    "softnet_delta_by_cpu": {
+      "1": [
+        382,
+        0,
+        0
+      ],
+      "2": [
+        73141,
+        0,
+        0
+      ],
+      "3": [
+        132381,
+        0,
+        0
+      ],
+      "4": [
+        463,
+        0,
+        0
+      ]
+    },
+    "interface_whole_window_delta": {
+      "WAN": {
+        "rx_bytes": 331623578,
+        "tx_bytes": 27076797,
+        "rx_errors": 0,
+        "tx_errors": 0,
+        "rx_dropped": 885,
+        "tx_dropped": 0,
+        "rx_fifo_errors": 0,
+        "tx_fifo_errors": 0,
+        "rx_missed_errors": 0
+      },
+      "US-bridge": {
+        "rx_bytes": 11793598,
+        "tx_bytes": 306702903,
+        "rx_errors": 0,
+        "tx_errors": 0,
+        "rx_dropped": 0,
+        "tx_dropped": 0,
+        "rx_fifo_errors": 0,
+        "tx_fifo_errors": 0,
+        "rx_missed_errors": 0
+      },
+      "radio-interface-1": {
+        "rx_bytes": 294,
+        "tx_bytes": 918,
+        "rx_errors": 0,
+        "tx_errors": 0,
+        "rx_dropped": 0,
+        "tx_dropped": 0,
+        "rx_fifo_errors": 0,
+        "tx_fifo_errors": 0,
+        "rx_missed_errors": 0
+      },
+      "radio-interface-2": {
+        "rx_bytes": 148244,
+        "tx_bytes": 19825589,
+        "rx_errors": 0,
+        "tx_errors": 0,
+        "rx_dropped": 0,
+        "tx_dropped": 0,
+        "rx_fifo_errors": 0,
+        "tx_fifo_errors": 0,
+        "rx_missed_errors": 0
+      },
+      "radio-interface-3": {
+        "rx_bytes": 17527,
+        "tx_bytes": 26807,
+        "rx_errors": 0,
+        "tx_errors": 0,
+        "rx_dropped": 0,
+        "tx_dropped": 0,
+        "rx_fifo_errors": 0,
+        "tx_fifo_errors": 0,
+        "rx_missed_errors": 0
+      },
+      "radio-interface-4": {
+        "rx_bytes": 14859,
+        "tx_bytes": 29892,
+        "rx_errors": 0,
+        "tx_errors": 0,
+        "rx_dropped": 0,
+        "tx_dropped": 0,
+        "rx_fifo_errors": 0,
+        "tx_fifo_errors": 0,
+        "rx_missed_errors": 0
+      },
+      "radio-interface-5": {
+        "rx_bytes": 252,
+        "tx_bytes": 252,
+        "rx_errors": 0,
+        "tx_errors": 0,
+        "rx_dropped": 0,
+        "tx_dropped": 0,
+        "rx_fifo_errors": 0,
+        "tx_fifo_errors": 0,
+        "rx_missed_errors": 0
+      }
+    },
+    "bql_inflight_max": 198,
+    "AU_probes": {
+      "attempts": 16,
+      "successes": 16,
+      "median_seconds": 0.627095,
+      "max_seconds": 0.658802
+    },
+    "metric_scope_limitation": "Target-VPS TCP metric lines scoped by ss destination only. Socket header AWK redirection bug prevents historical per-flow linkage and queue attribution; no exact-flow retransmission rate inferred. Header artifact privately archived and removed; future local source fixed without rerunning.",
+    "bulk_target_observations": {
+      "row_count": 13,
+      "selection": "Target socket metric rows during router-data phase with cumulative bytes_received >=5MB; no precise flow linkage, repeated observations not independent.",
+      "distribution": {
+        "rtt": {
+          "min": 197.388,
+          "median": 211.9,
+          "max": 775.107
+        },
+        "rcv_wnd": {
+          "min": 1283776.0,
+          "median": 1329600.0,
+          "max": 1329600.0
+        },
+        "rcv_space": {
+          "min": 556072.0,
+          "median": 1336500.0,
+          "max": 1352076.0
+        },
+        "rcv_ssthresh": {
+          "min": 1283751.0,
+          "median": 1329599.0,
+          "max": 1329599.0
+        },
+        "mss": {
+          "min": 1440.0,
+          "median": 1440.0,
+          "max": 1440.0
+        },
+        "pmtu": {
+          "min": 1500.0,
+          "median": 1500.0,
+          "max": 1500.0
+        },
+        "rb": {
+          "min": 3916736,
+          "median": 3916736,
+          "max": 3916736
+        }
+      }
+    },
+    "queue_visibility_limit": "mq root, BQL inflight samples available; child qdisc dump unavailable with existing tools.",
+    "pre_local_followup_cleanup": {
+      "forward_rule_removed": true,
+      "input_test_not_created": true,
+      "owned_timer_tree_exited": true,
+      "owned_header_artifact_archived_removed": true,
+      "archived_owned_remote_diagnostics_removed": true,
+      "persistent_changes": false,
+      "rmem": [
+        4096,
+        131072,
+        3916736
+      ],
+      "TCPMemoryPressures": 7,
+      "MemAvailable_kib": 250720,
+      "AU_light_https_seconds": 0.639826,
+      "US_light_https_seconds": 0.928755,
+      "AU_US_PID_start_BSS_association_7hash_UCI0_pass": true,
+      "local_wifi_diagnostic_skipped": "Initial uhttpd check skipped; later local nginx followup completed separately.",
+      "scope": "Public-path phase cleanup snapshot before the separately recorded local nginx followup"
+    },
+    "local_wifi_followup": {
+      "initial_uhttpd_check_skipped_preserved": true,
+      "revised_authorization_used_existing_nginx": true,
+      "independent_server_scope": "Existing nginx binary; unique tmpfs prefix and configuration; master_process off foreground single process; original Web master and four worker identities/config hashes preserved.",
+      "temporary_input_rule": "Only exact test client to US gateway TCP test port; no forward or UCI changes.",
+      "local_HEAD_status": 200,
+      "local_HEAD_content_length": 25000000,
+      "tester_reported_attempts": 3,
+      "tester_reported_successes": 3,
+      "tester_reported_payload_bytes_each": 25000000,
+      "tester_reported_mbps": [
+        535.024,
+        612.304,
+        575.121
+      ],
+      "tester_reported_exact_source_gateway_status_bytes_exit_verified": true,
+      "public_traffic_generated": false,
+      "AU_before_seconds": 0.798979,
+      "AU_after_seconds": 0.631637,
+      "server_rule_timer_payload_prefix_removed": true,
+      "original_Web_AU_US_PID_start_association_hash_rmem_UCI0_pass": true,
+      "final_MemAvailable_kib": 232712,
+      "interpretation": "Same US-new WiFi local LAN path sustained over 500Mbps in three short transfers, so a fixed WiFi/LAN throughput ceiling around 10-40Mbps is not supported for this client and time. Does not measure WAN/proxy path or phone livestream performance."
+    }
+  },
+  "candidate_assessment": {
+    "vps_send_buffer_increase": "not_tested_current_original_receiver_baseline_did_not_show_material_sender_buffer_limiting",
+    "slow_start_pacing_change": "not_tested_retransmission_timing_does_not_identify_slow_start_specific_cause",
+    "router_receive_max_16MiB": "previously_rejected_not_repeated_this_round"
+  },
+  "listed_primary_object_bytes": 283388608,
+  "limits": [
+    "One sequential same-WiFi path comparison; not repeated randomized parameter A/B.",
+    "Mac fresh request slower despite faster reused transfers; no universal client-offload gain claimed.",
+    "TCP retransmissions are end-to-end observations; no specific link or carrier loss location established.",
+    "Router header diagnostic bug limits its socket data to qualified aggregate observations; independent VPS flow evidence remains available.",
+    "Router child-qdisc statistics incomplete; interface rx_dropped is shared and not a US-new packet loss rate.",
+    "Real mobile livestream, authenticated Claude long sessions, peak-hour and long-duration multi-device use unverified.",
+    "Three local 25MB downloads each lasted approximately 0.327-0.374 seconds and exceeded 500Mbps for this Mac; other clients, uplink, intermittent wireless loss, and sustained wireless behavior remain unverified."
+  ],
+  "local_wifi_initial_attempt": {
+    "scope": "Independent local Wi-Fi/LAN segment only; no end-to-end US throughput measured",
+    "planned_attempts": 3,
+    "attempts": 0,
+    "successes": 0,
+    "skipped": true,
+    "skip_reason": "Existing uhttpd not present; initial attempt skipped without installing tools. A separately recorded followup used existing nginx.",
+    "endpoint_guard_passed": false,
+    "management_subnet_current": true,
+    "wifi_switch_performed": false,
+    "public_or_vps_throughput_performed": false,
+    "local_http_throughput_performed": false,
+    "temporary_rule_created": false,
+    "temporary_listener_created": false,
+    "payload_created": false,
+    "timer_created": false,
+    "configuration_changed": false,
+    "stage": "initial_uhttpd_presence_check_before_nginx_fallback"
+  },
+  "local_wifi_test": {
+    "label": "local-fallback",
+    "scope": "Independent local Wi-Fi/LAN only",
+    "planned_attempts": 3,
+    "attempts": 3,
+    "successes": 3,
+    "expected_bytes_each": 25000000,
+    "per_request_max_seconds": 10,
+    "data_budget_seconds": 40,
+    "success": true,
+    "public_or_vps_requests": 0,
+    "system_proxy_changed": false,
+    "production_parameters_changed": false,
+    "exact_source_and_gateway_guard_passed": true,
+    "data_seconds": 1.164,
+    "management_subnet_restored": true,
+    "local_completed_mbps_median": 575.1208472680322,
+    "interpretation": "Independent short local downlink test only. It weakens a fixed local ten-to-forty Mbps cap hypothesis, but does not verify Internet capacity, upload quality, latency under load or livestream stability.",
+    "rows": [
+      {
+        "index": 1,
+        "success": true,
+        "exit_code": 0,
+        "status": 200,
+        "bytes": 25000000,
+        "seconds": 0.373815,
+        "observed_seconds": 0.43543362501077354,
+        "source_matches": true,
+        "local_gateway_matches": true,
+        "complete_local_mbps": 535.0240092024129
+      },
+      {
+        "index": 2,
+        "success": true,
+        "exit_code": 0,
+        "status": 200,
+        "bytes": 25000000,
+        "seconds": 0.326635,
+        "observed_seconds": 0.3366080829873681,
+        "source_matches": true,
+        "local_gateway_matches": true,
+        "complete_local_mbps": 612.3042539838045
+      },
+      {
+        "index": 3,
+        "success": true,
+        "exit_code": 0,
+        "status": 200,
+        "bytes": 25000000,
+        "seconds": 0.347753,
+        "observed_seconds": 0.3672702079638839,
+        "source_matches": true,
+        "local_gateway_matches": true,
+        "complete_local_mbps": 575.1208472680322
+      }
+    ],
+    "completed_payload_bytes": 75000000,
+    "cleanup": {
+      "reported_by": "router audit agent",
+      "owned_input_rule_removed": true,
+      "owned_nginx_stopped": true,
+      "owned_listener_absent": true,
+      "owned_timer_tree_drained": true,
+      "owned_file_and_prefix_removed": true,
+      "original_input_chain_restored": true,
+      "original_web_au_us_processes_and_config_unchanged": true,
+      "original_rmem_retained": true,
+      "pending_uci_count": 0,
+      "au_after_seconds": 0.631637,
+      "final_mem_available_kib": 232712
+    },
+    "no_owned_residuals": true,
+    "original_uhttpd_skip_preserved": true
+  },
+  "temporary_us_input_exception_used_for_local_test": true,
+  "temporary_us_input_exception_removed_and_original_chain_restored": true,
+  "local_listed_payload_bytes": 75000000,
+  "all_listed_public_and_local_payload_bytes": 358388608,
+  "payload_accounting_scope": "Public-path objects and local Wi-Fi objects are recorded separately; no combined throughput average or billed-traffic estimate.",
+  "public_snapshot": {
+    "date": "2026-10-19",
+    "route_role": "US-new",
+    "phase": "round3",
+    "network_identifiers": "Replaced by role labels; no actual SSID or node endpoint published.",
+    "private_evidence_filenames": "Omitted; originals retained privately.",
+    "scope": "Historical measurement snapshot; not live device state.",
+    "report": "docs/us-new-2026-10-19/round3-bottlenecks.md"
+  }
+}

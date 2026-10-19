@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "route_role": "US-new",
+  "legacy_route_role": "US-main",
+  "route_identity_note": "US-new and legacy US-main are different VPS routes. Public labels are not actual SSIDs or endpoints.",
+  "decision": "retain_existing_configuration_no_new_performance_candidate_retained",
+  "performance_candidate_persistent_changes": 0,
+  "onboarding_change_separate_from_performance_trials": "New route onboarded; empty bridge retention repaired via bridge_empty=1. Initial AU group reassociation retained as negative event.",
+  "retained_configuration": {
+    "router_default_cc": "bbr",
+    "router_tcp_rmem": [
+      4096,
+      131072,
+      3916736
+    ],
+    "new_vps_default_and_observed_cc": "cubic",
+    "new_vps_queue": "mq with fq_codel children",
+    "new_vps_tcp_rmem": [
+      4096,
+      131072,
+      3141312
+    ],
+    "new_vps_tcp_wmem": [
+      4096,
+      16384,
+      3141312
+    ],
+    "new_vps_tcp_mem_pages": [
+      4599,
+      6135,
+      9198
+    ],
+    "new_vps_xray": "26.3.27",
+    "new_vps_transport": "VLESS/REALITY/raw/Vision"
+  },
+  "experiments": [
+    {
+      "id": "vps_bbr_listener",
+      "executed": true,
+      "retained": false,
+      "stage": "round1",
+      "original_complete": 5,
+      "original_attempts": 5,
+      "candidate_complete": 5,
+      "candidate_attempts": 5,
+      "original_median_mbps": 35.81777349556397,
+      "candidate_median_mbps": 32.679220607124364,
+      "candidate_pair_wins": 1,
+      "pairs": 5,
+      "decision": "rejected_exact_original_restored"
+    },
+    {
+      "id": "us_runtime_forced_receive_buffer",
+      "executed": true,
+      "retained": false,
+      "stage": "round1",
+      "effective_receive_buffer_bytes": 16777216,
+      "complete": 2,
+      "attempts": 3,
+      "failure": "Third 25MB object timed out at 60.006805 seconds, received 10308947 bytes; timeout preceded watchdog rollback.",
+      "decision": "rejected_runtime_restored"
+    },
+    {
+      "id": "router_native_receive_max_16MiB",
+      "executed": true,
+      "retained": false,
+      "stage": "round2",
+      "scope": "shared router namespace, not US-only",
+      "CF_original_complete": 10,
+      "CF_original_attempts": 10,
+      "CF_candidate_complete": 10,
+      "CF_candidate_attempts": 10,
+      "CF_original_median_mbps": 33.188,
+      "CF_candidate_median_mbps": 45.374,
+      "Google_original_complete": 3,
+      "Google_original_attempts": 3,
+      "Google_candidate_complete": 3,
+      "Google_candidate_attempts": 3,
+      "Google_original_median_mbps": 34.511,
+      "Google_candidate_median_mbps": 16.706,
+      "decision": "rejected_multi_target_gate_failed_original_restored"
+    },
+    {
+      "id": "same_wifi_router_vs_mac_client",
+      "executed": true,
+      "stage": "round3",
+      "type": "diagnostic_comparison_not_persistent_optimization",
+      "data_complete": 12,
+      "data_attempts": 12,
+      "decision": "mixed_results_no_universal_offload_gain"
+    },
+    {
+      "id": "local_wifi_lan_download",
+      "executed": true,
+      "stage": "round3",
+      "type": "local_capacity_diagnostic",
+      "complete": 3,
+      "attempts": 3,
+      "bytes_each": 25000000,
+      "mbps": [
+        535.024009,
+        612.304254,
+        575.120847
+      ],
+      "seconds": [
+        0.373815,
+        0.326635,
+        0.347753
+      ],
+      "decision": "fixed_10_to_40Mbps_local_ceiling_not_supported_for_this_client_and_time"
+    }
+  ],
+  "assessed_but_not_executed": [
+    {
+      "id": "increase_vps_tcp_wmem",
+      "stage": "round3",
+      "reason": "Current original-receiver baseline did not reproduce material sender-buffer limiting from the different enlarged-receiver experiment."
+    },
+    {
+      "id": "change_slow_start_pacing",
+      "stage": "round3",
+      "reason": "Observed retransmission timing did not establish a slow-start-specific cause."
+    },
+    {
+      "id": "change_mss_or_production_qdisc",
+      "stage": "round3",
+      "reason": "Insufficient current evidence; no US-new production experiment. Legacy US-main MSS trial is a separate historical case."
+    }
+  ],
+  "latest_round": {
+    "public_data_complete": 12,
+    "public_data_attempts": 12,
+    "local_data_complete": 3,
+    "local_data_attempts": 3,
+    "public_primary_payload_bytes": 283388608,
+    "local_primary_payload_bytes": 75000000,
+    "no_combined_throughput_average": true,
+    "not_billed_traffic": true,
+    "vps_capture_samples": 90,
+    "vps_capture_seconds": 180,
+    "AU_formal_probe_complete": 16,
+    "AU_formal_probe_attempts": 16,
+    "AU_formal_probe_median_seconds": 0.627095,
+    "AU_post_local_seconds": 0.631637
+  },
+  "cleanup": {
+    "temporary_forward_exception_removed": true,
+    "temporary_input_exception_removed": true,
+    "temporary_clients_and_listeners_stopped": true,
+    "owned_nginx_timer_payload_prefix_removed": true,
+    "router_original_processes_associations_hashes_and_rmem_verified": true,
+    "pending_uci_count": 0,
+    "mac_management_wifi_restored": true,
+    "vps_collectors_exited": true,
+    "vps_protected_source_and_log_directories_retained": true
+  },
+  "negative_events_preserved": [
+    "Initial onboarding empty bridge/DHCP failure and AU-group-2 to AU-group-5 brief reassociation.",
+    "First-round incomplete timeout and public-endpoint 403 remain failures, not completed-object throughput.",
+    "Round2 B0 collector retained 64 samples over129.568 seconds after management transport timeout; not a full180-second capture.",
+    "Initial round3 uhttpd tool check skipped with zero download attempts; separate nginx fallback completed3/3.",
+    "Router diagnostic header parsing issue limits exact per-flow attribution; independent VPS evidence retained."
+  ],
+  "not_yet_accepted": [
+    "Real phone livestream",
+    "Authenticated Claude long conversation",
+    "Peak-hour behavior",
+    "Long-duration multi-device concurrency",
+    "Stable end-to-end 200Mbps capacity"
+  ],
+  "public_materials": {
+    "handoff": "docs/us-new-2026-10-19/index.md",
+    "onboarding": "docs/us-new-2026-10-19/onboarding.md",
+    "round1": "docs/us-new-2026-10-19/round1-throughput.md",
+    "round2": "docs/us-new-2026-10-19/round2-autotune.md",
+    "round3": "docs/us-new-2026-10-19/round3-bottlenecks.md",
+    "round3_server_evidence": "docs/us-new-2026-10-19/round3-server-findings.md",
+    "onboarding_summary": "examples/2026-10-19-us-new-onboarding-summary.json",
+    "round1_summary": "examples/2026-10-19-us-new-round1-summary.json",
+    "round2_summary": "examples/2026-10-19-us-new-round2-summary.json",
+    "round3_summary": "examples/2026-10-19-us-new-round3-summary.json"
+  },
+  "agent_handoff": "Read final decisions and failure denominators first. Verify current environment and authorization. Do not blindly reapply rejected candidates or treat unexecuted hypotheses as tested failures. Repository reference grants no device access or production-change authorization.",
+  "redaction": "No actual IP/SSID/MAC/UUID/credentials/complete proxy configuration/raw logs/packet captures/device-control scripts; public role labels and necessary allowlisted metrics only."
+}

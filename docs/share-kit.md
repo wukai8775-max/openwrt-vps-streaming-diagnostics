@@ -45,7 +45,7 @@ Repository: https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 ```text
 参考仓库：https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 
-先读取 README.md、SECURITY.md、docs/latest-progress.md，以及最新进度页链接的机器可读测速摘要。区分历史结果、失败分母、已验证事实和待验收项；不要从旧案例推断我的当前配置。
+先读取 README.md、SECURITY.md、docs/latest-progress.md，以及最新进度页链接的机器可读测速摘要。当前新美国线路入口是 docs/us-new-2026-10-19/index.md 和 examples/2026-10-19-us-new-handoff.json：先看已执行后拒绝与评估后未执行的实验表，区分新US-new和旧US-main。区分历史结果、失败分母、已验证事实和待验收项；不要从旧案例推断我的当前配置。
 
 先核实实际设备、测试来源、出口、方向、协议和当前配置，为我的环境重新建立基线。需要实验时，仅在已授权的范围内提出一项有证据、可回滚的改动；核对目标流量确实使用该配置后，再验收和决定保留或恢复。
 

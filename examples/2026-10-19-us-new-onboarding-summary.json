@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "service_label": "US-new",
+  "provider": "WEPC",
+  "plan": "Cogent 9929 monthly",
+  "decision": "Retain provisionally for office and phone use; real application, live streaming and peak-hour acceptance remain pending.",
+  "redaction": "Only allowlisted aggregate metrics and implementation labels; no network addresses, credentials or full client configurations.",
+  "configuration": {
+    "reported_by": "main implementation thread",
+    "xray_version": "26.3.27",
+    "distribution": "official Xray release",
+    "protocol": "VLESS",
+    "security": "REALITY",
+    "transport": "raw",
+    "flow": "Vision",
+    "tcp_congestion_control": "cubic",
+    "qdisc": "fq_codel",
+    "tcp_or_qdisc_tuning": false,
+    "router_bridge_empty_persistent_setting": "network.<US_SECTION>.bridge_empty=1",
+    "old_us_cloud_instance_cancelled": false
+  },
+  "independent_mac_socks": {
+    "scope": "Independent Mac SOCKS client, separate from actual router Wi-Fi verification",
+    "egress_matches": true,
+    "https_attempts": 11,
+    "https_successes": 11,
+    "small_https_seconds": {
+      "attempts": 5,
+      "successes": 5,
+      "values": [
+        0.894937,
+        0.976183,
+        0.873246,
+        0.885902,
+        0.959387
+      ],
+      "median": 0.894937,
+      "minimum": 0.873246,
+      "maximum": 0.976183
+    },
+    "download_mbps": {
+      "attempts": 3,
+      "successes": 3,
+      "values": [
+        4.466336,
+        15.813704,
+        14.010616
+      ],
+      "median": 14.010616,
+      "minimum": 4.466336,
+      "maximum": 15.813704
+    },
+    "upload_mbps": {
+      "attempts": 3,
+      "successes": 3,
+      "values": [
+        21.159288,
+        14.344336,
+        20.829752
+      ],
+      "median": 20.829752,
+      "minimum": 14.344336,
+      "maximum": 21.159288
+    },
+    "data_object_bytes": 40165824
+  },
+  "independent_mac_load": {
+    "scope": "Independent Mac SOCKS, not router Wi-Fi load acceptance",
+    "total_upload_test_budget_mbps": 15,
+    "production_speed_limit": false,
+    "streams": 3,
+    "upload_attempts": 3,
+    "upload_successes": 3,
+    "wall_seconds": 54.097,
+    "aggregate_completed_upload_mbps": 14.886411423284208,
+    "uploaded_bytes": 100663296,
+    "https_probe_attempts": 23,
+    "https_probe_successes": 23,
+    "https_probe_median_seconds": 0.819137,
+    "https_probe_max_seconds": 1.005889
+  },
+  "independent_mac_udp": {
+    "all_probe_attempts": 6,
+    "all_probe_successes": 6,
+    "stun_rtt_ms": {
+      "attempts": 5,
+      "successes": 5,
+      "values": [
+        551.32,
+        172.06,
+        170.49,
+        170.5,
+        174.82
+      ],
+      "median": 172.06,
+      "minimum": 170.49,
+      "maximum": 551.32
+    },
+    "udp_dns_success": true,
+    "flow_behavior": "Local UDP test reused its socket; not directly comparable to the first Wi-Fi UDP batch with a new socket per probe."
+  },
+  "actual_router_wifi": {
+    "actual_wifi_subnet_verified": true,
+    "system_proxy_bypassed": true,
+    "expected_egress": true,
+    "https_attempts": 11,
+    "https_successes": 11,
+    "small_https_seconds": {
+      "attempts": 5,
+      "successes": 5,
+      "values": [
+        1.78371,
+        1.5758,
+        1.587767,
+        1.560581,
+        1.622679
+      ],
+      "median": 1.587767,
+      "minimum": 1.560581,
+      "maximum": 1.78371
+    },
+    "download_mbps": {
+      "attempts": 3,
+      "successes": 3,
+      "values": [
+        10.765664,
+        11.03704,
+        12.31168
+      ],
+      "median": 11.03704,
+      "minimum": 10.765664,
+      "maximum": 12.31168
+    },
+    "upload_mbps": {
+      "attempts": 3,
+      "successes": 3,
+      "values": [
+        10.23612,
+        16.030336,
+        14.322216
+      ],
+      "median": 14.322216,
+      "minimum": 10.23612,
+      "maximum": 16.030336
+    },
+    "stun_attempts": 5,
+    "stun_successes": 5,
+    "stun_rtt_ms": {
+      "attempts": 5,
+      "successes": 5,
+      "values": [
+        1378.2,
+        826.2,
+        824.9,
+        927.3,
+        720.6
+      ],
+      "median": 826.2,
+      "minimum": 720.6,
+      "maximum": 1378.2
+    },
+    "udp_dns_attempts": 1,
+    "udp_dns_successes": 1,
+    "literal_ipv6_unavailable": true,
+    "ipv6_curl_exit": 7,
+    "data_object_bytes": 40165824,
+    "persistent_udp": {
+      "one_persistent_udp_flow": true,
+      "attempts": 6,
+      "successes": 6,
+      "rtt_ms": [
+        1253.64,
+        312.7,
+        317.06,
+        318.59,
+        313.94,
+        315.08
+      ],
+      "first_rtt_ms": 1253.64,
+      "warm_median_ms": 315.08
+    },
+    "stun_flow_behavior": "Each of the initial five STUN probes created a new socket."
+  },
+  "events": [
+    {
+      "source": "main implementation thread",
+      "type": "negative",
+      "description": "Initial US SSID transition removed an empty bridge; Wi-Fi association worked but DHCP did not."
+    },
+    {
+      "source": "main implementation thread",
+      "type": "negative",
+      "description": "Repair indirectly caused brief reassociation of AU-group-2 through AU-group-5; no claim of zero AU impact."
+    },
+    {
+      "source": "main implementation thread",
+      "type": "recovery",
+      "description": "User was informed and authorized one network reload; persistent bridge_empty=1 was added."
+    },
+    {
+      "source": "main implementation thread",
+      "type": "readback",
+      "description": "AU-main through AU-group-5 recovered; final US-new persistent and runtime settings matched."
+    }
+  ],
+  "limitations": [
+    "No actual phone live-streaming acceptance",
+    "No authenticated Claude long-session acceptance",
+    "No peak-hour acceptance",
+    "Short bounded probes do not establish packet-loss rate or maximum link capacity",
+    "No controlled same-time old-US versus new-US performance A/B",
+    "No rollback rehearsal",
+    "No provider billing counter verification from these files",
+    "Actual router Wi-Fi load acceptance is limited to three streams with 9 Mbps total budget for about 67 seconds"
+  ],
+  "rollback": {
+    "materials": "Protected local directory only; not copied to these artifacts",
+    "rehearsed": false
+  },
+  "completion_state": {
+    "mac_management_wifi_restored": true,
+    "management_subnet_reacquired": true,
+    "router_http_from_wifi_reachable": true,
+    "temporary_client_pid_stopped": true,
+    "temporary_socks_listener_absent": true,
+    "load_payloads_absent": true,
+    "system_proxy_changed": false,
+    "old_us_cloud_billing_cancelled": false,
+    "final_cleanup": "Recorded temporary client and load-payload checks completed; production service and protected recovery evidence retained."
+  },
+  "recorded_data_object_bytes": 256492416,
+  "traffic_accounting_scope": "Selected HTTPS data objects only; excludes setup, protocol overhead, small probes, and any other traffic. Not a provider billable-traffic total.",
+  "route_readback": {
+    "reported_by": "main implementation thread and router audit agent",
+    "us_outbound_chaining_fields_absent": true,
+    "dns_helper_chain_points_to_us_itself": true,
+    "direct_new_vps_rule_precedes_au_rules": true,
+    "observed_established_us_connections": 7,
+    "all_observed_us_peers_match_new_vps_tcp_443": true,
+    "evidence_of_au_nested_proxy": false,
+    "scope": "Readback and observed connection snapshot only, not proof for all future flows.",
+    "server_observed_peer_consistent_with_direct_management_source": true,
+    "server_observed_au_egress_peer": false
+  },
+  "actual_router_wifi_load": {
+    "scope": "Actual router US-new Wi-Fi, explicit wireless interface, system explicit proxy bypassed",
+    "total_upload_test_budget_mbps": 9,
+    "per_stream_budget_mbps": 3,
+    "production_speed_limit": false,
+    "streams": 3,
+    "upload_attempts": 3,
+    "upload_successes": 3,
+    "per_stream_uploaded_bytes": [
+      25165824,
+      25165824,
+      25165824
+    ],
+    "per_stream_seconds": [
+      67.217068,
+      67.23577,
+      67.196445
+    ],
+    "per_stream_upload_mbps": [
+      2.995168,
+      2.994336,
+      2.996088
+    ],
+    "uploaded_bytes": 75497472,
+    "wall_seconds": 70.388,
+    "aggregate_wall_goodput_mbps": 8.580705297163519,
+    "aggregate_wall_goodput_scope": "Wall time includes probe tail; not a link-capacity estimate or maximum-speed result.",
+    "https_probe_attempts": 22,
+    "https_probe_successes": 22,
+    "https_probe_median_seconds": 1.6151135,
+    "https_probe_max_seconds": 2.888196
+  },
+  "office_public_checks": {
+    "scope": "Public unauthenticated requests over actual router Wi-Fi; no login or conversation acceptance",
+    "api_key_used": false,
+    "cookies_used": false,
+    "rows": [
+      {
+        "target": "claude_public",
+        "exit_code": 0,
+        "http_status": 403,
+        "source_matches": true,
+        "seconds": 1.388365,
+        "cloudflare_challenge_markers": true,
+        "explicit_region_rejection_markers": false,
+        "authenticated_workload_tested": false
+      },
+      {
+        "target": "anthropic_api_unauthenticated",
+        "exit_code": 0,
+        "http_status": 401,
+        "source_matches": true,
+        "seconds": 1.30095,
+        "cloudflare_challenge_markers": false,
+        "explicit_region_rejection_markers": false,
+        "authenticated_workload_tested": false
+      },
+      {
+        "target": "github_public",
+        "exit_code": 0,
+        "http_status": 200,
+        "source_matches": true,
+        "seconds": 2.844008,
+        "cloudflare_challenge_markers": false,
+        "explicit_region_rejection_markers": false,
+        "authenticated_workload_tested": false
+      }
+    ],
+    "interpretation": "Claude public returned HTTP 403 with challenge markers, API without credentials returned 401, GitHub returned 200; absence of a region-rejection marker does not establish eligibility, login, conversation or API success."
+  },
+  "final_light_health": {
+    "reported_by": "main implementation thread",
+    "au_and_us_https_successes": 4,
+    "au_and_us_https_attempts": 4,
+    "scope": "Light HTTP 200 checks, not continuous business verification"
+  },
+  "public_snapshot": {
+    "date": "2026-10-19",
+    "route_role": "US-new",
+    "phase": "onboarding",
+    "network_identifiers": "Replaced by role labels; no actual SSID or node endpoint published.",
+    "private_evidence_filenames": "Omitted; originals retained privately.",
+    "scope": "Historical measurement snapshot; not live device state.",
+    "report": "docs/us-new-2026-10-19/onboarding.md"
+  }
+}

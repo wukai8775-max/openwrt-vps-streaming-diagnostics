@@ -63,7 +63,7 @@ Follow the [15-minute orientation guide](docs/quick-start.md) (Chinese) for prot
 | Review measured results and unresolved issues | [Latest progress](docs/latest-progress.md) |
 | Build isolated access groups on the same node | [Segmented AU acceptance](docs/segmented-au-acceptance.md) |
 
-Detailed runbooks and the historical case are currently in Chinese. Commands, tool output and the [latest machine-readable summary](examples/2026-10-14-us-transport-load-summary.json) are readable independently of those narratives.
+Detailed runbooks and the historical case are currently in Chinese. Commands, tool output and the [latest machine-readable handoff](examples/2026-10-19-us-new-handoff.json) are readable independently of those narratives.
 
 ## What the tools do
 
@@ -81,13 +81,23 @@ A transfer is complete only when curl exits successfully, HTTP status is 200, th
 
 Source binding alone does not prove a transparent proxy mapping or the DNS path. A system default of BBR does not prove that the active sending connection uses BBR. HTTPS request timeouts are not video-packet loss. Public endpoints can refuse or rate-limit tests; preserve those outcomes and respect the service response.
 
-## Latest measured evidence · 2026-10-14
+## Latest measured evidence · 2026-10-19
+
+**The new US route, US-new, is connected; no performance candidate from three investigation rounds was retained.** A BBR listener and forced receive buffer were rejected. A native 16 MiB router receive ceiling improved CF but failed the Google acceptance gate: median 34.511 Mbps original versus 16.706 Mbps candidate. The original configuration was restored.
+
+The latest round completed 12/12 public-path data requests and, separately, 3/3 local Wi-Fi/LAN downloads at 535–612 Mbps. The independent Mac client had faster reused/Google transfers but a slower fresh connection and observed retransmission; this is not a universal offload benefit. AU reference probes completed 16/16 in that round and temporary test services/rules were removed. The earlier onboarding repair briefly reassociated AU groups; that negative event remains recorded.
+
+US-new and legacy US-main below are different VPS routes. The new VPS retains CUBIC; the router retains its original default BBR. Phone livestreams, authenticated Claude long sessions, peak hours, sustained multi-device use and end-to-end 200 Mbps capacity remain unaccepted. Local short-transfer throughput is not public-path capacity.
+
+Read the [Agent handoff and experiment ledger](docs/us-new-2026-10-19/index.md), [machine-readable handoff](examples/2026-10-19-us-new-handoff.json), [round 3 report](docs/us-new-2026-10-19/round3-bottlenecks.md) and [latest progress](docs/latest-progress.md). They distinguish executed-and-rejected candidates from hypotheses assessed but never executed.
+
+## Historical evidence · 2026-10-14 US-main
 
 **Current decision: keep production settings; reject MSS 1200.** Five follow-up pairs completed **4/5** original-condition objects and **3/5** candidate objects. The candidate was about **18.45% slower** by paired complete-only median time. A paced 15 Mbps direct-TCP test received approximately **4.194 Mbps downstream / 14.670 Mbps upstream**. Synchronized sockets attributed part of an 11-second startup to outer TCP establishment and reply recovery; the exact public-network impairment location remains unproven.
 
 Two actual-client upload conditions each lasted approximately **54 seconds**, completing **4/4** streams at group task goodput **4.969 / 14.915 Mbps**. Strict load probes completed HTTPS **91/91** and STUN **97/97**, with maximum response times still **2.037 / 1.379 seconds**. The 5 Mbps per-stream limit is a test budget, not a production setting. Production changes: **0**. AU reference probes completed **72/72** during the observation period and **30/30** around the MSS pairs. Phone/platform, peak-hour and long-duration acceptance remain pending.
 
-Read the [transport and short-load report](docs/us-transport-and-load-2026-10-14.md), [latest machine-readable evidence](examples/2026-10-14-us-transport-load-summary.json) and [timestamped progress](docs/latest-progress.md). Earlier failures stay in their original batches.
+Read the [transport and short-load report](docs/us-transport-and-load-2026-10-14.md), [that historical phase summary](examples/2026-10-14-us-transport-load-summary.json) and [timestamped progress](docs/latest-progress.md). Earlier failures stay in their original batches.
 
 ### Earlier phase: sequential layer comparison
 

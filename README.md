@@ -66,13 +66,21 @@ python3 tools/download-test.py \
 
 有半天时间时，按 [八小时手册](docs/eight-hour-playbook.md) 完成一条主线路的一次调查。没有合理候选改动，就保留现状，继续收集能够区分原因的证据。
 
-## 最新证据 · 2026-10-14
+## 最新证据 · 2026-10-19
+
+**新美国线路US-new已接入；三轮性能实验均未保留新参数。** 第一轮拒绝BBR监听和强制接收缓存；第二轮原生16MiB上限虽使CF更快，Google中位数却从34.511降至16.706Mbps，未过多目标门槛。第三轮同Wi-Fi公网请求12/12完成，本地LAN3/3达到535–612Mbps，但Mac独立客户端新连接更慢，不能宣称通用提速。
+
+AU第三轮旁路16/16，测试入口已撤，原配置保留；初次接入曾导致AU组短时重关联的历史也完整保留。真实手机直播、Claude登录后长会话、晚高峰和实际200Mbps容量仍未验收。US-new与下方旧US-main是不同VPS，新VPS保留CUBIC，路由器原默认BBR；不要混用节点结论。
+
+[Agent交接与已试实验表](docs/us-new-2026-10-19/index.md) · [机器可读交接](examples/2026-10-19-us-new-handoff.json) · [第三轮完整报告](docs/us-new-2026-10-19/round3-bottlenecks.md) · [最新进度](docs/latest-progress.md)
+
+## 历史证据 · 2026-10-14 US-main
 
 **最新决定：保留生产配置，拒绝 MSS 1200。** 后续五对复核中，原条件完成 **4/5**、候选 **3/5**，共同完成对照的候选中位耗时反而慢约 **18.45%**。裸 TCP 单流在 15 Mbps 测试预算下，下行接收约 **4.194 Mbps**、上行约 **14.670 Mbps**；一次约 11 秒的启动已同步观察到外层 TCP 建连与回复恢复迟滞，具体公网位置仍未确定。
 
 实际客户端单流与三流各持续约 **54 秒**，上传 **4/4** 完整，组级有效吞吐约 **4.969 / 14.915 Mbps**。严格负载请求 HTTPS **91/91**、STUN **97/97**，但最大响应仍有 **2.037 / 1.379 秒**，手机直播和晚高峰尚未验收。5 Mbps/流是测试预算，生产改动 **0**。AU 旁路观察 **72/72**、MSS 对照期间 **30/30** 成功，失败历史继续保留。
 
-[后续 TCP 与负载诊断](docs/us-transport-and-load-2026-10-14.md) · [最新机器可读结果](examples/2026-10-14-us-transport-load-summary.json) · [最新进度](docs/latest-progress.md)
+[后续 TCP 与负载诊断](docs/us-transport-and-load-2026-10-14.md) · [该历史阶段机器结果](examples/2026-10-14-us-transport-load-summary.json) · [最新进度](docs/latest-progress.md)
 
 ### 前阶段：顺序分层测量
 
