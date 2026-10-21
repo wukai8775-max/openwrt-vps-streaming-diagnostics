@@ -28,3 +28,9 @@
 ## English summary
 
 Read back on **2026-10-14**: **Ruijie RG-X60 Pro**, running **Kwrt 25.12-SNAPSHOT**, with reported build revision **10.08.2026** and Linux kernel **6.12.112**. Target: `mediatek/filogic`; board: `ruijie,rg-x60-pro`. Values above are the router's reported fields from a read-only `ubus call system board`, not a verified firmware image filename, provenance or flashing date. This current environment check does not change the historical test windows or establish compatibility with another device revision. Device-instance identifiers and credentials remain private; see [public boundaries](../SECURITY.md).
+
+## 后续无线容量快照 · 2026-10-20 至 21 日
+
+AU 扩展后读回：本机 5 GHz 无线电共 **16 个 AP**，为十五个 AU 组和 US-new，达到该驱动报告的 **16 AP** 上限。2.4 GHz 管理无线电独立计数。此处只新增本轮容量观察，不改变上表 10 月 14 日系统版本的核验日期，也没有重新验证镜像来源或刷写时间。
+
+独立子网与 SSID 不增加上游出口、带宽或并发无线容量；继续增加分组前应重新评估接入组织方式与资源，而非直接追加此无线电 BSS。验收范围及短时重关联历史见 [AU 扩展阶段报告](au-expansion-2026-10-21.md)。

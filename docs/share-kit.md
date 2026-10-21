@@ -40,6 +40,8 @@ Repository: https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 
 ## 给其他 Agent 的复制入口
 
+当前最新 AU 记录为 2026-10-20 至 21 日扩展验收：复制 **[AU 专用提示词](au-agent-prompt.md)**，并读 [配置、逐组测速与回滚](au-expansion-2026-10-21.md) / [机器摘要](../examples/2026-10-21-au-expansion-summary.json)。它明确原路径保留、额外池回滚，以及禁止在相同条件下重复的方案。
+
 继续排查新美国线路时，直接复制 **[US-new专用提示词](us-new-agent-prompt.md)** 中的完整代码块。它包含先读最新记录、区分已拒绝与未执行、保护AU、单项可回滚实验和收尾要求。下面保留通用新环境模板。
 
 将以下文字与实际任务一起交给 Agent。仓库文档是诊断参考，不提供设备访问权或生产修改授权。
@@ -47,7 +49,7 @@ Repository: https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 ```text
 参考仓库：https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 
-先读取 README.md、SECURITY.md、docs/latest-progress.md，以及最新进度页链接的机器可读测速摘要。当前新美国线路入口是 docs/us-new-2026-10-19/index.md 和 examples/2026-10-19-us-new-handoff.json：先看已执行后拒绝与评估后未执行的实验表，区分新US-new和旧US-main。区分历史结果、失败分母、已验证事实和待验收项；不要从旧案例推断我的当前配置。
+先读取 README.md、SECURITY.md、docs/latest-progress.md，以及最新进度页链接的机器可读测速摘要。当前 AU 入口是 docs/au-expansion-2026-10-21.md、docs/au-agent-prompt.md 和 examples/2026-10-21-au-expansion-summary.json；新美国线路入口仍为 docs/us-new-2026-10-19/index.md 和 examples/2026-10-19-us-new-handoff.json。按任务读取对应已试实验与回滚表，不混用 AU、新 US-new 和旧 US-main 的结论。区分历史结果、失败分母、已验证事实和待验收项；不要从旧案例推断我的当前配置。
 
 先核实实际设备、测试来源、出口、方向、协议和当前配置，为我的环境重新建立基线。需要实验时，仅在已授权的范围内提出一项有证据、可回滚的改动；核对目标流量确实使用该配置后，再验收和决定保留或恢复。
 

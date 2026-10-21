@@ -1,0 +1,1259 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-21",
+  "measurement_window_local_dates": [
+    "2026-10-20",
+    "2026-10-21"
+  ],
+  "timezone": "Asia/Shanghai",
+  "scope": "AU-group-6_through_AU-group-15_configuration_and_speed_acceptance",
+  "privacy": {
+    "role_labels_only": true,
+    "private_network_identifiers_and_raw_logs_included": false
+  },
+  "current_decision": {
+    "new_group_configuration": "saved_applied_retained",
+    "performance_path": "original_retained_AU_proxy_path",
+    "additional_Xray_pool": "rolled_back_removed_not_enabled_at_boot",
+    "new_production_rate_cap": false,
+    "global_TCP_qdisc_MSS_BBR_tuning_retained_this_round": false,
+    "unique_network_root_cause_proven": false
+  },
+  "configuration": {
+    "new_groups": [
+      "AU-group-6",
+      "AU-group-7",
+      "AU-group-8",
+      "AU-group-9",
+      "AU-group-10",
+      "AU-group-11",
+      "AU-group-12",
+      "AU-group-13",
+      "AU-group-14",
+      "AU-group-15"
+    ],
+    "shared_AU_upstream_public_exit_bandwidth_and_5GHz_radio": true,
+    "per_group": [
+      "independent_bridge",
+      "independent_IPv4_24_subnet",
+      "DHCP",
+      "firewall_zone"
+    ],
+    "authentication": "inherits_existing_AU_authentication_and_credentials_values_omitted",
+    "cross_group_forwarding_and_router_management": "blocked",
+    "required_local_services": [
+      "DHCP",
+      "DNS",
+      "existing_AU_proxy_ingress"
+    ],
+    "new_direct_WAN_forwarding_added": false,
+    "new_groups_IPv6_address_advertisement": "disabled",
+    "unchanged_old_UCI_sections": 94,
+    "new_UCI_sections_matching_approved_content": 100,
+    "pending_UCI_changes": 0,
+    "reboot_tested": false,
+    "five_GHz_APs_used": 16,
+    "five_GHz_AP_limit_reported_by_this_driver": 16,
+    "AP_roles": "15_AU_groups_plus_US-new",
+    "additional_2_4GHz_management_radio": "separate_from_this_5GHz_quota"
+  },
+  "functional_and_isolation_acceptance": {
+    "stage": "creation_acceptance_independent_of_later_speed_batches",
+    "actual_source_association_verified": {
+      "passed": 15,
+      "attempted": 15
+    },
+    "DHCP": {
+      "passed": 15,
+      "attempted": 15
+    },
+    "DNS_UDP_and_TCP": {
+      "passed": 30,
+      "attempted": 30
+    },
+    "new_groups_HTTPS_AU_exit": {
+      "passed": 20,
+      "attempted": 20
+    },
+    "all_AU_initial_HTTPS": {
+      "passed": 29,
+      "attempted": 30,
+      "failure": "one_immediate_DNS_failure_in_AU-group-3"
+    },
+    "AU_group_3_independent_followup_HTTPS": {
+      "passed": 3,
+      "attempted": 3,
+      "original_failure_retained": true
+    },
+    "STUN_AU_exit": {
+      "passed": 15,
+      "attempted": 15
+    },
+    "new_groups_short_transfers": {
+      "complete": 20,
+      "attempted": 20,
+      "object_bytes_per_direction": 1048576,
+      "tool_rate_cap_KiB_per_second": 512,
+      "production_rate_cap": false
+    },
+    "same_group_positive_TCP_controls": {
+      "passed": 15,
+      "attempted": 15
+    },
+    "directed_cross_group_TCP_rejections": {
+      "rejected": 210,
+      "attempted": 210,
+      "forward_reject_drop_trace_verified": 210,
+      "forward_accept_observed": 0
+    },
+    "full_matrix": {
+      "passed": 225,
+      "expected": 225
+    },
+    "specified_management_TCP_rejections": {
+      "rejected": 90,
+      "attempted": 90
+    },
+    "management_restores": {
+      "passed": 15,
+      "attempted": 15
+    },
+    "isolation_scope": "specified_IPv4_TCP_fixtures_not_all_protocols_or_future_rules",
+    "observer": {
+      "samples": 266,
+      "duration_minutes_approx": 15.5,
+      "minimum_available_kib": 184536,
+      "floor_kib": 163840,
+      "AU_health_complete": 54,
+      "AU_health_attempted": 54,
+      "US_new_health_complete": 54,
+      "US_new_health_attempted": 54
+    },
+    "old_process_start_identities_unchanged": 4,
+    "old_5GHz_interface_ifindex_BSSID_unchanged": 6,
+    "application_impact": [
+      "AU-group-5_client_short_reassociation_observed_recovered",
+      "one_AU-main_client_inactivity_disconnect_reason_for_inactivity_unknown"
+    ],
+    "zero_interruption_claim": false
+  },
+  "final_measurement": {
+    "path": "original_retained_AU_proxy_path",
+    "client": "one_Mac_actual_WiFi_sequential_group_visits",
+    "protocol": "IPv4_HTTP1.1_single_flow",
+    "repeats_per_visit": 3,
+    "max_seconds_per_request": 20,
+    "tool_rate_cap_bits_per_second": null,
+    "download_object": {
+      "provider": "OVH_static_HTTPS",
+      "bytes": 10485760
+    },
+    "upload_object": {
+      "provider": "Cloudflare_upload",
+      "bytes": 8388608,
+      "fresh_postcleanup_batch": true
+    },
+    "completion_rule": [
+      "curl_success",
+      "expected_HTTP_status",
+      "exact_object_bytes",
+      "verified_source_and_exit"
+    ],
+    "metric": "completed_bytes_times_8_divided_by_curl_total_seconds_divided_by_1000000",
+    "partial_samples_in_completed_goodput": false,
+    "new_group_totals": {
+      "download": {
+        "planned": 30,
+        "started": 30,
+        "complete": 28,
+        "failed": 2,
+        "skipped": 0
+      },
+      "upload": {
+        "planned": 30,
+        "started": 30,
+        "complete": 30,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "new_groups": [
+      {
+        "role": "AU-group-6",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 31457280,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 8.743523351165853,
+            "min": 6.372110833573182,
+            "max": 10.183906466360462
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 20.50352073194317,
+            "min": 16.710245513543097,
+            "max": 22.892540371342324
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "retained_path_guard_passed": true,
+        "both_management_restores_passed": true
+      },
+      {
+        "role": "AU-group-7",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 31457280,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 7.91762790412323,
+            "min": 7.354017594886296,
+            "max": 9.468918844785327
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 21.207459615554168,
+            "min": 18.885790952621498,
+            "max": 21.469944767784106
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "retained_path_guard_passed": true,
+        "both_management_restores_passed": true
+      },
+      {
+        "role": "AU-group-8",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 31457280,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 5.247758775736818,
+            "min": 4.633679959543858,
+            "max": 5.295956406099202
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 19.721503326498823,
+            "min": 17.672593533211792,
+            "max": 22.770696796474162
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "retained_path_guard_passed": true,
+        "both_management_restores_passed": true
+      },
+      {
+        "role": "AU-group-9",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 31457280,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 10.055688268446797,
+            "min": 9.177064689897207,
+            "max": 11.485864360240045
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 18.556588737444848,
+            "min": 16.428215000528766,
+            "max": 24.09863406443217
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "retained_path_guard_passed": true,
+        "both_management_restores_passed": true
+      },
+      {
+        "role": "AU-group-10",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 31457280,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 9.778090272694294,
+            "min": 5.637421269655789,
+            "max": 10.249472504434946
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 16.602179224436764,
+            "min": 15.66756099269255,
+            "max": 19.55395026493414
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "retained_path_guard_passed": true,
+        "both_management_restores_passed": true
+      },
+      {
+        "role": "AU-group-11",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 31457280,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 7.742780366773326,
+            "min": 5.647926712083802,
+            "max": 9.253587049447063
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 20.57466051695361,
+            "min": 16.27695201819673,
+            "max": 21.852909293098033
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "retained_path_guard_passed": true,
+        "both_management_restores_passed": true
+      },
+      {
+        "role": "AU-group-12",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 1,
+          "failed": 2,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 10485760,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 1,
+            "median": 6.657700956447363,
+            "min": 6.657700956447363,
+            "max": 6.657700956447363
+          },
+          "outcome_counts": {
+            "timeout_partial": 2,
+            "complete": 1
+          },
+          "failed_http_status_counts": {
+            "200": 2
+          },
+          "process_exit_counts": {
+            "28": 2,
+            "0": 1
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 16.250921772923004,
+            "min": 12.636148091911222,
+            "max": 16.62745665477461
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "retained_path_guard_passed": true,
+        "both_management_restores_passed": true
+      },
+      {
+        "role": "AU-group-13",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 31457280,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 6.937275793292104,
+            "min": 5.272419057294685,
+            "max": 7.52869208328528
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 17.853334674151842,
+            "min": 14.689648077267412,
+            "max": 18.611990695788506
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "retained_path_guard_passed": true,
+        "both_management_restores_passed": true
+      },
+      {
+        "role": "AU-group-14",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 31457280,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 7.443182413073782,
+            "min": 4.857375599860936,
+            "max": 8.086371768770436
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 18.32651181944844,
+            "min": 14.768581802624938,
+            "max": 20.060467595264917
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "retained_path_guard_passed": true,
+        "both_management_restores_passed": true
+      },
+      {
+        "role": "AU-group-15",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 31457280,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 7.180786744208065,
+            "min": 6.482350360170158,
+            "max": 9.715698587781715
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 19.42324461372819,
+            "min": 14.778491524520469,
+            "max": 19.997915246858195
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "retained_path_guard_passed": true,
+        "both_management_restores_passed": true
+      }
+    ],
+    "AU_main_time_varying_references": [
+      {
+        "visit": "AU-main-before",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 31457280,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 5.976441503620123,
+            "min": 5.568687180892476,
+            "max": 8.753271934784712
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 16.863116716554128,
+            "min": 11.828593707807814,
+            "max": 18.716001964502304
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        }
+      },
+      {
+        "visit": "AU-main-middle",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 2,
+          "failed": 1,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 20971520,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 2,
+            "median": 5.65679660380619,
+            "min": 5.112805436441824,
+            "max": 6.200787771170556
+          },
+          "outcome_counts": {
+            "complete": 2,
+            "timeout_partial": 1
+          },
+          "failed_http_status_counts": {
+            "200": 1
+          },
+          "process_exit_counts": {
+            "0": 2,
+            "28": 1
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 20.833795590027677,
+            "min": 15.889095033123558,
+            "max": 24.110868038277683
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        }
+      },
+      {
+        "visit": "AU-main-after",
+        "download": {
+          "planned": 3,
+          "started": 3,
+          "complete": 2,
+          "failed": 1,
+          "skipped": 0,
+          "expected_object_bytes": 10485760,
+          "completed_bytes": 20971520,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 2,
+            "median": 8.334871137035194,
+            "min": 7.986134759588403,
+            "max": 8.683607514481983
+          },
+          "outcome_counts": {
+            "timeout_partial": 1,
+            "complete": 2
+          },
+          "failed_http_status_counts": {
+            "200": 1
+          },
+          "process_exit_counts": {
+            "28": 1,
+            "0": 2
+          }
+        },
+        "upload": {
+          "planned": 3,
+          "started": 3,
+          "complete": 3,
+          "failed": 0,
+          "skipped": 0,
+          "expected_object_bytes": 8388608,
+          "completed_bytes": 25165824,
+          "completed_curl_task_goodput_mbps": {
+            "samples": 3,
+            "median": 20.082066449992535,
+            "min": 19.606205143217412,
+            "max": 21.58187567715849
+          },
+          "outcome_counts": {
+            "complete": 3
+          },
+          "failed_http_status_counts": {},
+          "process_exit_counts": {
+            "0": 3
+          }
+        }
+      }
+    ],
+    "full_batches_including_three_AU_main_reference_visits": {
+      "ovh-post": {
+        "direction": "download",
+        "expected_object_bytes": 10485760,
+        "planned_visits": 13,
+        "measured_visits": 13,
+        "totals": {
+          "planned": 39,
+          "started": 39,
+          "complete": 35,
+          "failed": 4,
+          "skipped": 0,
+          "completed_bytes": 367001600
+        },
+        "probes": {
+          "idle": {
+            "attempted": 39,
+            "complete": 39,
+            "failed": 0,
+            "completion_fraction": 1.0,
+            "completed_total_seconds": {
+              "samples": 39,
+              "median": 0.658091,
+              "min": 0.589481,
+              "max": 1.105601
+            },
+            "all_observed_total_seconds": {
+              "samples": 39,
+              "median": 0.658091,
+              "min": 0.589481,
+              "max": 1.105601
+            },
+            "http_status_counts": {
+              "204": 39
+            },
+            "process_exit_counts": {
+              "0": 39
+            }
+          },
+          "download_load": {
+            "attempted": 143,
+            "complete": 116,
+            "failed": 27,
+            "completion_fraction": 0.8111888111888111,
+            "completed_total_seconds": {
+              "samples": 116,
+              "median": 0.6783145,
+              "min": 0.594334,
+              "max": 2.837844
+            },
+            "all_observed_total_seconds": {
+              "samples": 143,
+              "median": 0.755978,
+              "min": 0.594334,
+              "max": 3.012005
+            },
+            "http_status_counts": {
+              "000": 27,
+              "204": 116
+            },
+            "process_exit_counts": {
+              "28": 27,
+              "0": 116
+            }
+          },
+          "outside_bulk_window": {
+            "attempted": 13,
+            "complete": 13,
+            "failed": 0,
+            "completion_fraction": 1.0,
+            "completed_total_seconds": {
+              "samples": 13,
+              "median": 0.676349,
+              "min": 0.591567,
+              "max": 1.720002
+            },
+            "all_observed_total_seconds": {
+              "samples": 13,
+              "median": 0.676349,
+              "min": 0.591567,
+              "max": 1.720002
+            },
+            "http_status_counts": {
+              "204": 13
+            },
+            "process_exit_counts": {
+              "0": 13
+            }
+          }
+        },
+        "probe_timing": {
+          "hint_window_disagreements": 0,
+          "responses_ended_after_admission_window": 20
+        }
+      },
+      "cf-upload-post": {
+        "direction": "upload",
+        "expected_object_bytes": 8388608,
+        "planned_visits": 13,
+        "measured_visits": 13,
+        "totals": {
+          "planned": 39,
+          "started": 39,
+          "complete": 39,
+          "failed": 0,
+          "skipped": 0,
+          "completed_bytes": 327155712
+        },
+        "probes": {
+          "idle": {
+            "attempted": 39,
+            "complete": 39,
+            "failed": 0,
+            "completion_fraction": 1.0,
+            "completed_total_seconds": {
+              "samples": 39,
+              "median": 0.667204,
+              "min": 0.602125,
+              "max": 1.098789
+            },
+            "all_observed_total_seconds": {
+              "samples": 39,
+              "median": 0.667204,
+              "min": 0.602125,
+              "max": 1.098789
+            },
+            "http_status_counts": {
+              "204": 39
+            },
+            "process_exit_counts": {
+              "0": 39
+            }
+          },
+          "upload_load": {
+            "attempted": 44,
+            "complete": 44,
+            "failed": 0,
+            "completion_fraction": 1.0,
+            "completed_total_seconds": {
+              "samples": 44,
+              "median": 0.682913,
+              "min": 0.605977,
+              "max": 1.186887
+            },
+            "all_observed_total_seconds": {
+              "samples": 44,
+              "median": 0.682913,
+              "min": 0.605977,
+              "max": 1.186887
+            },
+            "http_status_counts": {
+              "204": 44
+            },
+            "process_exit_counts": {
+              "0": 44
+            }
+          },
+          "outside_bulk_window": {
+            "attempted": 13,
+            "complete": 13,
+            "failed": 0,
+            "completion_fraction": 1.0,
+            "completed_total_seconds": {
+              "samples": 13,
+              "median": 0.773468,
+              "min": 0.659875,
+              "max": 1.307828
+            },
+            "all_observed_total_seconds": {
+              "samples": 13,
+              "median": 0.773468,
+              "min": 0.659875,
+              "max": 1.307828
+            },
+            "http_status_counts": {
+              "204": 13
+            },
+            "process_exit_counts": {
+              "0": 13
+            }
+          }
+        },
+        "probe_timing": {
+          "hint_window_disagreements": 0,
+          "responses_ended_after_admission_window": 12
+        }
+      }
+    },
+    "all_78_planned_requests_complete": false,
+    "retained_path_guards_and_management_restores_all_passed": true,
+    "probes_are_HTTP_task_outcomes_not_video_packet_loss": true,
+    "sequential_rates_can_be_summed_as_concurrent_capacity": false
+  },
+  "experiment_ledger": [
+    {
+      "id": "creation_dhcp_wait_budget",
+      "status": "initial_attempt_rolled_back_then_wait_budget_corrected",
+      "evidence": "20_second_wait_expired_during_serial_conflict_checks",
+      "retained_change": "bounded_apply_and_restore_wait_120_seconds",
+      "conflict_checks_disabled": false,
+      "network_speed_fix": false
+    },
+    {
+      "id": "fifteen_fixture_process_sets",
+      "status": "rejected_rolled_back",
+      "evidence": "160MiB_memory_guard_triggered",
+      "replacement": "one_namespace_one_nginx_fifteen_endpoints",
+      "OOM_proven": false
+    },
+    {
+      "id": "earlier_Cloudflare_baseline",
+      "status": "historical_failures_preserved",
+      "directions": {
+        "download": {
+          "planned": 39,
+          "started": 33,
+          "complete": 16,
+          "failed": 17,
+          "skipped": 6,
+          "outcome_counts": {
+            "timeout_partial": 14,
+            "complete": 16,
+            "unexpected_http_status": 3,
+            "not_started": 6
+          },
+          "failed_http_status_counts": {
+            "200": 14,
+            "429": 3
+          }
+        },
+        "upload": {
+          "planned": 39,
+          "started": 30,
+          "complete": 29,
+          "failed": 1,
+          "skipped": 9,
+          "outcome_counts": {
+            "timeout_no_payload": 1,
+            "complete": 29,
+            "not_started": 9
+          },
+          "failed_http_status_counts": {
+            "0": 1
+          }
+        }
+      },
+      "response": "stop_rate_limited_download_endpoint_use_independent_target"
+    },
+    {
+      "id": "five_pair_router_SOCKS_AB",
+      "status": "candidate_supported_for_scoped_trial_only",
+      "A": "original_pool",
+      "B": "fresh_extra_process_same_upstream_protocol",
+      "denominator_per_arm": 5,
+      "A_complete": 2,
+      "B_complete": 5,
+      "B_better_pairs": 4,
+      "B_complete_duration_median_seconds": 10.186244,
+      "unique_mechanism_or_long_term_benefit_proven": false
+    },
+    {
+      "id": "AU_group_6_canary",
+      "status": "short_canary_improved_not_sufficient_to_retain",
+      "original_complete": 1,
+      "original_attempted": 3,
+      "original_completed_goodput_median_mbps": 6.209502366812571,
+      "candidate_complete": 3,
+      "candidate_attempted": 3,
+      "candidate_completed_goodput_median_mbps": 9.512011786419787
+    },
+    {
+      "id": "candidate_readiness_gate_ipv4_ipv6",
+      "status": "failed_closed_checker_corrected",
+      "evidence": "Go_listener_dual_stack_representation_did_not_match_initial_checker",
+      "redirect_rules_installed_on_failed_gate": false
+    },
+    {
+      "id": "candidate_owned_input_rule_model",
+      "status": "failed_closed_own_rules_removed_checker_corrected",
+      "evidence": "kernel_normalized_redundant_protocol_match",
+      "old_proxy_restarted": false
+    },
+    {
+      "id": "extra_Xray_pool_expansion",
+      "status": "rejected_rolled_back_removed",
+      "scope": "new_ten_groups_TCP_only_DNS_UDP_old_path",
+      "planned_visits": 13,
+      "measured_visits": 4,
+      "download": {
+        "planned": 39,
+        "started": 12,
+        "complete": 8,
+        "failed": 4,
+        "skipped": 27,
+        "outcome_counts": {
+          "complete": 8,
+          "timeout_partial": 4,
+          "not_started": 27
+        },
+        "failed_http_status_counts": {
+          "200": 4
+        }
+      },
+      "upload_planned": false,
+      "halt_at_role": "AU-group-8",
+      "reason": "memory_floor_guard",
+      "memory_evidence": {
+        "floor_kib": 163840,
+        "recorded_sample_min_mem_available_kib": 166268,
+        "recorded_samples": 74,
+        "breach_reading_kib": null,
+        "breach_reading_known": false,
+        "below_floor_guard_branch_recorded": true,
+        "unknown_reading_explanation": "breach_guard_returned_before_MEM_sample_was_written"
+      },
+      "reboot_recovery_tested": false
+    },
+    {
+      "id": "original_path_upload_before_cleanup",
+      "status": "halted_memory_guard_negative_batch_preserved",
+      "planned_visits": 13,
+      "measured_visits": 1,
+      "upload": {
+        "planned": 39,
+        "started": 3,
+        "complete": 3,
+        "failed": 0,
+        "skipped": 36,
+        "outcome_counts": {
+          "complete": 3,
+          "not_started": 36
+        },
+        "failed_http_status_counts": {}
+      },
+      "available_at_breach_kib": 163408,
+      "floor_kib": 163840,
+      "all_memory_events_attributable_to_extra_pool": false
+    },
+    {
+      "id": "diagnostic_tmpfs_cleanup",
+      "status": "retained_resource_cleanup_after_archive_verification",
+      "evidence": {
+        "completed_roots_removed": 6,
+        "archived_members": 161,
+        "archived_links": 0,
+        "approx_removed_megabytes": 23.39,
+        "shmem_before_kib": 35072,
+        "shmem_after_kib": 11816,
+        "mem_available_before_kib": 203204,
+        "mem_available_after_kib": 222280,
+        "extra_pool_files_removed": 20,
+        "extra_pool_directories_removed": 2,
+        "tar_digest_verified_before_exact_removal": true,
+        "paired_same_read_observation": true,
+        "old_process_and_config_guards_passed": true,
+        "extra_pool_service_process_nft_boot_absent": true
+      },
+      "unique_network_root_cause_proven": false
+    },
+    {
+      "id": "blind_global_TCP_tuning",
+      "status": "not_executed_this_round",
+      "items": [
+        "new_BBR_change",
+        "buffer_batch_tuning",
+        "root_qdisc_change",
+        "MSS_change"
+      ],
+      "retry_rule": "new_direct_evidence_and_single_scoped_hypothesis_required"
+    }
+  ],
+  "rollback_and_final_resource_verification": {
+    "extra_pool_rollback_verified": true,
+    "final_upload_collection_conditions": {
+      "entry_memory_minimum_kib": 196608,
+      "runtime_memory_floor_kib": 163840,
+      "object_bytes": 8388608,
+      "repeats_per_visit": 3,
+      "max_seconds": 20,
+      "tool_rate_cap_bps": 0,
+      "original_retained_path": true,
+      "fresh_postcleanup_batch": true
+    },
+    "final_verification": {
+      "final_upload_memory_min_kib": 193308,
+      "memory_floor_kib": 163840,
+      "observer_samples": 266,
+      "initial_final_au_probe_failed": 1,
+      "fixed_followup_au_health_successes": 3,
+      "fixed_followup_us_health_successes": 3,
+      "post_archive_mem_available_kib": 223000,
+      "post_archive_shmem_kib": 11144,
+      "observer_ended": true,
+      "halt": false,
+      "candidate_files_service_rules_autoboot_absent": true,
+      "old_process_configuration_guards_passed": true
+    },
+    "old_process_identities_checked": 4,
+    "old_configuration_hashes_checked": 5,
+    "extra_pool_processes_service_owned_rules_files_boot_entries_absent": true,
+    "logs_and_recovery_material": "protected_local_archives_not_published",
+    "future_group_rollback": "read_current_state_verify_ownership_and_no_drift_remove_only_this_round_100_sections_refuse_stale_full_backup_overwrite",
+    "candidate_TERMinjection_cleanup": "owned_rules_removed_original_process_and_config_guards_passed_AU_and_US_health_success",
+    "router_reboot_was_performed": false
+  },
+  "pending_acceptance": [
+    "download_load_HTTP_timeouts_and_long_tail",
+    "real_phone_livestream",
+    "peak_hours",
+    "simultaneous_group_capacity",
+    "router_reboot_recovery",
+    "per_request_redirected_TCP_attribution_if_mechanism_claim_needed"
+  ],
+  "next_agent": {
+    "read_first": [
+      "README.md",
+      "SECURITY.md",
+      "docs/latest-progress.md",
+      "docs/au-expansion-2026-10-21.md",
+      "docs/au-agent-prompt.md"
+    ],
+    "record_latest_main_commit_and_measurement_window": true,
+    "do_not_repeat_without_new_evidence": [
+      "extra_pool_under_same_resource_budget",
+      "fifteen_namespace_nginx_fixture_sets",
+      "hammering_HTTP429_download_endpoint",
+      "blind_global_TCP_tuning"
+    ],
+    "do_not_weaken_memory_guard_or_raise_timeout_and_call_it_speed_fix": true,
+    "protect_existing_AU_and_US_new": true,
+    "repository_does_not_grant_device_access": true
+  }
+}

@@ -81,7 +81,15 @@ A transfer is complete only when curl exits successfully, HTTP status is 200, th
 
 Source binding alone does not prove a transparent proxy mapping or the DNS path. A system default of BBR does not prove that the active sending connection uses BBR. HTTPS request timeouts are not video-packet loss. Public endpoints can refuse or rate-limit tests; preserve those outcomes and respect the service response.
 
-## Latest measured evidence · 2026-10-19
+## Latest evidence · 2026-10-21 AU expansion
+
+**AU-group-6 through AU-group-15 are saved and applied. The original AU proxy path is retained; the extra Xray pool was rolled back and removed after a memory guard halt.** Measurements span 20–21 October, Asia/Shanghai. The ten new groups completed **28/30 downloads and 30/30 uploads**; group-12 completed only 1/3 downloads. Including three AU-main reference visits, full batches completed 35/39 and 39/39. HTTP probes under download load completed **116/143**, versus **44/44** under upload load; this is not full stability acceptance.
+
+The specified IPv4 TCP isolation matrix passed 225/225 checks, including 210/210 directed cross-group rejections. This radio now uses its reported 16-AP quota. All AU groups share the same upstream, exit and bandwidth. Short candidate improvements did not meet the expanded resource gate; the original path also halted before cleanup. About 23.39 MB of verified diagnostic tmpfs was reclaimed, an evidenced resource contributor rather than a unique proven network cause. Phone streaming, peak hours, concurrency and reboot recovery remain unverified; application-stage short reassociations remain recorded.
+
+[Configuration, per-group measurements and rollback](docs/au-expansion-2026-10-21.md) · [Machine-readable summary](examples/2026-10-21-au-expansion-summary.json) · [AU Agent handoff prompt](docs/au-agent-prompt.md) · [Latest progress](docs/latest-progress.md)
+
+## Earlier evidence · 2026-10-19 US-new
 
 **The new US route, US-new, is connected; no performance candidate from three investigation rounds was retained.** A BBR listener and forced receive buffer were rejected. A native 16 MiB router receive ceiling improved CF but failed the Google acceptance gate: median 34.511 Mbps original versus 16.706 Mbps candidate. The original configuration was restored.
 
