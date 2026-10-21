@@ -1,0 +1,1017 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-21",
+  "timezone": "Asia/Shanghai",
+  "read_base_commit": "f51c9043f48a85bfe2a102b7e91f88be7b419347",
+  "measurement_window_description": "21 October daytime short sequential diagnostics; independent of 20-21 October expansion batches",
+  "wifi_download_window_utc": {
+    "start": "2026-10-21T04:50:08.075177+00:00",
+    "end": "2026-10-21T04:51:51.026107+00:00"
+  },
+  "roles": {
+    "subject": "AU-group-12",
+    "reference": "AU-main",
+    "protected": "other_AU_groups_and_US-new"
+  },
+  "decision": {
+    "production_network_parameter_changes": 0,
+    "production_configuration": "original_retained",
+    "extra_Xray_pool_retried": false,
+    "new_rate_cap_added": false,
+    "services_or_radio_restarted": false,
+    "old_timeouts_reproduced_in_current_short_window": false,
+    "root_cause_proven": false,
+    "problem_declared_fixed": false,
+    "diagnostic_tmpfs_cleanup_retained": true,
+    "full_stability_signoff": false
+  },
+  "prior_failure_reanalysis": {
+    "window": "2026-10-20_to_21_prior_expansion_batch",
+    "subject_download_attempts": [
+      {
+        "outcome": "timeout_partial",
+        "curl_exit": 28,
+        "http": 200,
+        "downloaded_bytes": 10237424,
+        "expected_bytes": 10485760,
+        "tcp_connect_cumulative_seconds": 0.003896,
+        "tls_cumulative_seconds": 0.925683,
+        "first_byte_cumulative_seconds": 3.969181,
+        "total_seconds": 20.004651
+      },
+      {
+        "outcome": "timeout_partial",
+        "curl_exit": 28,
+        "http": 200,
+        "downloaded_bytes": 4929008,
+        "expected_bytes": 10485760,
+        "tcp_connect_cumulative_seconds": 0.054122,
+        "tls_cumulative_seconds": 1.851181,
+        "first_byte_cumulative_seconds": 2.685727,
+        "total_seconds": 20.007791
+      },
+      {
+        "outcome": "complete",
+        "curl_exit": 0,
+        "http": 200,
+        "downloaded_bytes": 10485760,
+        "expected_bytes": 10485760,
+        "tcp_connect_cumulative_seconds": 0.002564,
+        "tls_cumulative_seconds": 3.921387,
+        "first_byte_cumulative_seconds": 4.609396,
+        "total_seconds": 12.599857
+      }
+    ],
+    "download_load_probes": {
+      "complete": 116,
+      "attempted": 143,
+      "timeouts": 27,
+      "visits_with_timeouts": 12,
+      "total_visits": 13,
+      "distribution": [
+        {
+          "role": "AU-main-before",
+          "complete": 7,
+          "attempted": 10,
+          "timeouts": 3
+        },
+        {
+          "role": "AU-group-6",
+          "complete": 7,
+          "attempted": 8,
+          "timeouts": 1
+        },
+        {
+          "role": "AU-group-7",
+          "complete": 9,
+          "attempted": 10,
+          "timeouts": 1
+        },
+        {
+          "role": "AU-group-8",
+          "complete": 8,
+          "attempted": 13,
+          "timeouts": 5
+        },
+        {
+          "role": "AU-group-9",
+          "complete": 9,
+          "attempted": 9,
+          "timeouts": 0
+        },
+        {
+          "role": "AU-group-10",
+          "complete": 9,
+          "attempted": 10,
+          "timeouts": 1
+        },
+        {
+          "role": "AU-main-middle",
+          "complete": 9,
+          "attempted": 13,
+          "timeouts": 4
+        },
+        {
+          "role": "AU-group-11",
+          "complete": 9,
+          "attempted": 10,
+          "timeouts": 1
+        },
+        {
+          "role": "AU-group-12",
+          "complete": 11,
+          "attempted": 15,
+          "timeouts": 4
+        },
+        {
+          "role": "AU-group-13",
+          "complete": 10,
+          "attempted": 12,
+          "timeouts": 2
+        },
+        {
+          "role": "AU-group-14",
+          "complete": 10,
+          "attempted": 12,
+          "timeouts": 2
+        },
+        {
+          "role": "AU-group-15",
+          "complete": 9,
+          "attempted": 10,
+          "timeouts": 1
+        },
+        {
+          "role": "AU-main-after",
+          "complete": 9,
+          "attempted": 11,
+          "timeouts": 2
+        }
+      ]
+    },
+    "old_probe_phase_metrics_available": false,
+    "failed_window_resource_observations": [
+      {
+        "cpu_busy_median_percent": 4.06,
+        "cpu_busy_max_percent": 8.71,
+        "minimum_available_kib": 190000,
+        "softnet_dropped_delta": 0,
+        "softnet_time_squeeze_delta": 0,
+        "channel_busy_percent": 14.76,
+        "channel_valid_intervals": 1
+      },
+      {
+        "cpu_busy_median_percent": 3.87,
+        "cpu_busy_max_percent": 7.08,
+        "minimum_available_kib": 188608,
+        "softnet_dropped_delta": 0,
+        "softnet_time_squeeze_delta": 0,
+        "channel_busy_percent": 14.17,
+        "channel_valid_intervals": 1
+      }
+    ],
+    "interpretation": "HTTP200_partial_objects_not_DNS_failure; shared_direction_or_time_variation_hypothesis_not_unique_group_configuration_fault; cumulative_Times_not_additive; not_exact_flow_retransmission_evidence"
+  },
+  "current_configuration_comparison": {
+    "subject": "AU-group-12",
+    "ignored_metadata_fields": [
+      ".name",
+      ".index",
+      ".anonymous",
+      "wireless.id"
+    ],
+    "replaced_group_references_and_addresses": true,
+    "comparison": [
+      {
+        "reference": "AU-group-11",
+        "profiles_equal": true,
+        "section_counts": {
+          "dhcp": 1,
+          "firewall": 6,
+          "network": 2,
+          "wireless": 1
+        },
+        "differences": []
+      },
+      {
+        "reference": "AU-group-13",
+        "profiles_equal": true,
+        "section_counts": {
+          "dhcp": 1,
+          "firewall": 6,
+          "network": 2,
+          "wireless": 1
+        },
+        "differences": []
+      }
+    ],
+    "scope": "selected UCI per-group profile only; not firewall rule ordering, live NAT, station or PassWall effective flow mapping"
+  },
+  "wifi_ABBA": {
+    "A": "AU-group-12",
+    "B": "AU-main",
+    "order": [
+      "A1",
+      "B1",
+      "B2",
+      "A2"
+    ],
+    "comparison_type": "group_and_time_diagnostic_not_parameter_AB",
+    "object": {
+      "provider": "OVH_static_HTTPS",
+      "bytes": 10485760
+    },
+    "protocol": "IPv4_HTTP1.1_single_flow_fixed_current_target",
+    "timeout_seconds": 20,
+    "tool_rate_cap_bits_per_second": null,
+    "planned": 4,
+    "started": 4,
+    "payload_complete": 4,
+    "failed_payloads": 0,
+    "skipped": 0,
+    "full_guard_passed_visits": 3,
+    "failed_next_entry_resource_guard_visits": 1,
+    "complete_rule": [
+      "curl_exit_zero",
+      "HTTP200",
+      "exact_bytes",
+      "source_verified"
+    ],
+    "metric": "completed_object_bits_divided_by_curl_total_seconds_divided_by_1000000",
+    "per_visit_exit_after_checks": 0,
+    "entry_exit_matches": 4,
+    "restores_passed": 4,
+    "config_checksum_OK_per_visit": 5,
+    "config_checksum_checked_visits": 4,
+    "station_BSS_corroboration": [
+      {
+        "visit": "A1",
+        "role": "AU-group-12",
+        "samples_near_bulk": 1,
+        "matches": true
+      },
+      {
+        "visit": "B1",
+        "role": "AU-main",
+        "samples_near_bulk": 1,
+        "matches": true
+      },
+      {
+        "visit": "B2",
+        "role": "AU-main",
+        "samples_near_bulk": 1,
+        "matches": true
+      },
+      {
+        "visit": "A2",
+        "role": "AU-group-12",
+        "samples_near_bulk": 1,
+        "matches": true
+      }
+    ],
+    "station_window_tolerance_seconds": 2,
+    "station_continuous_packet_attribution": false,
+    "visits": [
+      {
+        "visit": "A1",
+        "role": "AU-group-12",
+        "bulk": {
+          "http_code": 200,
+          "time_namelookup": 6e-06,
+          "time_connect": 0.006186,
+          "time_appconnect": 0.806391,
+          "time_starttransfer": 1.402929,
+          "time_total": 7.393385,
+          "size_download": 10485760,
+          "size_upload": 0,
+          "speed_download": 1418262,
+          "num_connects": 1,
+          "num_redirects": 0,
+          "curl_exit": 0,
+          "source_verified": true,
+          "success_204": false
+        },
+        "bulk_complete": true,
+        "completed_goodput_mbps": 11.346099249531845,
+        "exit_before_passed": true,
+        "exit_after_present": false,
+        "exit_after_passed": null,
+        "restore_passed": true,
+        "router_guard_passed": true,
+        "post_guard_record_available_kib": 228172,
+        "post_record_below_next_entry_floor": false,
+        "probes": [
+          {
+            "http_code": 204,
+            "time_namelookup": 1.2e-05,
+            "time_connect": 0.00329,
+            "time_appconnect": 0.38985,
+            "time_starttransfer": 0.631677,
+            "time_total": 0.631696,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "idle",
+            "admitted_within_bulk_wall_window": false,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 1.2e-05,
+            "time_connect": 0.004125,
+            "time_appconnect": 0.371444,
+            "time_starttransfer": 0.616916,
+            "time_total": 0.616933,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "idle",
+            "admitted_within_bulk_wall_window": false,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 1e-05,
+            "time_connect": 0.003026,
+            "time_appconnect": 0.367692,
+            "time_starttransfer": 0.612646,
+            "time_total": 0.61266,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "download_load",
+            "admitted_within_bulk_wall_window": true,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 8e-06,
+            "time_connect": 0.005123,
+            "time_appconnect": 0.371205,
+            "time_starttransfer": 0.680155,
+            "time_total": 0.680171,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "download_load",
+            "admitted_within_bulk_wall_window": true,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 1.6e-05,
+            "time_connect": 0.070104,
+            "time_appconnect": 0.439228,
+            "time_starttransfer": 0.681547,
+            "time_total": 0.681554,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "download_load",
+            "admitted_within_bulk_wall_window": true,
+            "ended_after_bulk_wall_window": false
+          }
+        ]
+      },
+      {
+        "visit": "B1",
+        "role": "AU-main",
+        "bulk": {
+          "http_code": 200,
+          "time_namelookup": 8e-06,
+          "time_connect": 0.002439,
+          "time_appconnect": 0.800884,
+          "time_starttransfer": 1.425404,
+          "time_total": 4.855519,
+          "size_download": 10485760,
+          "size_upload": 0,
+          "speed_download": 2159554,
+          "num_connects": 1,
+          "num_redirects": 0,
+          "curl_exit": 0,
+          "source_verified": true,
+          "success_204": false
+        },
+        "bulk_complete": true,
+        "completed_goodput_mbps": 17.276439449624235,
+        "exit_before_passed": true,
+        "exit_after_present": false,
+        "exit_after_passed": null,
+        "restore_passed": true,
+        "router_guard_passed": true,
+        "post_guard_record_available_kib": 211948,
+        "post_record_below_next_entry_floor": false,
+        "probes": [
+          {
+            "http_code": 204,
+            "time_namelookup": 9e-06,
+            "time_connect": 0.00605,
+            "time_appconnect": 0.380049,
+            "time_starttransfer": 0.622589,
+            "time_total": 0.622601,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "idle",
+            "admitted_within_bulk_wall_window": false,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 1.2e-05,
+            "time_connect": 0.079178,
+            "time_appconnect": 0.451426,
+            "time_starttransfer": 0.695414,
+            "time_total": 0.695429,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "idle",
+            "admitted_within_bulk_wall_window": false,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 5e-06,
+            "time_connect": 0.004437,
+            "time_appconnect": 0.434267,
+            "time_starttransfer": 0.672099,
+            "time_total": 0.672114,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "download_load",
+            "admitted_within_bulk_wall_window": true,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 8e-06,
+            "time_connect": 0.027087,
+            "time_appconnect": 0.388534,
+            "time_starttransfer": 0.629685,
+            "time_total": 0.629707,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "download_load",
+            "admitted_within_bulk_wall_window": true,
+            "ended_after_bulk_wall_window": false
+          }
+        ]
+      },
+      {
+        "visit": "B2",
+        "role": "AU-main",
+        "bulk": {
+          "http_code": 200,
+          "time_namelookup": 9e-06,
+          "time_connect": 0.003985,
+          "time_appconnect": 0.800328,
+          "time_starttransfer": 1.39101,
+          "time_total": 4.821631,
+          "size_download": 10485760,
+          "size_upload": 0,
+          "speed_download": 2174732,
+          "num_connects": 1,
+          "num_redirects": 0,
+          "curl_exit": 0,
+          "source_verified": true,
+          "success_204": false
+        },
+        "bulk_complete": true,
+        "completed_goodput_mbps": 17.397863917831952,
+        "exit_before_passed": true,
+        "exit_after_present": false,
+        "exit_after_passed": null,
+        "restore_passed": true,
+        "router_guard_passed": true,
+        "post_guard_record_available_kib": 202920,
+        "post_record_below_next_entry_floor": false,
+        "probes": [
+          {
+            "http_code": 204,
+            "time_namelookup": 9e-06,
+            "time_connect": 0.059398,
+            "time_appconnect": 0.446223,
+            "time_starttransfer": 0.690112,
+            "time_total": 0.690128,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "idle",
+            "admitted_within_bulk_wall_window": false,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 2.5e-05,
+            "time_connect": 0.003326,
+            "time_appconnect": 0.41681,
+            "time_starttransfer": 0.659707,
+            "time_total": 0.659722,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "idle",
+            "admitted_within_bulk_wall_window": false,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 5e-06,
+            "time_connect": 0.002646,
+            "time_appconnect": 0.362875,
+            "time_starttransfer": 0.600135,
+            "time_total": 0.600148,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "download_load",
+            "admitted_within_bulk_wall_window": true,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 1.2e-05,
+            "time_connect": 0.003696,
+            "time_appconnect": 0.441367,
+            "time_starttransfer": 0.686189,
+            "time_total": 0.686211,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "download_load",
+            "admitted_within_bulk_wall_window": true,
+            "ended_after_bulk_wall_window": false
+          }
+        ]
+      },
+      {
+        "visit": "A2",
+        "role": "AU-group-12",
+        "bulk": {
+          "http_code": 200,
+          "time_namelookup": 8e-06,
+          "time_connect": 0.003519,
+          "time_appconnect": 0.811957,
+          "time_starttransfer": 1.409601,
+          "time_total": 5.37264,
+          "size_download": 10485760,
+          "size_upload": 0,
+          "speed_download": 1951696,
+          "num_connects": 1,
+          "num_redirects": 0,
+          "curl_exit": 0,
+          "source_verified": true,
+          "success_204": false
+        },
+        "bulk_complete": true,
+        "completed_goodput_mbps": 15.613568003811906,
+        "exit_before_passed": true,
+        "exit_after_present": false,
+        "exit_after_passed": null,
+        "restore_passed": true,
+        "router_guard_passed": false,
+        "post_guard_record_available_kib": 187964,
+        "post_record_below_next_entry_floor": true,
+        "probes": [
+          {
+            "http_code": 204,
+            "time_namelookup": 7e-06,
+            "time_connect": 0.003783,
+            "time_appconnect": 0.378551,
+            "time_starttransfer": 0.623983,
+            "time_total": 0.623998,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "idle",
+            "admitted_within_bulk_wall_window": false,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 8e-06,
+            "time_connect": 0.002655,
+            "time_appconnect": 0.413723,
+            "time_starttransfer": 0.650937,
+            "time_total": 0.650947,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "idle",
+            "admitted_within_bulk_wall_window": false,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 6e-06,
+            "time_connect": 0.00343,
+            "time_appconnect": 0.376138,
+            "time_starttransfer": 0.627046,
+            "time_total": 0.627057,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "download_load",
+            "admitted_within_bulk_wall_window": true,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 1e-05,
+            "time_connect": 0.062778,
+            "time_appconnect": 0.425438,
+            "time_starttransfer": 0.664957,
+            "time_total": 0.664972,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "download_load",
+            "admitted_within_bulk_wall_window": true,
+            "ended_after_bulk_wall_window": false
+          },
+          {
+            "http_code": 204,
+            "time_namelookup": 4.2e-05,
+            "time_connect": 0.00669,
+            "time_appconnect": 0.37168,
+            "time_starttransfer": 0.607895,
+            "time_total": 0.607922,
+            "size_download": 0,
+            "size_upload": 0,
+            "speed_download": 0,
+            "num_connects": 1,
+            "num_redirects": 0,
+            "curl_exit": 0,
+            "source_verified": true,
+            "success_204": true,
+            "phase": "download_load",
+            "admitted_within_bulk_wall_window": true,
+            "ended_after_bulk_wall_window": true
+          }
+        ]
+      }
+    ],
+    "idle_probes": {
+      "attempted": 8,
+      "complete": 8,
+      "total_seconds": {
+        "samples": 8,
+        "median": 0.6413215000000001,
+        "minimum": 0.616933,
+        "maximum": 0.695429
+      }
+    },
+    "bulk_admission_probes": {
+      "attempted": 10,
+      "complete": 10,
+      "total_seconds": {
+        "samples": 10,
+        "median": 0.6473395,
+        "minimum": 0.600148,
+        "maximum": 0.686211
+      }
+    },
+    "bulk_admission_responses_ended_after_bulk": 1,
+    "limitations": [
+      "Not production optimization or stability signoff",
+      "Post-visit guard failure remains distinct from completed payload",
+      "No post-download exit check exists in this controller",
+      "Observer HALT is not polled during a running controller request",
+      "Sequential probes are completion-paced rather than constant-cadence",
+      "No exact originating-connection to redirected TCP attribution"
+    ]
+  },
+  "diagnostic_collection_failure_and_cleanup": {
+    "full_ss_log_file_bytes": 21517163,
+    "full_ss_on_router_tmpfs_had_byte_limit": false,
+    "observer_samples": 90,
+    "minimum_available_kib": 177472,
+    "runtime_floor_kib": 163840,
+    "runtime_memory_HALT": false,
+    "next_entry_floor_kib": 196608,
+    "A2_post_available_kib": 187964,
+    "further_wifi_load_stopped": true,
+    "old_process_count": 3,
+    "old_process_stat_rows": 270,
+    "old_start_identity_mismatches": 0,
+    "aggregate_cpu_busy_percent": {
+      "samples": 89,
+      "minimum": 2.028639618138425,
+      "median": 5.5432372505543235,
+      "maximum": 20.66115702479339
+    },
+    "observer_ended": true,
+    "archive_members": 9,
+    "archive_links": 0,
+    "archived_log_SHA_matches_remote_before_exact_unlink": true,
+    "paired_cleanup_readings": {
+      "available_before_kib": 180300,
+      "available_after_kib": 202472,
+      "shmem_before_kib": 32152,
+      "shmem_after_kib": 11140
+    },
+    "observer_batch_first_last_ESTAB_counts": [
+      94,
+      277
+    ],
+    "ESTAB_counts_are_cleanup_instant_pair": false,
+    "unique_cause_for_all_memory_change_or_prior_network_failure_proven": false,
+    "subsequent_collection": "bounded_original_SOCKS_batch_output_streamed_to_Mac_no_growing_remote_observer_log",
+    "first_router_segment_harness": {
+      "status": "Lua_quoting_startup_failure",
+      "network_timeout_conclusion": false,
+      "corrected_compile_check_before_new_batch": true,
+      "separate_unclassified_payload_budget_bytes_at_most": 10485760,
+      "merged_into_accepted_download_denominator": false
+    }
+  },
+  "router_original_SOCKS_segment": {
+    "planned": 3,
+    "started": 3,
+    "complete": 3,
+    "failed": 0,
+    "skipped": 0,
+    "expected_bytes_each": 10485760,
+    "timeout_seconds_each": 20,
+    "same_fixed_target_as_wifi": true,
+    "original_existing_AU_SOCKS_entry": true,
+    "does_not_test_wifi_or_transparent_ingress": true,
+    "bulk": [
+      {
+        "round": 1,
+        "curl_exit": 0,
+        "http": 200,
+        "bytes": 10485760,
+        "total": 5.333185,
+        "connect": 0.000619,
+        "TLS_cumulative": 0.812055,
+        "TTFB": 1.414379,
+        "complete": true,
+        "completed_goodput_mbps": 15.729077464966993
+      },
+      {
+        "round": 2,
+        "curl_exit": 0,
+        "http": 200,
+        "bytes": 10485760,
+        "total": 5.26543,
+        "connect": 0.000557,
+        "TLS_cumulative": 0.816331,
+        "TTFB": 1.424568,
+        "complete": true,
+        "completed_goodput_mbps": 15.931477581128227
+      },
+      {
+        "round": 3,
+        "curl_exit": 0,
+        "http": 200,
+        "bytes": 10485760,
+        "total": 4.988974,
+        "connect": 0.000691,
+        "TLS_cumulative": 0.815353,
+        "TTFB": 1.422864,
+        "complete": true,
+        "completed_goodput_mbps": 16.814294883076162
+      }
+    ],
+    "guard_samples": 8,
+    "minimum_available_kib": 202528,
+    "all_process_and_memory_guards_passed": true,
+    "health_over_entire_segment": {
+      "AU": {
+        "complete": 8,
+        "attempted": 8,
+        "successful_total_seconds": {
+          "samples": 8,
+          "median": 0.626865,
+          "minimum": 0.619465,
+          "maximum": 0.634147
+        }
+      },
+      "US-new": {
+        "complete": 8,
+        "attempted": 8,
+        "successful_total_seconds": {
+          "samples": 8,
+          "median": 0.8169569999999999,
+          "minimum": 0.792205,
+          "maximum": 0.914974
+        }
+      }
+    },
+    "every_health_request_exact_bulk_overlap_verified": false,
+    "captured_stream_bytes_on_Mac": 220861,
+    "production_changes": 0
+  },
+  "other_business_protection": {
+    "non_test_station_observation": {
+      "test_mac_identities_excluded": 3,
+      "complete_station_dump_blocks": 288,
+      "failed_station_dump_blocks_excluded": 0,
+      "baseline_non_test_client_count": 6,
+      "baseline_non_test_client_bss_pairs": 6,
+      "non_test_client_count_observed_any_time": 6,
+      "new_non_test_client_identities_after_first_per_bss_snapshot": 0,
+      "baseline_non_test_disappearance_events": 0,
+      "baseline_non_test_clients_ever_absent": 0,
+      "baseline_non_test_reappearance_events": 0,
+      "baseline_non_test_connected_timer_reset_events": 0,
+      "baseline_non_test_bss_pairs_missing_final_snapshot": 0,
+      "ap_count_snapshots": {
+        "samples": 18,
+        "minimum": 16,
+        "median": 16.0,
+        "maximum": 16
+      },
+      "ap_ifindex_bssid_identity_change_verified": false,
+      "limitations": [
+        "Station snapshots approximately every 10 seconds cannot exclude brief disconnects",
+        "BSS count is not AP BSSID or ifindex continuity proof",
+        "First observed per-BSS clients define baseline; not a complete device inventory",
+        "Missing and timer reset events are observations, not attributed test causality"
+      ]
+    },
+    "final_all_wireless_interface_identity_count": 17,
+    "final_ifindex_BSSID_matches_preflight": true,
+    "instantaneous_zero_impact_proven": false,
+    "shared_WAN_and_time_sampling_limits_retained": true
+  },
+  "final_readback_and_cleanup": {
+    "owned_regular_files_archived": 14,
+    "owned_prefix_removed": true,
+    "config_checks_passed": true,
+    "available_kib": 205476,
+    "shmem_kib": 11724,
+    "management_curl_exit": 0,
+    "management_wifi_restored": true,
+    "wireless_identity_count": 17,
+    "wireless_identities_preserved": true,
+    "management_root_http": 200,
+    "luci_unauthenticated_http": 403,
+    "luci_login_form_present": true,
+    "health": [
+      {
+        "role": "AU",
+        "sequence": 1,
+        "curl_exit": 0,
+        "http": 204,
+        "seconds": 0.636669
+      },
+      {
+        "role": "AU",
+        "sequence": 2,
+        "curl_exit": 0,
+        "http": 204,
+        "seconds": 0.617197
+      },
+      {
+        "role": "AU",
+        "sequence": 3,
+        "curl_exit": 0,
+        "http": 204,
+        "seconds": 0.620398
+      },
+      {
+        "role": "US-new",
+        "sequence": 1,
+        "curl_exit": 0,
+        "http": 204,
+        "seconds": 0.766381
+      },
+      {
+        "role": "US-new",
+        "sequence": 2,
+        "curl_exit": 0,
+        "http": 204,
+        "seconds": 0.778959
+      },
+      {
+        "role": "US-new",
+        "sequence": 3,
+        "curl_exit": 0,
+        "http": 204,
+        "seconds": 0.715359
+      }
+    ],
+    "protected_process_count": 3,
+    "protected_process_identity_passed": true,
+    "pending_UCI_changes": 0,
+    "after_test_management_account_relogin_performed": false
+  },
+  "not_executed_candidates": [
+    "extra_Xray_pool",
+    "fifteen_namespace_nginx_fixture_sets",
+    "global_BBR_buffer_qdisc_MSS_changes",
+    "production_per_group_rate_cap",
+    "client_rate_cap_experiment",
+    "timeout_extension_experiment"
+  ],
+  "next_agent": {
+    "read_latest_main_commit_first": true,
+    "report": "docs/au-group-12-followup-2026-10-21.md",
+    "prompt": "docs/au-agent-prompt.md",
+    "do_not_erase_prior_failures": true,
+    "do_not_repeat_unbounded_full_ss_to_tmpfs": true,
+    "future_router_diagnostics_log_budget_bytes": 524288,
+    "full_socket_dump_must_be_filtered_bounded_or_streamed": true,
+    "fix_exit_after_and_running_HALT_visibility_before_strong_signoff": true,
+    "reproduce_in_original_fault_window_before_production_intervention": true,
+    "only_new_evidence_justifies_scoped_single_reversible_change": true
+  },
+  "pending": [
+    "prior_download_timeouts_and_load_stalls_root_cause",
+    "peak_hour_reproduction",
+    "real_phone_streaming",
+    "concurrent_group_capacity",
+    "router_reboot_recovery",
+    "precise_test_connection_to_redirected_upstream_attribution_if_needed"
+  ]
+}

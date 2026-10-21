@@ -1,6 +1,6 @@
 # AU 分组：继续排查的 Agent 提示词
 
-[最新进度](latest-progress.md) · [本轮扩展与验收](au-expansion-2026-10-21.md) · [机器摘要](../examples/2026-10-21-au-expansion-summary.json) · [公开资料边界](../SECURITY.md)
+[最新进度](latest-progress.md) · [最新下载复查](au-group-12-followup-2026-10-21.md) · [本轮扩展与验收](au-expansion-2026-10-21.md) · [机器摘要](../examples/2026-10-21-au-expansion-summary.json) · [公开资料边界](../SECURITY.md)
 
 将下面整个代码块复制给接手的 Agent。文中的名称均为公开角色，实际线路与设备身份需在用户授权的私有环境核实。仓库记录提供排查依据，本身不授予设备访问、配置修改或发布权限。
 
@@ -11,6 +11,10 @@
 https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 
 先确认 main 分支当前提交，依次读取 README.md、SECURITY.md、docs/latest-progress.md、docs/au-expansion-2026-10-21.md 和 examples/2026-10-21-au-expansion-summary.json。如最新进度已有后续记录，继续读取后续交接。记下实际读取的提交 SHA、报告日期和测试日期。以下是 2026-10-20 至 2026-10-21 的快照，不能代替当前设备检查；中途实验结果也不能覆盖最终保留决定。
+
+最新复查补充（2026-10-21 白天）：先读 docs/au-group-12-followup-2026-10-21.md 与 examples/2026-10-21-au-group-12-followup.json。原配置下 AU-group-12 / AU-main 交错 Wi-Fi 下载4/4，下载窗口准入探针10/10，随后原SOCKS下载3/3；当前未复现旧超时，不是生产优化前后A/B。A2后可用内存187964 KiB低于196608 KiB下一轮入口线，控制器停止扩大负载；运行最低177472 KiB仍高于163840 KiB，不能写成同一事件。全量ss观察日志21517163字节占tmpfs是本轮采集缺陷，已归档校验回收；不能把全部内存变化或旧卡顿唯一归因于它。
+
+后续诊断必须限定总时间、流量、并发、单样本字段和日志字节数，路由器新增诊断日志先以512 KiB为上限；全量socket必须筛选/受限，优先流回测试机，不能复用未设字节上限的旧观察器。此次控制器缺少逐次exit_after、运行请求中不轮询远端HALT，不能作为强稳定性验收工具直接重用，须先修正并验证。历史27个超时分散在12/13 visits、group-12与相邻两组归一化配置一致，故不要只凭旧1/3盲改该组。当前保留全部原生产网络参数；没有新增限速、重启或重上独立池。未来重试依赖新复现、新证据和单项回滚假设，不能把白天4/4与旧夜间失败合并宣称已修复。
 
 当前保留状态：
 - 新增 AU-group-6 至 AU-group-15，延续独立 IPv4 网段、DHCP 和组间隔离；沿用现有 AU 的认证方式与凭据，凭据值不进入公开材料。

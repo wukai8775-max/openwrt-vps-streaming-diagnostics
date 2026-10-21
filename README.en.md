@@ -81,7 +81,13 @@ A transfer is complete only when curl exits successfully, HTTP status is 200, th
 
 Source binding alone does not prove a transparent proxy mapping or the DNS path. A system default of BBR does not prove that the active sending connection uses BBR. HTTPS request timeouts are not video-packet loss. Public endpoints can refuse or rate-limit tests; preserve those outcomes and respect the service response.
 
-## Latest evidence · 2026-10-21 AU expansion
+## Latest follow-up · 2026-10-21 AU-group-12 download
+
+**Production settings are retained; the short daytime checks did not reproduce the earlier timeout, and the cause remains unproven.** Historical load timeouts occurred in 12/13 visits; normalized neighboring group profiles match. Interleaved Wi-Fi downloads completed **4/4**, with **10/10** admitted load probes, but the last visit failed the next 192 MiB entry budget. An unbounded full-socket observer had accumulated about 21.5 MB on tmpfs; it was stopped, archived, verified and removed. A subsequent bounded original-SOCKS batch streamed its output to the test machine: downloads **3/3**, AU / US-new probes **8/8 each**, resource guards passed. No production rate cap, TCP change or restart was introduced. The earlier failures, collector flaw and missing per-visit exit-after checks remain explicit; this is not a stability signoff.
+
+[Follow-up evidence and cleanup](docs/au-group-12-followup-2026-10-21.md) · [Machine summary](examples/2026-10-21-au-group-12-followup.json) · [Updated AU Agent prompt](docs/au-agent-prompt.md)
+
+## Earlier evidence · 2026-10-21 AU expansion
 
 **AU-group-6 through AU-group-15 are saved and applied. The original AU proxy path is retained; the extra Xray pool was rolled back and removed after a memory guard halt.** Measurements span 20–21 October, Asia/Shanghai. The ten new groups completed **28/30 downloads and 30/30 uploads**; group-12 completed only 1/3 downloads. Including three AU-main reference visits, full batches completed 35/39 and 39/39. HTTP probes under download load completed **116/143**, versus **44/44** under upload load; this is not full stability acceptance.
 

@@ -40,7 +40,9 @@ Repository: https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 
 ## 给其他 Agent 的复制入口
 
-当前最新 AU 记录为 2026-10-20 至 21 日扩展验收：复制 **[AU 专用提示词](au-agent-prompt.md)**，并读 [配置、逐组测速与回滚](au-expansion-2026-10-21.md) / [机器摘要](../examples/2026-10-21-au-expansion-summary.json)。它明确原路径保留、额外池回滚，以及禁止在相同条件下重复的方案。
+最新下载复查见 **[group-12 复查与采集开销记录](au-group-12-followup-2026-10-21.md)** / [机器摘要](../examples/2026-10-21-au-group-12-followup.json)：当前短测未复现、原配置保留，不宣称生产提速已完成。
+
+前阶段 AU 扩展验收记录为 2026-10-20 至 21 日：复制 **[AU 专用提示词](au-agent-prompt.md)**，并读 [配置、逐组测速与回滚](au-expansion-2026-10-21.md) / [机器摘要](../examples/2026-10-21-au-expansion-summary.json)。它明确原路径保留、额外池回滚，以及禁止在相同条件下重复的方案。
 
 继续排查新美国线路时，直接复制 **[US-new专用提示词](us-new-agent-prompt.md)** 中的完整代码块。它包含先读最新记录、区分已拒绝与未执行、保护AU、单项可回滚实验和收尾要求。下面保留通用新环境模板。
 
