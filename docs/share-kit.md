@@ -38,6 +38,10 @@ Repository: https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 >
 > https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 
+## 给第一次使用者的入口
+
+优先分享 [新手诊断](beginner-check.md) 与 [结果示例](result-examples.md)：默认离线看报告，显式 `--execute` 才做轻量请求，不要求服务器凭据。完整案例和维护者当前线路进度分开提供，避免让新使用者先阅读内部组别和实验历史。上方社区帖子仍是未发布草稿，不因文档更新而视为已推广。
+
 ## 给其他 Agent 的复制入口
 
 最新下载复查见 **[group-12 复查与采集开销记录](au-group-12-followup-2026-10-21.md)** / [机器摘要](../examples/2026-10-21-au-group-12-followup.json)：当前短测未复现、原配置保留，不宣称生产提速已完成。

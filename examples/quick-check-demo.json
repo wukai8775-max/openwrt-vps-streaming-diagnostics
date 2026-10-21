@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "type": "client_quick_check",
+  "mode": "demo",
+  "route": "client-current-route",
+  "route_verified": false,
+  "binding_mode": "current_route",
+  "interface_name_recorded": false,
+  "synthetic": true,
+  "overall_status": "example_only",
+  "cancelled": false,
+  "network_requests": 0,
+  "started_child_attempts": 0,
+  "budget": {
+    "probe_requests": 3,
+    "probe_timeout_seconds": 5,
+    "probe_response_body_limit_bytes": 65536,
+    "download_requests": 2,
+    "download_timeout_seconds": 15,
+    "maximum_download_object_bytes": 1048576,
+    "maximum_response_body_bytes": 2293760,
+    "maximum_curl_time_seconds": 45,
+    "maximum_wall_time_seconds": 85
+  },
+  "probe": {
+    "planned": 3,
+    "attempted": 3,
+    "complete": 3,
+    "failed": 0,
+    "skipped": 0,
+    "started_child_attempts": 0,
+    "expected_bytes": null,
+    "attempts": [
+      {
+        "completed": true,
+        "classification": "success",
+        "process_exit": 0,
+        "metrics": {
+          "http_status": 204,
+          "received_bytes": 0,
+          "sent_bytes": 0,
+          "total_seconds": 0.24,
+          "first_byte_seconds": 0.2,
+          "connect_seconds": 0.05,
+          "tls_seconds": 0.12
+        },
+        "task_goodput_mbps": null,
+        "attempt": 1
+      },
+      {
+        "completed": true,
+        "classification": "success",
+        "process_exit": 0,
+        "metrics": {
+          "http_status": 204,
+          "received_bytes": 0,
+          "sent_bytes": 0,
+          "total_seconds": 0.31,
+          "first_byte_seconds": 0.2,
+          "connect_seconds": 0.05,
+          "tls_seconds": 0.12
+        },
+        "task_goodput_mbps": null,
+        "attempt": 2
+      },
+      {
+        "completed": true,
+        "classification": "success",
+        "process_exit": 0,
+        "metrics": {
+          "http_status": 204,
+          "received_bytes": 0,
+          "sent_bytes": 0,
+          "total_seconds": 0.27,
+          "first_byte_seconds": 0.2,
+          "connect_seconds": 0.05,
+          "tls_seconds": 0.12
+        },
+        "task_goodput_mbps": null,
+        "attempt": 3
+      }
+    ]
+  },
+  "download": {
+    "planned": 2,
+    "attempted": 2,
+    "complete": 1,
+    "failed": 1,
+    "skipped": 0,
+    "started_child_attempts": 0,
+    "expected_bytes": 1048576,
+    "attempts": [
+      {
+        "completed": true,
+        "classification": "success",
+        "process_exit": 0,
+        "metrics": {
+          "http_status": 200,
+          "received_bytes": 1048576,
+          "sent_bytes": 0,
+          "total_seconds": 1.0,
+          "first_byte_seconds": 0.2,
+          "connect_seconds": 0.05,
+          "tls_seconds": 0.12
+        },
+        "task_goodput_mbps": 8.388608,
+        "attempt": 1
+      },
+      {
+        "completed": false,
+        "classification": "timeout_partial",
+        "process_exit": 28,
+        "metrics": {
+          "http_status": 200,
+          "received_bytes": 262144,
+          "sent_bytes": 0,
+          "total_seconds": 15.0,
+          "first_byte_seconds": 0.2,
+          "connect_seconds": 0.05,
+          "tls_seconds": 0.12
+        },
+        "task_goodput_mbps": null,
+        "attempt": 2
+      }
+    ]
+  },
+  "classifications": {
+    "success": 4,
+    "timeout_partial": 1
+  },
+  "notes": [
+    "这是合成示例，不是实测；没有请求网络。部分下载保留失败分母且没有成功吞吐。",
+    "只检查系统当前 IPv4 路由；不证明经过任何指定节点或代理。",
+    "started_child_attempts 只计成功启动的 curl 任务；实际网络/HTTP 请求次数未测量，有已启动任务时 network_requests 为 null。",
+    "不更改系统配置；不读取服务器凭据；禁用 curl 显式代理和 curlrc，但透明代理仍可能生效。",
+    "小请求延迟不是 ICMP 延迟、丢包率或直播稳定性结论；目标或 CDN 也可能影响结果。",
+    "默认报告不含 URL、IP、接口名、响应正文、头部或错误原文；分享前仍需人工检查。"
+  ]
+}
