@@ -25,6 +25,8 @@
 
 本次未核验当时刷入的镜像文件名、下载来源、文件 hash 或刷写日期；设备当前运行字段不能单独证明这些信息。本页也不提供刷写步骤或固件下载建议。
 
+2026-11-01 新增独立的 [RG-X60 PRO 刷机准备资料](x60-pro-firmware-preparation.md)，记录本轮候选文件来源、校验与 63/107 MiB 布局区别。该资料处于静态核验阶段，不会反向认证上述历史设备的原镜像，也不代表新机已刷入成功。
+
 ## English summary
 
 Read back on **2026-10-14**: **Ruijie RG-X60 Pro**, running **Kwrt 25.12-SNAPSHOT**, with reported build revision **10.08.2026** and Linux kernel **6.12.112**. Target: `mediatek/filogic`; board: `ruijie,rg-x60-pro`. Values above are the router's reported fields from a read-only `ubus call system board`, not a verified firmware image filename, provenance or flashing date. This current environment check does not change the historical test windows or establish compatibility with another device revision. Device-instance identifiers and credentials remain private; see [public boundaries](../SECURITY.md).

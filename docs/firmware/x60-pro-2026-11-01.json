@@ -1,0 +1,134 @@
+{
+  "review_date": "2026-11-01",
+  "timezone": "Asia/Shanghai",
+  "scope": "File preparation and static verification only. No new-device partition read, login, backup, upload, flash or boot test performed.",
+  "example_device_label": {
+    "model": "RG-X60 PRO",
+    "hardware_version": "V2.00",
+    "stock_firmware_version_verified": false
+  },
+  "device_partitions_verified": false,
+  "stock_recovery_image_obtained": false,
+  "files": [
+    {
+      "filename": "kwrt-10.28.2026-mediatek-filogic-ruijie_rg-x60-pro-squashfs-sysupgrade.bin",
+      "role": "system_candidate",
+      "bytes": 45947151,
+      "sha256": "f67cbe51c08ffb72a74e41178612457a913c320f882cba9855425b7e64a0103b",
+      "source_url": "https://dl.openwrt.ai/firmware/mediatek-filogic/ruijie_rg-x60-pro/kwrt-10.28.2026-mediatek-filogic-ruijie_rg-x60-pro-squashfs-sysupgrade.bin",
+      "device_compatibility_verified": false,
+      "flash_and_boot_tested": false,
+      "embedded_device_tree": {
+        "model": "Ruijie RG-X60 Pro",
+        "compatible": [
+          "ruijie,rg-x60-pro",
+          "mediatek,mt7986a"
+        ],
+        "ubi_offset_hex": "0x680000",
+        "ubi_size_hex": "0x6b00000",
+        "ubi_size_bytes": 112197632,
+        "ubi_size_mib": 107
+      },
+      "fwtool_metadata": {
+        "metadata_version": "1.1",
+        "compat_version": "1.0",
+        "supported_devices": [
+          "ruijie,rg-x60-pro"
+        ],
+        "version": {
+          "dist": "Kwrt",
+          "version": "25.12-SNAPSHOT",
+          "revision": "10.28.2026",
+          "target": "mediatek/filogic",
+          "board": "ruijie_rg-x60-pro"
+        }
+      },
+      "control_board": "ruijie_rg-x60-pro",
+      "archive_structure_verified": true,
+      "integrity_basis": "Recorded hash of publisher HTTPS download; independent publisher signature/checksum not found in this review."
+    },
+    {
+      "filename": "openwrt-25.12.6-mediatek-filogic-ruijie_rg-x60-pro-initramfs-kernel.bin",
+      "role": "temporary_ram_boot_candidate",
+      "bytes": 9166140,
+      "sha256": "0ea258afd298a01ac8c2fb7df142400f5dbf899f459291325062e0226b50f73b",
+      "source_url": "https://downloads.openwrt.org/releases/25.12.6/targets/mediatek/filogic/openwrt-25.12.6-mediatek-filogic-ruijie_rg-x60-pro-initramfs-kernel.bin",
+      "device_compatibility_verified": false,
+      "flash_and_boot_tested": false,
+      "embedded_device_tree": {
+        "model": "Ruijie RG-X60 Pro",
+        "compatible": [
+          "ruijie,rg-x60-pro",
+          "mediatek,mt7986a"
+        ],
+        "ubi_offset_hex": "0x680000",
+        "ubi_size_hex": "0x3f00000",
+        "ubi_size_bytes": 66060288,
+        "ubi_size_mib": 63
+      },
+      "layout_note": "Embedded DTB flash description; does not imply flash must first be repartitioned for RAM boot. Loading and flash access remain device-dependent and unverified.",
+      "official_checksum_manifest_url": "https://downloads.openwrt.org/releases/25.12.6/targets/mediatek/filogic/sha256sums",
+      "official_sha256_match": true
+    },
+    {
+      "filename": "openwrt-25.12.6-mediatek-filogic-ruijie_rg-x60-pro-squashfs-sysupgrade.bin",
+      "role": "system_candidate",
+      "bytes": 9892114,
+      "sha256": "a7c4e3fba0d59040e6b2b62eeabc7af015644499426ded9d72418cb6a7f63cf3",
+      "source_url": "https://downloads.openwrt.org/releases/25.12.6/targets/mediatek/filogic/openwrt-25.12.6-mediatek-filogic-ruijie_rg-x60-pro-squashfs-sysupgrade.bin",
+      "device_compatibility_verified": false,
+      "flash_and_boot_tested": false,
+      "embedded_device_tree": {
+        "model": "Ruijie RG-X60 Pro",
+        "compatible": [
+          "ruijie,rg-x60-pro",
+          "mediatek,mt7986a"
+        ],
+        "ubi_offset_hex": "0x680000",
+        "ubi_size_hex": "0x3f00000",
+        "ubi_size_bytes": 66060288,
+        "ubi_size_mib": 63
+      },
+      "official_checksum_manifest_url": "https://downloads.openwrt.org/releases/25.12.6/targets/mediatek/filogic/sha256sums",
+      "official_sha256_match": true
+    },
+    {
+      "filename": "bl-mt798x-release-20241115.7z",
+      "role": "bootloader_source_archive",
+      "bytes": 1522540,
+      "sha256": "33d17572634ead49c98302cc12797f3ec629eb767306c41791411300349143a7",
+      "source_url": "https://github.com/hanwckf/bl-mt798x/releases/download/20241115/bl-mt798x-release-20241115.7z",
+      "device_compatibility_verified": false,
+      "flash_and_boot_tested": false,
+      "integrity_basis": "Recorded hash of author GitHub release download or member extraction; independent publisher signature/checksum not found in this review."
+    },
+    {
+      "filename": "mt7986_ruijie_rg-x60-pro-fip-fixed-parts-multi-layout.bin",
+      "role": "bootloader_reference",
+      "bytes": 834121,
+      "sha256": "8552cbeeb395f59c5f522a021557117f7aa8a08fe52e6ccc33c168bac4e54e02",
+      "source_url": "https://github.com/hanwckf/bl-mt798x/releases/download/20241115/bl-mt798x-release-20241115.7z",
+      "device_compatibility_verified": false,
+      "flash_and_boot_tested": false,
+      "archive_member": "mt7986_ruijie_rg-x60-pro-fip-fixed-parts-multi-layout.bin",
+      "integrity_basis": "Recorded hash of author GitHub release download or member extraction; independent publisher signature/checksum not found in this review."
+    }
+  ],
+  "openwrt_checksum_signature": {
+    "manifest_url": "https://downloads.openwrt.org/releases/25.12.6/targets/mediatek/filogic/sha256sums",
+    "manifest_sha256": "5bbb3d08b757a96067ecb8a9ec5c235fc2699dbcbf2a33da1d36dfeec47b3b88",
+    "signature_url": "https://downloads.openwrt.org/releases/25.12.6/targets/mediatek/filogic/sha256sums.sig",
+    "public_key_url": "https://raw.githubusercontent.com/openwrt/keyring/master/usign/b5043e70f9a75cde",
+    "public_key_file_sha256": "d7ac10f9ed1b38033855f3d27c9327d558444fca804c685b17d9dcfb0648228f",
+    "key_id": "b5043e70f9a75cde",
+    "algorithm": "Ed25519",
+    "signature_verified": true,
+    "verification_implementation": "Node.js built-in crypto.verify; decoded standard usign Ed25519 public key and signature payloads; usign CLI not executed.",
+    "scope": "Authenticates the recorded checksum manifest against the OpenWrt keyring public key, not hardware compatibility or successful flashing."
+  },
+  "partition_sources": {
+    "openwrt": "https://github.com/openwrt/openwrt/blob/v25.12.6/target/linux/mediatek/dts/mt7986a-ruijie-rg-x60-pro.dts",
+    "kwrt": "Static inspection of the exact SHA256-pinned image and its embedded kernel device tree."
+  },
+  "stock_software_source": "https://www.ruijie.com.cn/fw/rj-cp-x60pro/"
+}
