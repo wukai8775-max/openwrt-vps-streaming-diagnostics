@@ -61,7 +61,7 @@ python3 tools/quick-check.py --execute
 
 | 需要 | 入口 |
 |---|---|
-| 准备 RG-X60 PRO 固件、校验文件与核对分区 | [刷机准备：下载、校验与分区区别](docs/x60-pro-firmware-preparation.md)（实际刷机待实机验证） |
+| RG-X60 PRO 固件准备与 V2.00 原厂首装案例 | [下载、校验与分区区别](docs/x60-pro-firmware-preparation.md) · [已启动并通过重启读回的初刷流程](docs/x60-pro-stock-to-kwrt-v2.md) |
 | 第一次诊断、保存与读懂结果 | [新手指南](docs/beginner-check.md) · [结果示例](docs/result-examples.md) |
 | 绑定指定来源、准备路由器/VPS 快照 | [进阶准备](docs/advanced-start.md) · [采集与测量](docs/measurement-guide.md) |
 | 区分接入、代理、TCP、目标服务 | [排障路径](docs/decision-tree.md) · [单项实验卡](docs/experiment-card.md) |
