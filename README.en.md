@@ -69,7 +69,7 @@ HTTP **429** means the endpoint refused or rate-limited the request; respect its
 
 | Need | Open |
 |---|---|
-| Prepare RG-X60 PRO files and review the V2.00 stock-to-Kwrt case | [Firmware preparation (Chinese)](docs/x60-pro-firmware-preparation.md) · [Tested first flash and reboot readback (Chinese)](docs/x60-pro-stock-to-kwrt-v2.md) |
+| Prepare RG-X60 PRO files and review the V2.00 stock-to-Kwrt case | [Firmware preparation (Chinese)](docs/x60-pro-firmware-preparation.md) · [Tested first flash and reboot readback (Chinese)](docs/x60-pro-stock-to-kwrt-v2.md) · [On-site problems, evidence and resolutions (Chinese)](docs/x60-pro-flashing-troubleshooting.md) |
 | First live check and bounded fixed-object test | [Beginner guide](docs/beginner-check.md) · [Quick-start map](docs/quick-start.md) · [Result examples](docs/result-examples.md) |
 | Separate local access, proxy, TCP and target behavior | [Decision tree](docs/decision-tree.md) · [Measurement guide](docs/measurement-guide.md) |
 | Plan one reversible experiment and accept it | [Experiment card](docs/experiment-card.md) · [Acceptance and rollback](docs/acceptance-and-rollback.md) |
