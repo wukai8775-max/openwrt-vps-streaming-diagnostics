@@ -295,7 +295,9 @@
       "server_login_credentials_sent": false,
       "server_version_verified": false,
       "upgrade_performed": false,
-      "configuration_changed": false
+      "configuration_changed": false,
+      "snapshot_stage": "earlier_same_day_before_trusted_console_followup",
+      "superseded_by": "2026-11-06-au-security-update.json"
     },
     "legacy_group_12_download_issue_declared_fixed": false,
     "recent_load_or_livestream_validation": false
@@ -331,5 +333,14 @@
     "only_role_labels_and_allowlisted_metrics": true,
     "no_credentials_addresses_identifiers_or_raw_configs": true,
     "no_claim_that_all_raw_evidence_was_archived": true
-  }
+  },
+  "scoped_followup_overrides": [
+    {
+      "role": "AU-main_and_shared_AU_groups",
+      "superseded_by": "2026-11-06-au-security-update.json",
+      "scope": "AU server identity current server version and security-update preparation, including related unresolved and next_steps entries",
+      "earlier_facts_preserved_as_historical": true,
+      "does_not_supersede_US_new_identity_or_CA_and_AU_business_acceptance": true
+    }
+  ]
 }

@@ -2,47 +2,68 @@
   "schema_version": 1,
   "snapshot_date": "2026-11-06",
   "timezone": "Asia/Shanghai",
-  "read_base_commit": "e9a16fe7865c7046d4c6d9d6def7c34bad0ad2af",
+  "read_base_commit": "e430af627640233a5dff08e197e6992e8ad5afce",
   "role": "AU-main_and_shared_AU_groups",
   "report": "docs/au-security-update-2026-11-06.md",
   "user_authorized_identity_verification_and_security_update_preparation": true,
   "must_protect_existing_livestreams": true,
-  "status": "awaiting_provider_console_system_login_and_trusted_host_identity_then_post_livestream_cutover",
+  "status": "preparation_validated_awaiting_post_livestream_cutover",
   "provider_console": {
     "management_channel_available": true,
-    "instance_internal_host_key_read": false,
-    "trusted_host_identity_verified": false,
+    "instance_internal_host_key_read": true,
+    "trusted_host_identity_verified": true,
     "provider_product_page_authenticated": true,
     "console_title_matches_selected_instance": true,
-    "system_shell_authenticated": false,
-    "root_console_login_attempts": 1,
-    "root_console_login_accepted": false,
-    "owner_system_login_handoff_pending": true
+    "system_shell_authenticated": true,
+    "root_console_login_attempts": 3,
+    "root_console_login_accepted": true,
+    "owner_system_login_handoff_pending": false,
+    "previous_login_failures_preserved": true,
+    "previous_login_failure_mechanism_verified": false
   },
   "ssh": {
     "previous_same_target_port_ed25519_mismatch": true,
     "unknown_key_accepted": false,
     "credentials_sent_to_unverified_server": false,
-    "host_key_validation_disabled": false
+    "host_key_validation_disabled": false,
+    "strict_host_key_authenticated_command_succeeded": true,
+    "current_key_pinned_for_exact_verified_target": true,
+    "previous_trust_records_preserved": true,
+    "host_key_change_cause_verified": false
   },
   "version_evidence": {
     "router_installed_and_running_xray": "26.10.10",
     "router_passwall": "26.10.4-r325",
-    "current_server_version_verified": false,
+    "current_server_version_verified": true,
     "candidate_version": "26.10.31",
     "official_release": "https://github.com/XTLS/Xray-core/releases/tag/v26.10.31",
     "release_describes_mptcp_security_mitigation": true,
-    "actual_server_exploitability_verified": false
+    "actual_server_exploitability_verified": false,
+    "current_server_running_xray": "26.9.9",
+    "server_architecture": "x86_64",
+    "server_os": "Ubuntu 22.04 LTS",
+    "server_kernel": "5.15.0-198-generic",
+    "candidate_version_command_passed": true
   },
   "preparation": {
     "official_candidate_checksum_document_retrieved_locally": true,
-    "candidate_archive_downloaded": false,
-    "candidate_binary_integrity_verified": false,
-    "current_server_architecture_verified": false,
-    "current_binary_config_database_recovery_bundle_created": false,
-    "real_config_candidate_self_test_passed": false,
+    "candidate_archive_downloaded": true,
+    "candidate_binary_integrity_verified": true,
+    "current_server_architecture_verified": true,
+    "current_binary_config_database_recovery_bundle_created": true,
+    "real_config_candidate_self_test_passed": true,
     "parallel_candidate_handshake_test_passed": false,
-    "maintenance_window_confirmed": false
+    "maintenance_window_confirmed": false,
+    "sqlite_online_backup_completed": true,
+    "sqlite_backup_quick_check_passed": true,
+    "local_recovery_metadata_hashes_and_sqlite_check_passed": true,
+    "full_original_core_backup_on_server": true,
+    "full_original_core_downloaded_locally": false,
+    "real_config_candidate_self_test_exit_code": 0,
+    "real_config_candidate_self_test_elapsed_seconds": 0.356,
+    "parallel_candidate_handshake_test_performed": false,
+    "restore_instructions_written_not_executed": true,
+    "rollback_actually_exercised": false
   },
   "operations": {
     "upgrade_applied": false,
@@ -51,15 +72,19 @@
     "network_parameters_changed": false,
     "throughput_test_performed": false,
     "new_business_or_livestream_acceptance": false,
-    "unconditional_scheduled_cutover_created": false
+    "unconditional_scheduled_cutover_created": false,
+    "server_private_preparation_files_created": true,
+    "production_core_config_unit_hashes_and_core_process_unchanged": true,
+    "original_service_active_after_candidate_check": true,
+    "candidate_listener_or_server_start_requested": false
   },
   "next_steps": [
-    "Complete trusted provider VNC system login and compare instance internal ED25519 with current SSH identity",
-    "Read actual server architecture binary service configuration and database state",
-    "Create and verify current scoped recovery materials",
-    "Verify official candidate and actual configuration in a separate path",
-    "Use a bounded independent handshake check only when current work permits",
-    "Cut over only in a confirmed reconnect window and validate actual business; restore on failure"
+    "Wait for the user-confirmed end of protected livestreams and an allowed reconnect window",
+    "Reverify the exact host, current production process/file hashes and recovery bundle freshness before cutover",
+    "Switch only the core through the verified existing service relationship",
+    "Verify the actual running version, original listener, node handshake, egress, resources and short actual business",
+    "Restore the original core on failure under the precise private instructions; do not automatically restore the database",
+    "Keep throughput, high-peak, sustained livestream and reboot acceptance separate until actually tested"
   ],
   "public_identifiers_or_credentials_included": false,
   "current_livestream_reported_active": true,
@@ -67,8 +92,39 @@
   "historical_console_resource_observation": {
     "visible_oom_history_observed": true,
     "history_includes_update_checks_and_xray": true,
-    "event_wall_clock_time_verified": false,
-    "current_resource_pressure_verified": false,
-    "current_business_causality_verified": false
+    "current_business_causality_verified": false,
+    "current_boot_bounded_journal_query_completed": true,
+    "current_boot_identifier_representation_normalized": true,
+    "journal_record_limit": 60,
+    "journal_time_limit_seconds": 3,
+    "journal_byte_limit": 262144,
+    "returned_related_records": 2,
+    "returned_killed_process_records": 1,
+    "returned_categories": [
+      "automatic_update_or_package_task"
+    ],
+    "latest_returned_event_local": "2026-11-06 14:47:53 Asia/Shanghai",
+    "all_console_history_event_times_verified": false,
+    "current_core_started_before_latest_returned_event": true,
+    "complete_oom_history_available": false,
+    "latest_returned_event_wall_clock_time_verified": true,
+    "current_resource_snapshots_collected": true
+  },
+  "candidate_integrity": {
+    "official_archive_bytes": 16692690,
+    "official_sha256_match": true,
+    "official_sha512_match": true,
+    "candidate_binary_bytes": 35151996,
+    "candidate_binary_sha256_match": true,
+    "candidate_elf_x86_64": true,
+    "candidate_in_separate_private_path": true,
+    "candidate_upload_budget_kbit_per_second": 2048,
+    "upload_budget_is_not_production_rate_limit": true
+  },
+  "resource_snapshots": {
+    "scope": "server_available_memory_snapshots_not_minimum_or_business_acceptance",
+    "bounded_audit_available_memory_kib": 197832,
+    "candidate_test_available_memory_kib_before": 200288,
+    "candidate_test_available_memory_kib_after": 200088
   }
 }
