@@ -1,6 +1,6 @@
 # 最新进度：2026-11-06 CA、US-new 与 AU 交接
 
-**同日 AU 安全更新准备补充：**[状态与下一步](au-security-update-2026-11-06.md) · [机器摘要](../examples/2026-11-06-au-security-update.json)。当前管理通道不可用，可信服务器身份及维护窗口尚未确认；已取得官方校验文档，但未下载/验证候选二进制、未升级或重启。先解决身份与维护条件，再执行兼容性和切换验收。
+**同日 AU 安全更新准备补充：**[状态与下一步](au-security-update-2026-11-06.md) · [机器摘要](../examples/2026-11-06-au-security-update.json)。可信供应商 VNC 已打开，但系统登录尚未成功，服务器主机身份仍待核验；用户确认仍在直播，要求结束后再切换。已取得官方校验文档，未下载/验证候选二进制、未升级或重启。控制台历史 OOM 信息尚未核定发生时间及当前相关性，不作为当前卡顿根因。
 
 **先读 [本轮完整报告](network-followup-2026-11-06.md)、[机器摘要](../examples/2026-11-06-network-followup.json) 和对应 [CA](ca-agent-prompt.md) / [US-new](us-new-agent-prompt.md) / [AU](au-agent-prompt.md) 提示词。** 本页汇总 10/30–11/6 的分日观察，不是实时监控；新刷机路由器案例与原生产网络分别记录。11/4 刷机复盘仍见 [现场问题与处理](x60-pro-flashing-troubleshooting.md)。
 

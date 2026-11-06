@@ -2,16 +2,22 @@
   "schema_version": 1,
   "snapshot_date": "2026-11-06",
   "timezone": "Asia/Shanghai",
-  "read_base_commit": "137b790de8a743367944e20f3b428ed22e6e6f90",
+  "read_base_commit": "e9a16fe7865c7046d4c6d9d6def7c34bad0ad2af",
   "role": "AU-main_and_shared_AU_groups",
   "report": "docs/au-security-update-2026-11-06.md",
   "user_authorized_identity_verification_and_security_update_preparation": true,
   "must_protect_existing_livestreams": true,
-  "status": "awaiting_trusted_identity_verification_and_maintenance_window",
+  "status": "awaiting_provider_console_system_login_and_trusted_host_identity_then_post_livestream_cutover",
   "provider_console": {
-    "management_channel_available": false,
+    "management_channel_available": true,
     "instance_internal_host_key_read": false,
-    "trusted_host_identity_verified": false
+    "trusted_host_identity_verified": false,
+    "provider_product_page_authenticated": true,
+    "console_title_matches_selected_instance": true,
+    "system_shell_authenticated": false,
+    "root_console_login_attempts": 1,
+    "root_console_login_accepted": false,
+    "owner_system_login_handoff_pending": true
   },
   "ssh": {
     "previous_same_target_port_ed25519_mismatch": true,
@@ -48,12 +54,21 @@
     "unconditional_scheduled_cutover_created": false
   },
   "next_steps": [
-    "Restore trusted provider console access and verify instance internal ED25519 against current SSH identity",
+    "Complete trusted provider VNC system login and compare instance internal ED25519 with current SSH identity",
     "Read actual server architecture binary service configuration and database state",
     "Create and verify current scoped recovery materials",
     "Verify official candidate and actual configuration in a separate path",
     "Use a bounded independent handshake check only when current work permits",
     "Cut over only in a confirmed reconnect window and validate actual business; restore on failure"
   ],
-  "public_identifiers_or_credentials_included": false
+  "public_identifiers_or_credentials_included": false,
+  "current_livestream_reported_active": true,
+  "cutover_only_after_livestream_ends": true,
+  "historical_console_resource_observation": {
+    "visible_oom_history_observed": true,
+    "history_includes_update_checks_and_xray": true,
+    "event_wall_clock_time_verified": false,
+    "current_resource_pressure_verified": false,
+    "current_business_causality_verified": false
+  }
 }
