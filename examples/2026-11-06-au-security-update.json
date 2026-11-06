@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-11-06",
+  "timezone": "Asia/Shanghai",
+  "read_base_commit": "137b790de8a743367944e20f3b428ed22e6e6f90",
+  "role": "AU-main_and_shared_AU_groups",
+  "report": "docs/au-security-update-2026-11-06.md",
+  "user_authorized_identity_verification_and_security_update_preparation": true,
+  "must_protect_existing_livestreams": true,
+  "status": "awaiting_trusted_identity_verification_and_maintenance_window",
+  "provider_console": {
+    "management_channel_available": false,
+    "instance_internal_host_key_read": false,
+    "trusted_host_identity_verified": false
+  },
+  "ssh": {
+    "previous_same_target_port_ed25519_mismatch": true,
+    "unknown_key_accepted": false,
+    "credentials_sent_to_unverified_server": false,
+    "host_key_validation_disabled": false
+  },
+  "version_evidence": {
+    "router_installed_and_running_xray": "26.10.10",
+    "router_passwall": "26.10.4-r325",
+    "current_server_version_verified": false,
+    "candidate_version": "26.10.31",
+    "official_release": "https://github.com/XTLS/Xray-core/releases/tag/v26.10.31",
+    "release_describes_mptcp_security_mitigation": true,
+    "actual_server_exploitability_verified": false
+  },
+  "preparation": {
+    "official_candidate_checksum_document_retrieved_locally": true,
+    "candidate_archive_downloaded": false,
+    "candidate_binary_integrity_verified": false,
+    "current_server_architecture_verified": false,
+    "current_binary_config_database_recovery_bundle_created": false,
+    "real_config_candidate_self_test_passed": false,
+    "parallel_candidate_handshake_test_passed": false,
+    "maintenance_window_confirmed": false
+  },
+  "operations": {
+    "upgrade_applied": false,
+    "production_binary_or_symlink_changed": false,
+    "proxy_or_wireless_restarted": false,
+    "network_parameters_changed": false,
+    "throughput_test_performed": false,
+    "new_business_or_livestream_acceptance": false,
+    "unconditional_scheduled_cutover_created": false
+  },
+  "next_steps": [
+    "Restore trusted provider console access and verify instance internal ED25519 against current SSH identity",
+    "Read actual server architecture binary service configuration and database state",
+    "Create and verify current scoped recovery materials",
+    "Verify official candidate and actual configuration in a separate path",
+    "Use a bounded independent handshake check only when current work permits",
+    "Cut over only in a confirmed reconnect window and validate actual business; restore on failure"
+  ],
+  "public_identifiers_or_credentials_included": false
+}
