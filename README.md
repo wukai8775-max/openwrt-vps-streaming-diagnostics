@@ -67,7 +67,9 @@ python3 tools/quick-check.py --execute
 | 区分接入、代理、TCP、目标服务 | [排障路径](docs/decision-tree.md) · [单项实验卡](docs/experiment-card.md) |
 | 核对稳定性或恢复改动 | [验收与回滚](docs/acceptance-and-rollback.md) |
 | 阅读实测与已拒绝方案 | [案例与历史索引](docs/cases.md) · [最新进度](docs/latest-progress.md) |
-| 让其他 Agent 接手 | [AU 提示词](docs/au-agent-prompt.md) · [US-new 提示词](docs/us-new-agent-prompt.md) |
+| 让其他 Agent 接手 | [AU 提示词](docs/au-agent-prompt.md) · [US-new 提示词](docs/us-new-agent-prompt.md) · [CA 提示词](docs/ca-agent-prompt.md) |
+
+**2026-11-06 网络排查交接：** [CA / US-new / AU 已验证结果与未解事项](docs/network-followup-2026-11-06.md) · [机器摘要](examples/2026-11-06-network-followup.json)。包含 CA 独立 XHTTP 对照、Windows 核心未解决问题、US 配额与身份核验、AU 手机接入与版本检查；不代表新的直播验收。
 
 ## 工具与反馈
 

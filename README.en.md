@@ -74,9 +74,11 @@ HTTP **429** means the endpoint refused or rate-limited the request; respect its
 | Separate local access, proxy, TCP and target behavior | [Decision tree](docs/decision-tree.md) · [Measurement guide](docs/measurement-guide.md) |
 | Plan one reversible experiment and accept it | [Experiment card](docs/experiment-card.md) · [Acceptance and rollback](docs/acceptance-and-rollback.md) |
 | Read measured outcomes, failures and rolled-back candidates | [Case index](docs/cases.md) · [Latest progress](docs/latest-progress.md) |
-| Hand off an existing investigation to another Agent | [AU prompt](docs/au-agent-prompt.md) · [US-new prompt](docs/us-new-agent-prompt.md) |
+| Hand off an existing investigation to another Agent | [AU prompt](docs/au-agent-prompt.md) · [US-new prompt](docs/us-new-agent-prompt.md) · [CA prompt](docs/ca-agent-prompt.md) |
 
 Detailed historical narratives are currently in Chinese. Commands and linked JSON summaries can be read independently. **US-new and legacy US-main are different routes.** The case index keeps all stages and final decisions separate; historical BBR gains are not a prescription for a new node.
+
+**Network handoff, 2026-11-06:** [CA / US-new / AU evidence and unresolved issues (Chinese)](docs/network-followup-2026-11-06.md) · [JSON summary](examples/2026-11-06-network-followup.json). Includes bounded CA XHTTP comparisons, unresolved Windows core startup, US quota and host-identity checks, and AU association/version observations. It does not certify livestream stability.
 
 ## Tools for a deeper investigation
 

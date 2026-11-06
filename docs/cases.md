@@ -2,7 +2,7 @@
 
 这里集中保存已发表的排查记录。**每一批的成功、失败、回滚和未验收项都保留；后一次成功不会覆盖前一次失败。** 本页不是实时监控。首次使用请先看 [新手诊断入口](beginner-check.md) 和 [结果怎么读](result-examples.md)，再选择与你的症状相符的案例。
 
-公开名称 `AU-main`、`AU-group-N`、`US-main`、`US-new` 都是匿名角色，不是设备上的真实网络名称。**US-main 是旧美国线路，US-new 是另一台 VPS 的新线路，两者不能套用同一结论。** 十五个 AU 分组共享同一上游、出口与带宽，增加接入分组不等于增加十五条独立带宽。
+公开名称 `AU-main`、`AU-group-N`、`US-main`、`US-new`、`CA-main`、`CA-xhttp-test` 都是匿名角色，不是设备上的真实网络名称。**US-main 是旧美国线路，US-new 是另一台 VPS 的新线路，两者不能套用同一结论。** 十五个 AU 分组共享同一上游、出口与带宽，增加接入分组不等于增加十五条独立带宽。
 
 ## 先看两个容易误判的结果
 
@@ -12,6 +12,10 @@
 | HTTP 200，但超时且只收到部分字节 | 请求收到响应，却没有完成固定任务；不能把部分下载速度记为完整任务成功 | [结果示例](result-examples.md)；[AU-group-12 旧超时复核](au-group-12-followup-2026-10-21.md) |
 
 另一目标测试成功，可以支持继续区分目标相关性，不能抹掉原来的 429 或超时。小请求通过不代表容量、手机直播或晚高峰稳定性通过。
+
+## 2026-11-06：CA、US-new 与 AU 最新交接
+
+[完整分日报告](network-followup-2026-11-06.md) · [JSON 摘要](../examples/2026-11-06-network-followup.json) · [CA 接手提示词](ca-agent-prompt.md)。CA 原入口与独立 XHTTP 小请求对照、核心性能候选拒绝、Windows 未解决问题、US 配额/身份与续费后有限恢复、AU 轻量及安卓关联/版本检查分别记录。最新整理日期不表示所有服务都在同日重新测试；CA 吞吐和直播、US身份/限速解除、AU新速度及旧卡顿根因仍未验收。
 
 ## AU：按阶段阅读
 
@@ -51,7 +55,7 @@ US-new 保留新 VPS 的原 CUBIC，路由器保留原默认 BBR。未执行的�
 接手时先记录当前 `main` 提交 SHA，再按下面顺序读取并核对设备**当前**状态；仓库里的“当时无直播”不代表现在可压测。
 
 1. [最新进度](latest-progress.md)，区分当前快照、历史批次与尚未验收事项。
-2. 按目标选 [AU 提示词](au-agent-prompt.md) 或 [US-new 提示词](us-new-agent-prompt.md)，以及该阶段 JSON。
+2. 按目标选 [AU 提示词](au-agent-prompt.md) 、[US-new 提示词](us-new-agent-prompt.md) 或 [CA 提示词](ca-agent-prompt.md)，以及该阶段 JSON。
 3. [决策树](decision-tree.md) → [单项实验卡](experiment-card.md) → [验收与回滚](acceptance-and-rollback.md)。需要完整时间预算再看 [八小时手册](eight-hour-playbook.md)。
 
 已拒绝候选需要新证据才能重新实验。AU 不重复相同资源预算的额外池、十五套测试端点或持续压已返回 429 的接口；US-new 不直接重复 BBR 监听、强制接收缓存与 16 MiB 上限。真实地址、凭据、完整配置、原始日志和抓包只保留私有材料，公开提交遵循 [SECURITY.md](../SECURITY.md)。

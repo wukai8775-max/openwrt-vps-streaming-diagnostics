@@ -1,0 +1,335 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-11-06",
+  "timezone": "Asia/Shanghai",
+  "read_base_commit": "ba100add636769416013c62c46cdda380f17585e",
+  "observation_window": {
+    "start": "2026-10-30",
+    "end": "2026-11-06",
+    "not_continuous_monitoring": true
+  },
+  "report": "docs/network-followup-2026-11-06.md",
+  "roles": [
+    "AU-main",
+    "AU-group-2_to_15",
+    "US-new",
+    "CA-main",
+    "CA-xhttp-test"
+  ],
+  "scope": "Original production AU groups and previously identified US-new/CA server; excludes another newly flashed router and another US server",
+  "evidence_sources": {
+    "CA": [
+      "private_report",
+      "private_structured_summary",
+      "session_observation",
+      "user_confirmation"
+    ],
+    "US-new": [
+      "session_observation",
+      "provider_account_readback",
+      "official_package_description"
+    ],
+    "AU": [
+      "session_observation",
+      "runtime_configuration_comparison",
+      "user_confirmation",
+      "private_redacted_version_summary"
+    ]
+  },
+  "ca": {
+    "initial_acceptance": {
+      "date": "2026-10-30",
+      "server_xray_version_at_observation": "26.10.29",
+      "protocol": "VLESS_REALITY_raw_Vision",
+      "small_requests_complete": 6,
+      "small_requests_attempted": 6,
+      "small_request_seconds_range": [
+        1.673,
+        2.053
+      ],
+      "complete_download_batches": [
+        {
+          "target": "Cloudflare",
+          "expected_bytes": 5000000,
+          "complete": 2,
+          "attempted": 2,
+          "goodput_mbps": [
+            9.32,
+            5.66
+          ]
+        },
+        {
+          "target": "OVH",
+          "expected_bytes": 10485760,
+          "complete": 2,
+          "attempted": 2,
+          "goodput_mbps": [
+            9.43,
+            10.37
+          ]
+        }
+      ],
+      "complete_upload_batch": {
+        "expected_bytes_per_request": 4194304,
+        "complete": 2,
+        "attempted": 2,
+        "goodput_mbps": [
+          8.28,
+          8.69
+        ]
+      },
+      "successful_request_after_service_restart_seconds": 6.774,
+      "whole_server_reboot_validated": false
+    },
+    "latency_observation": {
+      "date": "2026-10-30",
+      "tcp_smoothed_rtt_ms_range": [
+        217,
+        219
+      ],
+      "independent_ping_samples": false,
+      "actual_gui_target_pairs": 3,
+      "complete": 6,
+      "attempted": 6,
+      "cold_request_seconds_range": [
+        1.781,
+        1.846
+      ],
+      "confirmed_reuse_seconds_range": [
+        0.474,
+        0.525
+      ],
+      "configuration_gain_claimed": false
+    },
+    "client_core_performance_candidate": {
+      "date": "2026-10-30",
+      "baseline": "26.7.28",
+      "candidate": "26.10.29",
+      "total_complete": 20,
+      "total_attempted": 20,
+      "targets": [
+        {
+          "target": "Google_small_request",
+          "baseline_median_seconds": 1.80819,
+          "candidate_median_seconds": 1.843447,
+          "candidate_faster_pairs": 2,
+          "pairs": 5
+        },
+        {
+          "target": "Cloudflare_small_request",
+          "baseline_median_seconds": 1.740445,
+          "candidate_median_seconds": 1.794479,
+          "candidate_faster_pairs": 2,
+          "pairs": 5
+        }
+      ],
+      "decision": "rejected_for_performance_no_user_core_replacement",
+      "does_not_decide_future_security_updates": true,
+      "earlier_test_core_batch_merged": false
+    },
+    "xhttp_endpoint": {
+      "date": "2026-11-01",
+      "protocol": "VLESS_XHTTP_REALITY",
+      "independent_identity_config_listener_service": true,
+      "vision_flow_configured": false,
+      "retained_alongside_original": true,
+      "original_process_and_config_unchanged": true,
+      "original_service_restarted_for_addition": false,
+      "shared_server_resources": true,
+      "enabled_at_final_readback": true,
+      "automatic_restarts_at_final_readback": 0,
+      "november_6_service_recheck": false
+    },
+    "xhttp_light_ab": {
+      "date": "2026-11-01",
+      "client_xray_version": "26.7.28",
+      "same_client_server_and_access_network": true,
+      "inbound_ports_differ": true,
+      "prechecks_warmed_transport": true,
+      "fresh_outer_xhttp_connection_proven": false,
+      "targets": [
+        {
+          "target": "Google_small_request",
+          "raw_complete": 3,
+          "raw_attempted": 3,
+          "raw_median_seconds": 1.822,
+          "xhttp_complete": 3,
+          "xhttp_attempted": 3,
+          "xhttp_median_seconds": 1.082
+        },
+        {
+          "target": "Cloudflare_small_request",
+          "raw_complete": 3,
+          "raw_attempted": 3,
+          "raw_median_seconds": 1.746,
+          "xhttp_complete": 3,
+          "xhttp_attempted": 3,
+          "xhttp_median_seconds": 0.978
+        }
+      ],
+      "exit_checks": {
+        "passed": 4,
+        "attempted": 4
+      },
+      "server_guards": {
+        "passed": 8,
+        "attempted": 8,
+        "minimum_mem_available_kib": 288028
+      },
+      "default_path_guards": {
+        "passed": 8,
+        "attempted": 8,
+        "exit_verified_as_au": false
+      },
+      "temporary_clients_cleaned": true,
+      "throughput_upload_livestream_validated": false,
+      "pure_protocol_causality_claimed": false
+    },
+    "client_outcomes": {
+      "date": "2026-11-01",
+      "mobile_data_user_report_usable": true,
+      "same_phone_wifi_recheck_user_report_usable": true,
+      "initial_multi_device_failure_root_cause_proven": false,
+      "windows_v2rayn_version": "7.20.4",
+      "windows_original_and_test_profile_core_start_failure": true,
+      "share_fields_matched_test_config": true,
+      "windows_actual_core_version_verified": false,
+      "windows_core_switch_success_confirmed": false,
+      "windows_problem_resolved": false
+    }
+  },
+  "us_new": {
+    "date": "2026-11-01",
+    "management_path_proxy_requests_timed_out_before_recheck": true,
+    "tcp_ports_reachable_from_another_source": true,
+    "identity": {
+      "same_saved_target_management_port_algorithm_compared": true,
+      "host_key_changed_against_stored_reference": true,
+      "old_reference_independently_authenticated": false,
+      "new_key_accepted": false,
+      "login_credentials_sent": false,
+      "change_reason_verified": false,
+      "requires_trusted_console_verification": true
+    },
+    "quota": {
+      "account_readback_exhausted": true,
+      "approximate_used_percent": 102,
+      "remaining_period_quota_zero": true,
+      "package_excess_rate_mbps": 3,
+      "rate_actually_measured_in_this_batch": false,
+      "service_term_extended": true,
+      "additional_current_period_quota_received_verified": false,
+      "limit_removed_verified": false
+    },
+    "after_user_renewal": {
+      "small_requests_complete": 2,
+      "small_requests_attempted": 2,
+      "seconds": [
+        1.45,
+        1.51
+      ],
+      "exit_checks_passed": 2,
+      "exit_checks_attempted": 2,
+      "exit_matches_saved_reference": true,
+      "renewal_caused_recovery_proven": false,
+      "throughput_or_livestream_validated": false
+    },
+    "network_parameter_changes_in_followup": 0,
+    "initial_saved_client_requests_failed": true,
+    "initial_saved_client_flow_differs_from_share": true,
+    "management_saved_share_flow_check": {
+      "complete": 0,
+      "attempted": 2,
+      "connect_budget_seconds": 7,
+      "both_timed_out": true
+    }
+  },
+  "au": {
+    "light_check": {
+      "date": "2026-11-05",
+      "http_complete": 2,
+      "http_attempted": 2,
+      "seconds": [
+        1.398,
+        1.049
+      ],
+      "exit_matches_saved_au_reference": true,
+      "live_ssid_verified": false,
+      "management_unavailable_at_observation": true,
+      "throughput_mbps_measured": false
+    },
+    "authentication_check": {
+      "date": "2026-11-06",
+      "enabled_groups": 15,
+      "checked_groups": 15,
+      "runtime_interfaces_present": 15,
+      "stored_and_runtime_auth_passphrase_fields_match_private_reference": 15,
+      "authentication": "WPA2_WPA3_mixed",
+      "pending_wireless_changes": 0,
+      "source_kind": [
+        "session_observation",
+        "runtime_configuration_comparison",
+        "user_confirmation"
+      ],
+      "android_main_group_association_confirmed_by_user": true,
+      "other_groups_phone_association_verified": false,
+      "internet_access_after_association_verified": false,
+      "initial_wrong_password_root_cause_proven": false,
+      "password_or_wireless_changed": false,
+      "wireless_restarted": false
+    },
+    "version_check": {
+      "date": "2026-11-06",
+      "production_router": "Ruijie_RG_X60_Pro",
+      "kwrt": "25.12-SNAPSHOT",
+      "build_revision": "10.11.2026",
+      "router_installed_xray": "26.10.10",
+      "running_xray_processes": 2,
+      "each_running_process_xray": "26.10.10",
+      "passwall": "26.10.4-r325",
+      "passwall_enabled": true,
+      "au_default_transport": "VLESS_XHTTP_auto",
+      "destination_matches_private_au_reference": true,
+      "server_host_identity_verified": false,
+      "stored_current_ed25519_mismatch_same_target_and_port": true,
+      "server_login_credentials_sent": false,
+      "server_version_verified": false,
+      "upgrade_performed": false,
+      "configuration_changed": false
+    },
+    "legacy_group_12_download_issue_declared_fixed": false,
+    "recent_load_or_livestream_validation": false
+  },
+  "security_release_observation": {
+    "checked_on": "2026-11-06",
+    "official_latest_at_check": "26.10.31",
+    "source": "https://github.com/XTLS/Xray-core/releases/tag/v26.10.31",
+    "release_describes_mptcp_security_mitigation": true,
+    "release_says_26_10_29_withdrawn": true,
+    "actual_device_exploitability_proven": false,
+    "performance_candidate_result_not_a_security_update_decision": true
+  },
+  "unresolved": [
+    "CA earlier high-latency tails and intermittent client failures not causally located",
+    "Windows CA core startup failure not resolved",
+    "CA XHTTP full throughput upload load mobile livestream and peak-hours not validated",
+    "US-new host identity change requires trusted verification",
+    "US-new quota replenishment and removal of excess-rate limit unverified",
+    "AU server identity and current server version require trusted verification",
+    "AU initial Android wrong-password report not causally explained",
+    "Other AU groups phone association and recent Mbps/load not verified"
+  ],
+  "next_steps": [
+    "Reconfirm actual devices roles active work and current authorized scope",
+    "Verify AU and US-new host identity through trusted control plane before authentication",
+    "Read real current binaries/kernel and evaluate security updates separately from throughput tuning",
+    "Check Windows local core selection/version generated config and first startup error",
+    "Check US current period quota separately from service expiry",
+    "Only perform bounded matched throughput and real-business regression when current use permits"
+  ],
+  "privacy": {
+    "only_role_labels_and_allowlisted_metrics": true,
+    "no_credentials_addresses_identifiers_or_raw_configs": true,
+    "no_claim_that_all_raw_evidence_was_archived": true
+  }
+}
