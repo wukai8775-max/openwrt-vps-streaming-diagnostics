@@ -1,5 +1,7 @@
 # AU 分组：继续排查的 Agent 提示词
 
+**2026-11-11 最新接入记录：**[Wi-Fi 一连就弹回：分组诊断与修复](au-wifi-association-2026-11-11.md) · [机器摘要](../examples/2026-11-11-au-wifi-association.json)。九个故障组已修复，AU 全组 Mac 短时接入及原澳洲出口验收通过，US-new 回归通过。按当前业务状态复核，未验长时间直播。
+
 [最新进度](latest-progress.md) · [2026-11-06 后续报告](network-followup-2026-11-06.md) · [后续机器摘要](../examples/2026-11-06-network-followup.json) · [10 月 21 日下载复查](au-group-12-followup-2026-10-21.md) · [历史扩展与验收](au-expansion-2026-10-21.md) · [历史扩展摘要](../examples/2026-10-21-au-expansion-summary.json) · [公开资料边界](../SECURITY.md)
 
 **2026-11-06 交接补充：**先读后续报告与摘要。11 月 5 日只有轻量请求和历史出口参考比对，没有新的下载/上传 Mbps；11 月 6 日核对了十五组当前配置及运行文件中的密码一致性，用户确认安卓手机已连接 AU-main。其他组的手机接入、上网及持续业务未逐一验证，初次密码错误的原因未定。下方 10 月 20–21 日的性能、资源和回滚结论继续作为历史证据保留。
@@ -15,6 +17,8 @@
 https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics
 
 先确认 main 分支当前提交，依次读取 README.md、SECURITY.md、docs/latest-progress.md、docs/network-followup-2026-11-06.md 和 examples/2026-11-06-network-followup.json，再读 docs/au-expansion-2026-10-21.md、examples/2026-10-21-au-expansion-summary.json 和后续报告指向的历史证据。如果 main 已有更新，继续跟随最新记录。记下实际读取的提交 SHA、报告日期和测试日期，不能把历史快照代替当前设备检查；中途实验结果也不能覆盖最终保留决定。
+
+遇到“连上就弹回”先读 docs/au-wifi-association-2026-11-11.md 和 examples/2026-11-11-au-wifi-association.json。旧故障发生在 Wi-Fi 认证阶段，九组 0/18 次取得 IP；单组试修及对照通过后才扩大，AU 15/15 实际取得 IP、保持连接并匹配原出口。先核对当前关联日志和范围，不要默认密码错误、重复换 BSSID 或全量重载。如果已经能接入但业务卡顿，按网络分层另建基线。
 
 先读 docs/au-xray-cutover-2026-11-11.md 与 examples/2026-11-11-au-xray-cutover.json。直播结束后，AU VPS 的 Xray 已从 26.9.9 切换至 26.10.31。切换后实际新进程和三个原配置 TCP 监听核对通过，原 XHTTP 和 RAW 业务与出口共 28/28，8/8 出口匹配。保留新版本并已解除 180 秒回滚保护。11 月 6 日的准备记录是历史证据，接手前按当前权限重新核验运行状态。若后续诊断要用真实直播或并发负载，须按用户授权另立验收窗口。
 

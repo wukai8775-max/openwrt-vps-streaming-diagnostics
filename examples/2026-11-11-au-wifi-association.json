@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-11",
+  "timezone": "Asia/Shanghai",
+  "scope": "wifi_association_only",
+  "client_platform": "macOS",
+  "before": {
+    "au_aps_enabled": 15,
+    "au_groups_checked": 15,
+    "groups_passed_join_hold_and_expected_exit": 6,
+    "affected_groups": 9,
+    "attempts_per_affected_group": 2,
+    "affected_attempts_total": 18,
+    "affected_attempts_with_expected_ip": 0,
+    "affected_groups_with_auth_response_no_ack": 9
+  },
+  "repair": {
+    "decision": "retain",
+    "change": "unique_bssid_and_targeted_ap_recreation",
+    "phase_group_counts": [
+      1,
+      1,
+      7
+    ],
+    "target_aps_recreated": 9,
+    "non_target_aps_recreated": 0,
+    "shared_radio_restart_observed": false,
+    "non_target_wireless_config_unchanged": true,
+    "rollback_backup_retained": true
+  },
+  "after": {
+    "minimum_hold_seconds": 10,
+    "au_groups_checked": 15,
+    "au_groups_passed_join_hold_and_expected_exit": 15,
+    "affected_groups_passed_join_hold_and_expected_exit": 9,
+    "https_last_visit_first_request": {
+      "passed": 9,
+      "total": 15
+    },
+    "https_last_visit_second_request": {
+      "passed": 15,
+      "total": 15
+    },
+    "us_new_join_hold_and_us_exit_passed": true,
+    "us_new_https": {
+      "passed": 2,
+      "total": 2
+    },
+    "aps_enabled_total": 16,
+    "mac_restored_to_management": true,
+    "temporary_files_removed": true
+  },
+  "limits": {
+    "exact_radio_mechanism_proven": false,
+    "throughput_tested": false,
+    "real_livestream_tested": false
+  }
+}
