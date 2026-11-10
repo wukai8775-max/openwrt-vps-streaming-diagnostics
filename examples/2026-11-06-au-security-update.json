@@ -1,4 +1,5 @@
 {
+  "superseded_by": "2026-11-11-au-xray-cutover.json",
   "schema_version": 1,
   "snapshot_date": "2026-11-06",
   "timezone": "Asia/Shanghai",

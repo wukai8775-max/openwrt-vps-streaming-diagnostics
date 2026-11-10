@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-11",
+  "timezone": "Asia/Shanghai",
+  "role": "AU-main",
+  "repository_baseline": "8bf132a31639ab2fc1dddf824dab341ee16065ed",
+  "supersedes": "2026-11-06-au-security-update.json",
+  "status": "production_core_upgraded_and_short_acceptance_passed",
+  "maintenance_window_confirmed_after_livestream": true,
+  "strict_ssh_identity_verification_passed": true,
+  "server": {
+    "platform": "Ubuntu 22.04 LTS x86_64",
+    "kernel_observed_before_switch": "5.15.0-203-generic",
+    "previous_running_xray": "26.9.9",
+    "verified_running_xray": "26.10.31",
+    "managed_by": "X-UI",
+    "switched_at_local": "2026-11-11T01:32:04+08:00",
+    "official_release": "https://github.com/XTLS/Xray-core/releases/tag/v26.10.31",
+    "candidate_matches_verified_release": true,
+    "candidate_current_configuration_test_exit": 0,
+    "recovery_bundle_refreshed": true,
+    "sqlite_online_backup_quick_check_passed": true,
+    "old_core_and_backup_digest_match": true,
+    "config_bytes_unchanged": true,
+    "service_unit_digest_unchanged": true,
+    "configured_tcp_listeners_verified": 3,
+    "service_recovery_check_seconds": 1.682,
+    "post_switch_observation_seconds": 62.833,
+    "automatic_service_restarts_in_window": 0,
+    "available_memory_kib_at_acceptance": 1636072,
+    "bounded_startup_and_kernel_log_checks_passed": true,
+    "rollback_deadline_seconds": 180,
+    "rollback_guard_removed_after_acceptance": true,
+    "rollback_executed": false
+  },
+  "client": {
+    "path": "Mac explicit local SOCKS5h with original single-outbound VLESS REALITY profile per transport",
+    "probes_per_transport_per_round": 7,
+    "baseline_passed": 14,
+    "baseline_planned": 14,
+    "post_passed": 28,
+    "post_planned": 28,
+    "post_egress_matches": 8,
+    "post_egress_checks": 8,
+    "post_business_passed": 20,
+    "post_business_checks": 20,
+    "post_https_uploads_passed": 4,
+    "post_https_uploads_planned": 4,
+    "business_checks": [
+      "Google HTTPS 204 twice",
+      "TikTok public HTTPS robots resource twice",
+      "HTTPS 16 KiB POST once"
+    ],
+    "egress_checks": [
+      "Cloudflare trace IPv4",
+      "ipify IPv4"
+    ],
+    "rounds": [
+      {
+        "phase": "before",
+        "transport": "xhttp",
+        "planned": 7,
+        "passed": 7,
+        "exit_matched": 2,
+        "business_passed": 5,
+        "upload_payload_bytes": 16384,
+        "business_median_ms": 731.1,
+        "business_max_ms": 1155.5
+      },
+      {
+        "phase": "before",
+        "transport": "raw",
+        "planned": 7,
+        "passed": 7,
+        "exit_matched": 2,
+        "business_passed": 5,
+        "upload_payload_bytes": 16384,
+        "business_median_ms": 1189.6,
+        "business_max_ms": 1627.4
+      },
+      {
+        "phase": "after",
+        "transport": "xhttp",
+        "planned": 7,
+        "passed": 7,
+        "exit_matched": 2,
+        "business_passed": 5,
+        "upload_payload_bytes": 16384,
+        "business_median_ms": 670.8,
+        "business_max_ms": 1091.9
+      },
+      {
+        "phase": "after",
+        "transport": "raw",
+        "planned": 7,
+        "passed": 7,
+        "exit_matched": 2,
+        "business_passed": 5,
+        "upload_payload_bytes": 16384,
+        "business_median_ms": 1265.4,
+        "business_max_ms": 2228.4
+      },
+      {
+        "phase": "after-repeat",
+        "transport": "xhttp",
+        "planned": 7,
+        "passed": 7,
+        "exit_matched": 2,
+        "business_passed": 5,
+        "upload_payload_bytes": 16384,
+        "business_median_ms": 905.6,
+        "business_max_ms": 1114.2
+      },
+      {
+        "phase": "after-repeat",
+        "transport": "raw",
+        "planned": 7,
+        "passed": 7,
+        "exit_matched": 2,
+        "business_passed": 5,
+        "upload_payload_bytes": 16384,
+        "business_median_ms": 1141.5,
+        "business_max_ms": 2086.9
+      }
+    ]
+  },
+  "scope": {
+    "router_or_system_proxy_modified": false,
+    "database_restored_or_migrated": false,
+    "throughput_benchmark_performed": false,
+    "live_mobile_broadcast_validated": false,
+    "sustained_or_peak_hour_load_validated": false,
+    "vps_reboot_recovery_tested": false,
+    "public_output_uses_role_labels_only": true
+  }
+}
