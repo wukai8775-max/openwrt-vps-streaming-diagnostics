@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-11-10",
+  "timezone": "Asia/Shanghai",
+  "report": "docs/au-network-followup-2026-11-10.md",
+  "role": "AU-main",
+  "capacity": {
+    "previous_plan_ram_mb": 512,
+    "pre_recovery_available_mib": 26,
+    "temporary_recovery_swap_mib": 512,
+    "temporary_swap_persisted": false,
+    "provider_plan_ram_gb": 2,
+    "guest_total_gib": 1.9,
+    "guest_available_gib": 1.6,
+    "guest_used_mib": 217,
+    "guest_swap_bytes_after_upgrade": 0,
+    "service_active": true,
+    "original_au_egress_verified": true
+  },
+  "ssh": {
+    "provider_console_login_verified": true,
+    "ed25519_fingerprint_matched": true,
+    "client_trust_record_updated": true,
+    "strict_host_verification_passed": true,
+    "ssh_user_authentication_verified": false
+  },
+  "test_path": {
+    "protocol": "VLESS/REALITY/XHTTP",
+    "target": "Cloudflare speed test, Melbourne",
+    "same_as_phone_wifi_path_verified": false,
+    "actual_phone_live_test_performed": false
+  },
+  "latency": {
+    "idle_vps_icmp": {"complete": 8, "attempted": 8, "mean_ms": 245.8, "min_ms": 244.5, "max_ms": 247.9},
+    "idle_vps_tcp_handshake": {"complete": 8, "attempted": 8, "median_ms": 248.0},
+    "upload_window_vps_icmp": {"complete": 24, "attempted": 24, "mean_ms": 255.3},
+    "idle_cloudflare_ttfb": {"complete": 8, "attempted": 8, "median_ms": 860, "max_ms": 5261},
+    "three_stream_continuous_cloudflare_ttfb": {"complete": 21, "attempted": 21, "median_ms": 610, "max_ms": 3663}
+  },
+  "single_upload_observations": [
+    {"expected_bytes": 5000000, "complete": true, "average_mbps": 7.82, "elapsed_seconds": 5.12},
+    {"expected_bytes": 8000000, "complete": false, "elapsed_seconds": 22.0, "outcome": "timeout_without_success_response"}
+  ],
+  "upload_rate_definition": "Sum of per-flow average client send rates, including incomplete requests. Not aggregate goodput.",
+  "concurrent_upload_batches": [
+    {"flows": 2, "target_mbps_per_flow": 5, "bytes_per_request": 28125000, "requests_per_flow": 1, "complete": 0, "attempted": 2, "sum_flow_avg_send_mbps": 6.55, "loaded_https_complete": 19, "loaded_https_attempted": 22},
+    {"flows": 2, "target_mbps_per_flow": 4, "bytes_per_request": 5000000, "requests_per_flow": 3, "complete": 4, "attempted": 6, "sum_flow_avg_send_mbps": 4.84, "loaded_https_complete": 21, "loaded_https_attempted": 22},
+    {"flows": 2, "target_mbps_per_flow": 3, "bytes_per_request": 3750000, "requests_per_flow": 3, "complete": 5, "attempted": 6, "sum_flow_avg_send_mbps": 3.27, "loaded_https_complete": 19, "loaded_https_attempted": 20},
+    {"flows": 3, "target_mbps_per_flow": 2.5, "bytes_per_request": 3125000, "requests_per_flow": 2, "complete": 6, "attempted": 6, "sum_flow_avg_send_mbps": 7.38, "loaded_https_complete": 13, "loaded_https_attempted": 13},
+    {"flows": 3, "target_mbps_per_flow": 2.5, "bytes_per_request": 14062500, "requests_per_flow": 1, "complete": 3, "attempted": 3, "sum_flow_avg_send_mbps": 7.39, "elapsed_seconds_by_flow": [45.15, 46.11, 45.84], "loaded_https_complete": 21, "loaded_https_attempted": 21}
+  ],
+  "live_stream_acceptance": "pending_actual_phone_wifi_and_platform_test"
+}
