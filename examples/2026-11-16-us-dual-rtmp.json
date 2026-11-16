@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-16",
+  "timezone": "Asia/Shanghai",
+  "test_kind": "concurrent_synthetic_rtmp_ingest",
+  "path_roles": [
+    "wifi_test_client",
+    "router_production_us_proxy",
+    "us_egress_vps",
+    "independent_ca_receiver"
+  ],
+  "wifi_clients_generating_test_streams": 1,
+  "simultaneous_streams": 2,
+  "media": {
+    "video_codec": "H.264",
+    "width": 1280,
+    "height": 720,
+    "frames_per_second": 30,
+    "video_target_mbps": 4,
+    "keyframe_interval_seconds": 2,
+    "audio_codec": "AAC",
+    "audio_target_kbps": 128,
+    "media_duration_seconds_per_stream": 1202.328
+  },
+  "smoke_frames_received_per_stream": [360, 360],
+  "stall_threshold_seconds": 2,
+  "receiver_progress_interval_target_seconds": 0.5,
+  "streams": [
+    {
+      "role": "stream_1",
+      "frames_sent": 36000,
+      "frames_received": 36000,
+      "sender_reported_dropped_frames": 0,
+      "sender_reported_duplicate_frames": 0,
+      "receiver_tcp_average_mbps": 4.194,
+      "max_receiver_progress_report_gap_seconds": 0.515,
+      "max_receiver_advancing_frame_gap_seconds": 0.515,
+      "receiver_frame_stalls_at_or_above_threshold": 0,
+      "observed_disconnects_during_run": 0,
+      "observed_reconnects": 0,
+      "matching_receiver_peer_samples": 223,
+      "receiver_error_keyword_matches": 1,
+      "sender_exit_code": 0,
+      "receiver_exit_code": 0
+    },
+    {
+      "role": "stream_2",
+      "frames_sent": 36000,
+      "frames_received": 36000,
+      "sender_reported_dropped_frames": 0,
+      "sender_reported_duplicate_frames": 0,
+      "receiver_tcp_average_mbps": 4.194,
+      "max_receiver_progress_report_gap_seconds": 0.528,
+      "max_receiver_advancing_frame_gap_seconds": 1.0,
+      "receiver_frame_stalls_at_or_above_threshold": 0,
+      "observed_disconnects_during_run": 0,
+      "observed_reconnects": 0,
+      "matching_receiver_peer_samples": 223,
+      "receiver_error_keyword_matches": 1,
+      "sender_exit_code": 0,
+      "receiver_exit_code": 0
+    }
+  ],
+  "router_wan": {
+    "complete_concurrent_polling_windows": 39,
+    "polling_window_seconds": 30,
+    "min_total_upload_mbps": 9.4,
+    "max_total_upload_mbps": 11.64,
+    "hardware_rx_and_tx_error_increase": 0,
+    "tx_drop_increase": 0
+  },
+  "receiver_error_text_available": false,
+  "phone_platform_broadcast_tested": false,
+  "temporary_receiver_and_access_rules_removed": true,
+  "temporary_local_relays_closed": true,
+  "original_client_network_restored_and_https_verified": true
+}
