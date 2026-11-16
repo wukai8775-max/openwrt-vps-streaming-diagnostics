@@ -14,23 +14,30 @@ Use this toolkit when Wi-Fi connects but pages fail to load, downloads stop half
 
 ## Setup and livestream validation
 
-```mermaid
-flowchart TD
-    F["1 Firmware"] --> V["2 Configure the VPS"]
-    V --> R["3 Set up policy routing"]
-    R --> M["4 Measure the connection"]
-    M --> L["5 Validate livestreams"]
-```
+Select any step to open its guide in Chinese.
 
-Use the number on the diagram to find each guide and check its result before moving on.
+> **[1 Firmware](docs/x60-pro-firmware-preparation.md)**\
+> The router boots into the expected firmware and its management page opens.
 
-| Step | Guides (Chinese) | Ready to move on when |
-|---|---|---|
-| 1. Firmware | [Prepare and verify files](docs/x60-pro-firmware-preparation.md) · [RG-X60 PRO V2.00 first flash](docs/x60-pro-stock-to-kwrt-v2.md) | After reboot, the router runs the expected firmware and you can access its management page. |
-| 2. Configure the VPS | [Set up and verify the VPS](docs/vps-and-router-setup.md#配置并验证-vps) | A test client connects through the proxy and reaches the internet from the expected public IP. |
-| 3. Set up policy routing | [Route selected devices through the VPS](docs/vps-and-router-setup.md#在路由器上配置分流) | One test device uses the expected public IP, and router management and the existing network still work. |
-| 4. Measure the connection | [Small connectivity check](docs/beginner-check.md#2-对自己的网络做一次小检查) · [Fixed-size downloads](docs/measurement-guide.md#2-固定对象完整测五次) · [Sustained uploads](docs/measurement-guide.md#4-受限持续上传与小请求回归) | On the Wi-Fi you will use for streaming, record completed transfers and timeouts, and confirm that sustained upload covers the combined bitrate with room to spare. |
-| 5. Validate livestreams | [Phone test checklist](docs/acceptance-and-rollback.md#手机验收表) · [Dual-stream RTMP case](docs/us-dual-rtmp-2026-11-16.md) | Run a 20–30 minute test on the intended devices and platform at the planned bitrate and number of streams. Record dropped frames, stalls, and reconnects. |
+↓
+
+> **[2 Configure the VPS](docs/vps-and-router-setup.md#配置并验证-vps)**\
+> A test client connects through the proxy and reaches the internet from the expected public IP.
+
+↓
+
+> **[3 Set up policy routing](docs/vps-and-router-setup.md#在路由器上配置分流)**\
+> The test device uses the expected public IP. Router management and the existing network still work.
+
+↓
+
+> **[4 Measure the connection](docs/measurement-guide.md)**\
+> On the intended Wi-Fi, log completions and timeouts. Check that sustained upload exceeds the combined stream bitrate.
+
+↓
+
+> **[5 Validate livestreams](docs/acceptance-and-rollback.md#手机验收表)**\
+> Test the intended devices and platform for 20–30 minutes at the planned bitrate and stream count. Record dropped frames, stalls, and reconnects.
 
 Start at step 2 if the router already runs compatible firmware and you can open its management page. Start at step 3 if the VPS has already passed its standalone client check. If you only want to troubleshoot an existing connection, start at step 4 on the Wi-Fi you actually use.
 
