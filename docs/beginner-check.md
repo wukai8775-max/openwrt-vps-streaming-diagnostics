@@ -2,41 +2,55 @@
 
 [首页](../README.md) · [结果怎么读](result-examples.md) · [进阶准备](advanced-start.md) · [案例与历史](cases.md) · [本轮验证](beginner-entry-validation-2026-10-21.md)
 
-目标是先得到一份可解释的小报告：本次请求有没有完成，若失败，现有指标支持先查哪里。**不需要路由器/VPS 登录信息，不改系统设置，不自动“优化”参数。**
+这里可以做一次小检查，判断请求在哪一步失败。买来的云服务器和路由器都无需登录。只想先了解报告的人，可以直接打开 [带解释的示例](result-examples.md)。
+
+| 要做什么 | 需要什么 |
+|---|---|
+| 看示例报告 | macOS 或 Linux 终端，Python 3.10+ |
+| 发起轻量网络检查 | 上述环境，另需 curl 8.4+ |
+| 获取仓库 | GitHub 的 **Code → Download ZIP**，或已安装的 Git |
+
+在终端运行 `python3 --version` 或 `curl --version` 查看版本。用 ZIP 的读者应先解压。在终端输入 `cd `，保留末尾空格，填入包含 `README.md` 和 `tools/` 的文件夹路径后按回车。使用 Mac 时，可以把文件夹拖进终端来填入路径。
 
 ## 1. 先运行离线示例
 
-需要 Python 3.10+；离线示例不依赖 curl，也不需要 pip 包。以下命令面向 macOS / Linux 的终端：
+用 Git 获取仓库时，先执行下面两行。用 ZIP 的读者可以直接跳到运行示例。
 
 ```sh
 git clone https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics.git
 cd openwrt-vps-streaming-diagnostics
+```
+
+```sh
 python3 tools/quick-check.py
 ```
 
-看到“**离线合成示例（非实测，无网络请求）**”即表示你在看工具示例。预期小请求 3/3、固定对象下载 1/2，第二个对象仅收到一部分后超时，没有成功吞吐；这是教学数据，不是电脑当前测速。可核对 [保存的合成 JSON](../examples/quick-check-demo.json) 和 [解释](result-examples.md)。
+第一行会显示「离线合成示例」。这份报告为你展示如何识别完整任务和部分超时。三次小请求都成功，两次下载只有一次完整，另一轮超时后保留为失败。运行这一步使用的是项目内的演示数据。[结果解释](result-examples.md) · [合成 JSON](../examples/quick-check-demo.json)
 
-## 2. 再发起自己的轻量检查
+## 2. 对自己的网络做一次小检查
 
-真实执行另需 `curl 8.4+`。缺少或版本不满足时，工具报告环境问题并停止，不会自动安装或修改配置。
+先用 `--plan` 查看请求次数和预算。准备就绪后，用 `--execute` 发起请求。
 
 ```sh
 python3 tools/quick-check.py --plan
+```
+
+```sh
 python3 tools/quick-check.py --execute
 ```
 
-`--plan` 不联网；只有 `--execute` 才启动请求任务。默认目标是 Google 的公开 HTTPS 小响应地址 `https://www.gstatic.com/generate_204`，预期 HTTP **204、响应体 0 字节**。某些网络本身无法访问该目标；失败只说明这次目标检查有问题，不能据此判断整个互联网不可用。
+默认访问 Google 的公开 HTTPS 地址 `https://www.gstatic.com/generate_204`。这个地址正常返回 HTTP **204**，表示请求完成且响应体为空。若它失败，先按报告定位，并用你能访问的目标做对照。某些网络会限制该地址。
 
 | 默认检查预算 | 数值 |
 |---|---:|
 | 请求任务 | 最多 3 个，顺序执行，无自动重试 |
 | 协议 | IPv4、HTTPS、HTTP/1.1，保留证书校验 |
-| 单次 curl 时间上限 | 5 秒 |
-| 单次响应体预算 | 64 KiB，触及时中止分支 |
-| curl 请求时间预算 | 最多 15 秒；环境检查和有界子进程回收另计 |
+| 单次请求时间上限 | 5 秒 |
+| 单次响应体预算 | 64 KiB，触及时中止该分支 |
+| 请求时间预算 | 最多 15 秒；环境检查和进程回收另计 |
 | 下载测速文件 | 默认 0 个 |
 
-HTTP/TLS 头部和传输重传不计入响应体预算。小流量也会使用当前网络；若影响现有业务，请停止。工具不提升权限，不连接 SSH，不读取节点凭据、密码、浏览器 Cookie 或完整配置。
+响应头、加密协商和传输重传使用的流量另计。若检查期间现有业务受到影响，按 `Ctrl+C` 停止。
 
 ## 3. 确认检查的是哪条路径
 
