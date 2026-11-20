@@ -8,6 +8,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import threading
 import unittest
 from unittest.mock import patch
 
@@ -196,6 +197,26 @@ class FakeCurl:
 
 
 class OfflineLifecycleTests(unittest.TestCase):
+    def test_download_stops_on_refusal_and_preserves_counts(self):
+        for status, returncode in ((403, 0), (429, 63)):
+            with self.subTest(status=status):
+                children = [FakeCurl(json.dumps(metrics()), 0),
+                            FakeCurl(json.dumps(metrics(byte_count=0, status=status)), returncode)]
+                output = io.StringIO()
+                with patch.object(download, "checked_curl", return_value="curl"), \
+                        patch.object(download.subprocess, "Popen", side_effect=children) as popen, \
+                        patch.object(download, "install_cancel_handlers"), redirect_stdout(output):
+                    code = download.main(["--url", "https://example.invalid/fixed", "--source", "192.0.2.2",
+                                          "--bytes", "10000000", "--repeat", "3"])
+                rows = [json.loads(line) for line in output.getvalue().splitlines()]
+                self.assertEqual(code, 1)
+                self.assertEqual(popen.call_count, 2)
+                self.assertEqual(rows[0]["planned_attempts"], 3)
+                self.assertEqual((rows[-1]["attempted"], rows[-1]["complete"],
+                                  rows[-1]["failed"], rows[-1]["skipped"]), (2, 1, 1, 1))
+                self.assertEqual(rows[-1]["stop_reason"], f"http_{status}")
+                self.assertEqual(rows[-2]["metrics"]["http_status"], status)
+
     def test_download_end_to_end_keeps_timeout_and_source_mismatch(self):
         children = [FakeCurl(json.dumps(metrics(byte_count=500, seconds=90)), 28),
                     FakeCurl(json.dumps(metrics(local="192.0.2.3")), 0)]
@@ -245,11 +266,25 @@ class OfflineLifecycleTests(unittest.TestCase):
     def test_upload_start_failure_keeps_launched_flow_and_removes_payload(self):
         payloads, children = [], []
 
+        class RunningCurl(FakeCurl):
+            def __init__(self):
+                super().__init__()
+                self.stopped = threading.Event()
+
+            def communicate(self, timeout=None):
+                if not self.stopped.wait(timeout):
+                    raise subprocess.TimeoutExpired("fake curl", timeout)
+                return "", ""
+
+            def terminate(self):
+                super().terminate()
+                self.stopped.set()
+
         def launch(command, **_kwargs):
             payloads.append(Path(command[command.index("--upload-file") + 1]))
             if children:
                 raise OSError("mock launch failure")
-            child = FakeCurl()
+            child = RunningCurl()
             children.append(child)
             return child
 

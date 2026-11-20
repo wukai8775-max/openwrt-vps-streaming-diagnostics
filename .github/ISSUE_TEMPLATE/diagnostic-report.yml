@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        请先阅读 [公开边界](https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics/blob/main/SECURITY.md)。这是公开 Issue，资料会被其他人看到。
+        请先阅读 [资料边界](https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics/blob/main/SECURITY.md)。这是公开仓库的 Issue，任何人都可以看到其中的内容。
 
         **禁止粘贴或上传密码、私钥、公钥身份信息、UUID、节点分享链接、Cookie、token、完整配置、配置备份、原始日志及抓包。** 用 `router`、`client-A`、`node-A` 等角色标签替代真实 IP、SSID、MAC、主机名和个人路径；必要指标在本地脱敏后，只提供最小片段或合成复现。
 

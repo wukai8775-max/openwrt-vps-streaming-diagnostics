@@ -6,7 +6,7 @@ Wi-Fi 连上了却打不开网页、下载到一半卡住，或者测速正常�
 
 | 我想做什么 | 从这里开始 |
 |---|---|
-| 从零搭一条直播网络 | [按五步搭建并验收](#搭建与验收流程) |
+| 从零搭一条直播网络 | [先检查现有网络，再按需搭建并验收](#搭建与验收流程) |
 | 先看一份报告，了解每一行是什么意思 | [直接看结果示例](docs/result-examples.md)，在网页上就能读 |
 | 检查自己的网络，看看请求卡在哪一步 | [第一次运行](#第一次运行) |
 | 确认两路直播能否同时跑 | [双路推流实测](docs/us-dual-rtmp-2026-11-16.md) · [手机直播验收表](docs/acceptance-and-rollback.md#手机验收表) |
@@ -14,9 +14,9 @@ Wi-Fi 连上了却打不开网页、下载到一半卡住，或者测速正常�
 
 ## 搭建与验收流程
 
-点任一步的标题即可打开教程。
+先在现有网络上做[轻量检查](docs/beginner-check.md)并记录实际使用 Wi-Fi 的基线。确认当前设备无法满足需求、且已核对硬件版本与固件兼容性时，才考虑刷机；已有可用固件无需重刷。点下面的标题可打开对应教程。
 
-> **[1 刷机](docs/x60-pro-firmware-preparation.md)**\
+> **[1 按需准备固件](docs/x60-pro-firmware-preparation.md)**\
 > 核对硬件版本并备份原机。刷完重启后，通过网线打开管理页。
 
 ↓
@@ -47,7 +47,7 @@ Wi-Fi 连上了却打不开网页、下载到一半卡住，或者测速正常�
 
 ### 1. 用离线示例练习读报告
 
-在 GitHub 点 **Code → Download ZIP**，解压后在终端进入包含 `README.md` 和 `tools/` 的文件夹。已安装 Git 的读者可以运行下面两行，下载并进入仓库。
+在 GitHub 点 **Code → Download ZIP**，解压后在终端进入包含 `README.md` 和 `tools/` 的文件夹。已安装 Git 的读者可以运行下面两行，下载并进入仓库。不要把 token 写进命令或仓库地址。
 
 ```sh
 git clone https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics.git

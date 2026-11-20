@@ -14,9 +14,9 @@ Use this toolkit when Wi-Fi connects but pages fail to load, downloads stop half
 
 ## Setup and livestream validation
 
-Select any step to open its guide in Chinese.
+Start by checking the existing network and measuring the Wi-Fi you intend to use. Flash firmware only if the existing device cannot meet the need and the exact hardware revision and firmware compatibility have been verified; an already working router does not need to be reflashed. Select a step to open its guide in Chinese.
 
-> **[1 Firmware](docs/x60-pro-firmware-preparation.md)**\
+> **[1 Firmware, if needed](docs/x60-pro-firmware-preparation.md)**\
 > The router boots into the expected firmware and its management page opens.
 
 ↓
@@ -51,7 +51,7 @@ On macOS or Linux, open a terminal and check that you have Python 3.10 or newer.
 python3 --version
 ```
 
-If you have Git, clone the project and enter its folder.
+If you have Git, clone the project and enter its folder. Do not put a token in the command or repository URL.
 
 ```sh
 git clone https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics.git

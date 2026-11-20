@@ -261,6 +261,7 @@ def main(argv=None):
         return 2
     rows = []
     interrupted = False
+    stop_reason = None
     for index in range(args.repeat):
         child = None
         started_at, started = utc_now(), time.monotonic()
@@ -287,11 +288,17 @@ def main(argv=None):
                    **evaluate_result(metrics, returncode, args.byte_count, "download", args.source, error))
         emit(row)
         rows.append(row)
+        # A refusal/rate limit is a signal to stop even if curl also reports an
+        # error (for example, because the error response exceeded the size cap).
+        if metrics and metrics["http_status"] in (403, 429):
+            stop_reason = f"http_{metrics['http_status']}"
+            break
         if interrupted or error == "curl_launch_failed":
             break
     complete = sum(row["completed"] for row in rows)
     emit(dict(common, type="summary", attempted=len(rows), complete=complete,
-              failed=len(rows) - complete, skipped=args.repeat - len(rows), cancelled=interrupted))
+              failed=len(rows) - complete, skipped=args.repeat - len(rows),
+              cancelled=interrupted, stop_reason=stop_reason))
     return 130 if interrupted else (0 if complete == args.repeat else 1)
 
 

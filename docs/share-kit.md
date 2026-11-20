@@ -1,5 +1,7 @@
 # 分享材料
 
+> **历史草稿：** 对外分享前请核对内容和链接是否仍然准确，完成脱敏并确认发布方式。
+
 以下为可按渠道调整的草稿，**尚未代发社区帖子**。先核对社区当前规则及对应版面，再由账号本人发布；不要批量复制到无关讨论。仓库定位是可复现的排障工具与脱敏证据，不承诺通用“提速参数”或替代真实业务验收。
 
 发布入口：[仓库首页](https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics) · [最新证据](latest-progress.md) · [脱敏故障表单](https://github.com/wukai8775-max/openwrt-vps-streaming-diagnostics/issues/new?template=diagnostic-report.yml)

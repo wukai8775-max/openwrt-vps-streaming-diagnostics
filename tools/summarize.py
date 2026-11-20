@@ -80,31 +80,120 @@ def summarize_records(records):
     return results
 
 
+def summarize_runs(records):
+    """Preserve lifecycle evidence without inferring missing results as failures.
+
+    A file may contain multiple concatenated runs or just individual records
+    (as with the synthetic example). A missing summary is not treated as proof
+    that any unrecorded requests did or did not run.
+    """
+    runs, current = [], []
+
+    def finish():
+        if not current:
+            return
+        plan = next((row for row in current if row.get("type") == "plan"), None)
+        summary = next((row for row in current if row.get("type") == "summary"), None)
+        attempts = [row for row in current if row.get("type") in ("attempt", "flow")]
+        planned = None
+        if plan:
+            planned = plan.get("planned_attempts", plan.get("planned_flows"))
+        warnings = []
+        for name, value in (("planned", planned),
+                            ("reported_attempted", summary.get("attempted") if summary else None),
+                            ("reported_complete", summary.get("complete") if summary else None),
+                            ("reported_failed", summary.get("failed") if summary else None),
+                            ("reported_skipped", summary.get("skipped") if summary else None)):
+            if value is not None and (isinstance(value, bool) or not isinstance(value, int) or value < 0):
+                raise ValueError(f"{name} must be a non-negative integer")
+
+        recorded_complete = sum(row["completed"] for row in attempts)
+        recorded_failed = len(attempts) - recorded_complete
+        if summary:
+            for field, observed in (("attempted", len(attempts)), ("complete", recorded_complete),
+                                    ("failed", recorded_failed)):
+                if field in summary and summary[field] != observed:
+                    warnings.append(f"reported_{field}_differs_from_recorded_rows")
+            if (planned is not None and summary.get("attempted") is not None
+                    and summary.get("skipped") is not None
+                    and summary["attempted"] + summary["skipped"] != planned):
+                warnings.append("reported_counts_do_not_match_plan")
+        if plan and not summary and not plan.get("dry_run"):
+            warnings.append("missing_final_summary_unrecorded_work_unknown")
+        if not plan:
+            warnings.append("missing_plan_total_work_unknown")
+
+        runs.append({
+            "mode": (plan or summary or (attempts[0] if attempts else {})).get("mode"),
+            "planned": planned,
+            "recorded_attempts": len(attempts),
+            "recorded_complete": recorded_complete,
+            "recorded_failed": recorded_failed,
+            "reported_attempted": summary.get("attempted") if summary else None,
+            "reported_complete": summary.get("complete") if summary else None,
+            "reported_failed": summary.get("failed") if summary else None,
+            "reported_skipped": summary.get("skipped") if summary else None,
+            "cancelled": summary.get("cancelled") if summary else None,
+            "error": summary.get("error") if summary else None,
+            "stop_reason": summary.get("stop_reason") if summary else None,
+            "dry_run": plan.get("dry_run") if plan else None,
+            "final_summary_present": summary is not None,
+            "warnings": warnings,
+        })
+
+    for row in records:
+        if not isinstance(row, dict):
+            raise ValueError("every JSONL record must be an object")
+        if row.get("type") == "plan" and current:
+            finish()
+            current = []
+        current.append(row)
+        if row.get("type") == "summary":
+            finish()
+            current = []
+    finish()
+    return runs
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("files", type=Path, nargs="+", help="JSONL result files; do not include the same file twice")
     args = parser.parse_args(argv)
     if len({path.resolve() for path in args.files}) != len(args.files):
         parser.error("duplicate input file would inflate the denominator")
-    records = []
+    records, inputs = [], []
     try:
-        for path in args.files:
+        for input_index, path in enumerate(args.files, 1):
             if path.stat().st_size > 20 * 1024 * 1024:
                 raise ValueError("each input must be at most 20 MiB")
+            file_records = []
             with path.open(encoding="utf-8") as handle:
                 for index, line in enumerate(handle, 1):
                     if not line.strip():
                         continue
                     try:
-                        records.append(json.loads(line))
+                        file_records.append(json.loads(line))
                     except json.JSONDecodeError as error:
                         raise ValueError(f"invalid JSON at {path.name}:{index}") from error
+            # Validate attempt/flow records before lifecycle accounting, including
+            # row completion types. Files are independent run boundaries.
+            summarize_records(file_records)
+            inputs.append({"input_index": input_index, "input_file": path.name,
+                           "runs": summarize_runs(file_records),
+                           "warnings": [] if file_records else ["empty_input"]})
+            records.extend(file_records)
         groups = summarize_records(records)
         print(json.dumps({"schema_version": 1, "type": "offline_summary", "groups": groups,
+                          "inputs": inputs,
                           "recorded_attempts": sum(group["attempted"] for group in groups),
-                          "note": "Failures remain in the denominator; completed timing only. Upload rows are individual flows, not independent group-level capacity estimates."},
+                          "note": "Failures remain in the denominator; unstarted work is not counted as failure. Missing final summaries leave unrecorded work unknown. Upload rows are individual flows, not independent group-level capacity estimates."},
                          ensure_ascii=False, indent=2, allow_nan=False))
-        return 0
+        incomplete = any(item["warnings"] for item in inputs) or any(
+                         run["error"] or run["cancelled"] or run["stop_reason"]
+                         or "missing_final_summary_unrecorded_work_unknown" in run["warnings"]
+                         or any(w.startswith("reported_") for w in run["warnings"])
+                         for item in inputs for run in item["runs"])
+        return 1 if incomplete else 0
     except (OSError, ValueError) as error:
         print(f"Summary failed: {error}", file=sys.stderr)
         return 2

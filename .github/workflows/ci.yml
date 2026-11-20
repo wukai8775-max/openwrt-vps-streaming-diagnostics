@@ -6,10 +6,14 @@ permissions:
   contents: read
 jobs:
   offline:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         python: ['3.10', '3.13']
+        os: [ubuntu-latest]
+        include:
+          - os: macos-latest
+            python: '3.13'
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -19,5 +23,14 @@ jobs:
           python-version: ${{ matrix.python }}
       - run: python -m unittest discover -s tests -v
       - run: sh -n tools/snapshot.sh && sh -n tools/sample.sh
+      - name: Check BusyBox ash offline
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y busybox
+          busybox ash -n tools/snapshot.sh
+          busybox ash -n tools/sample.sh
+          busybox ash tools/snapshot.sh --port 443 --dry-run
+          busybox ash tools/sample.sh --port 443 --count 1 --dry-run
       - run: python tools/check-publication.py
       - run: git diff --check

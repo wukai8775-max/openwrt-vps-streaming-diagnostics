@@ -39,6 +39,22 @@ class PublicationTests(unittest.TestCase):
         checked, failures = guard.scan_index(self.root)
         self.assertEqual((checked, failures), (1, []))
 
+    def test_additional_synthetic_keys_are_blocked_without_printing_values(self):
+        samples = [
+            ("AWS access key ID", "AK" + "IA" + "A" * 16),
+            ("Google API key", "AI" + "za" + "A" * 35),
+            ("OpenAI project key", "sk-" + "proj-" + "A" * 40),
+            ("Slack token", "xox" + "b-" + "A" * 30),
+        ]
+        for label, sample in samples:
+            with self.subTest(label=label):
+                path = self.root / "fixture.txt"
+                path.write_text(sample, encoding="utf-8")
+                self.git("add", path.name)
+                checked, failures = guard.scan_index(self.root)
+                self.assertEqual(checked, 1)
+                self.assertEqual(failures, [(path.name, label)])
+
     def test_private_artifact_path_and_symlink_rejected(self):
         path = self.root / "backups" / "config.txt"
         path.parent.mkdir()

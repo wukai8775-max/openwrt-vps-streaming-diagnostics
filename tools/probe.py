@@ -136,13 +136,20 @@ def https_probe(conn, args):
             conn.sock.settimeout(args.timeout)
         conn.request("GET", args.path, headers={"Connection": "keep-alive"})
         response = conn.getresponse()
-        body = response.read(BODY_LIMIT + 1)
-        if len(body) > BODY_LIMIT:
-            raise ValueError("response body exceeds probe limit")
-        if expired.is_set() or time.monotonic() >= conn.deadline:
-            raise TimeoutError("whole transaction deadline")
-        row.update(ok=response.status == args.status, http_status=response.status,
-                   response_bytes=len(body), connections=conn.connections)
+        if response.status in (403, 429):
+            # Stop as soon as the refusal is observed, even if its response body
+            # is slow or oversized. A refusal is never a successful probe.
+            row.update(http_status=response.status, response_bytes=0,
+                       connections=conn.connections)
+            conn.close()
+        else:
+            body = response.read(BODY_LIMIT + 1)
+            if len(body) > BODY_LIMIT:
+                raise ValueError("response body exceeds probe limit")
+            if expired.is_set() or time.monotonic() >= conn.deadline:
+                raise TimeoutError("whole transaction deadline")
+            row.update(ok=response.status == args.status, http_status=response.status,
+                       response_bytes=len(body), connections=conn.connections)
     except (OSError, http.client.HTTPException, ValueError) as error:
         row["error_type"] = "TimeoutError" if expired.is_set() else type(error).__name__
         conn.close()
@@ -238,6 +245,7 @@ def main():
     conn = None
     rows = []
     interrupted = False
+    stop_reason = None
     try:
         if args.mode == "https":
             conn = BoundHTTPS(args)
@@ -262,6 +270,9 @@ def main():
                        ended_at=time.time(), source_ipv4=args.source)
             rows.append(row)
             print(json.dumps(row), flush=True)
+            if args.mode == "https" and row.get("http_status") in (403, 429):
+                stop_reason = f"http_{row['http_status']}"
+                break
             if interrupted:
                 break
             if i + 1 < args.samples:
@@ -277,6 +288,7 @@ def main():
     summary = summarize(rows)
     summary.update(type="summary", mode=args.mode,
                    skipped=args.samples - len(rows), interrupted=interrupted,
+                   stop_reason=stop_reason,
                    note="probe timeouts are not video packet loss; synthetic completion is not live acceptance")
     print(json.dumps(summary), flush=True)
     return 130 if interrupted else (0 if summary["failures"] == 0 else 1)

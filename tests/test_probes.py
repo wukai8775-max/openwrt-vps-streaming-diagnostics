@@ -1,5 +1,8 @@
 import importlib.util
 import ipaddress
+import io
+import json
+from contextlib import redirect_stdout
 import threading
 from types import SimpleNamespace
 from pathlib import Path
@@ -7,6 +10,7 @@ import struct
 import subprocess
 import sys
 import unittest
+from unittest.mock import patch
 
 PATH = Path(__file__).resolve().parents[1] / "tools" / "probe.py"
 spec = importlib.util.spec_from_file_location("probe", PATH)
@@ -15,6 +19,46 @@ spec.loader.exec_module(probe)
 
 
 class ProbeTests(unittest.TestCase):
+    def test_https_refusal_stops_without_reading_body_or_more_requests(self):
+        for status in (403, 429):
+            with self.subTest(status=status):
+                class FakeResponse:
+                    def __init__(self):
+                        self.status = status
+                    def read(self, count):
+                        raise AssertionError("refusal body must not be read")
+
+                class FakeConnection:
+                    sock = None
+                    connections = 1
+                    requests = 0
+                    def __init__(self, args):
+                        pass
+                    def request(self, *args, **kwargs):
+                        self.requests += 1
+                    def getresponse(self):
+                        return FakeResponse()
+                    def close(self):
+                        pass
+
+                connection = FakeConnection(None)
+                output = io.StringIO()
+                args = ["probe.py", "https", "--source", "192.0.2.9", "--server-ip",
+                        "203.0.113.8", "--host", "example.invalid", "--samples", "3",
+                        "--status", str(status)]
+                with patch.object(sys, "argv", args), patch.object(probe, "BoundHTTPS", return_value=connection), \
+                        patch.object(probe.time, "sleep") as sleep, redirect_stdout(output):
+                    code = probe.main()
+                rows = [json.loads(line) for line in output.getvalue().splitlines()]
+                self.assertEqual(code, 1)
+                self.assertEqual(connection.requests, 1)
+                sleep.assert_not_called()
+                self.assertFalse(rows[1]["ok"])
+                self.assertEqual(rows[1]["http_status"], status)
+                self.assertEqual((rows[-1]["attempts"], rows[-1]["successes"],
+                                  rows[-1]["failures"], rows[-1]["skipped"]), (1, 0, 1, 2))
+                self.assertEqual(rows[-1]["stop_reason"], f"http_{status}")
+
     def response(self, tx):
         address = int(ipaddress.IPv4Address("203.0.113.8")) ^ probe.COOKIE
         value = struct.pack("!BBHI", 0, 1, 5000 ^ (probe.COOKIE >> 16), address)

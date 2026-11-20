@@ -71,6 +71,10 @@ python3 tools/summarize.py results/A0.jsonl > results/A0-summary.json
 
 `--object-id` 是人工设定的安全对象标签；只有实际 URL/查询、大小和服务语义相同才能沿用它。汇总按对象标签、大小、超时、绑定、目标与限速条件分组；工具不保存完整 URL，也不能替你证明不同 URL 内容一致。没有固定 `--resolve` 时，远端地址变化会提示重建固定目标基线。
 
+汇总的 `inputs` 按输入文件列出 `runs`：`planned` 是原计划次数，`recorded_attempts` / `recorded_complete` / `recorded_failed` 来自实际记录，`reported_skipped` 是原汇总报告的未开始次数。未开始不计入失败。`error`、`cancelled` 和 `stop_reason` 保留环境错误、取消和目标拒绝等终止原因。若没有最终汇总，`reported_skipped` 为 `null`，不能推断未记录的请求是否启动；只有单条记录、没有计划的合成示例也会提示总计划未知。
+
+汇总脚本退出码 **0** 表示汇总程序正常完成且没有发现上述中断或计数不一致，不代表每次测试成功；**1** 表示发现错误、取消、提前停止、空文件、不完整运行或计数不一致，应查看 JSON 中的 `error`、`stop_reason` 和 `warnings`；**2** 表示输入或处理错误。即使退出码为 1，JSON 报告仍会写入指定文件。`--dry-run` 只生成计划，没有最终测试汇总是正常情况。
+
 `--source` 绑定地址，`--interface` 可替代它强制指定接口；只用接口时，结果的 `local_ipv4` 仍需核实。`--resolve` 可选固定目标 IPv4，同时保留原域名的证书验证。源绑定不保证 DNS 走相同接口；固定 `--resolve` 可减少 DNS/目标变化，但透明代理策略仍要核对。`--noproxy '*'` 只禁用 curl 显式代理。[curl 官方选项说明](https://curl.se/docs/manpage.html#--interface)
 
 ### 3. 把本地、跨境、目标侧和完整代理分开

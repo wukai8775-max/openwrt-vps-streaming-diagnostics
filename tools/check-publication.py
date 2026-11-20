@@ -10,6 +10,10 @@ PRIVATE_PATH = re.compile(r"(^|/)(results|private|backups|\.ssh)(/|$)|(^|/)\.env
 PATTERNS = [
     ("private key", re.compile(rb"-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----")),
     ("GitHub token", re.compile(rb"\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{50,})\b")),
+    ("AWS access key ID", re.compile(rb"\b(?:AKIA|ASIA)[A-Z0-9]{16}\b")),
+    ("Google API key", re.compile(rb"\bAIza[0-9A-Za-z_-]{35}(?![0-9A-Za-z_-])")),
+    ("OpenAI project key", re.compile(rb"\bsk-proj-[A-Za-z0-9_-]{32,}(?![A-Za-z0-9_-])")),
+    ("Slack token", re.compile(rb"\bxox[baprs]-[A-Za-z0-9-]{20,}(?![A-Za-z0-9-])")),
     ("credential URL", re.compile(rb"https?://[^\s/@]+:[^\s/@]+@")),
     ("node share link", re.compile(rb"\b(?:vless|vmess|trojan|ss)://[^\s`]+")),
     ("personal absolute path", re.compile(rb"/(?:Users|home)/[A-Za-z0-9_.-]+/")),

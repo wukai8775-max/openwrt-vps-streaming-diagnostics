@@ -12,6 +12,7 @@ import os
 from pathlib import Path
 import subprocess
 import tempfile
+import threading
 import time
 
 
@@ -19,6 +20,26 @@ _spec = importlib.util.spec_from_file_location("download_tool", Path(__file__).w
 core = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(core)
 MAX_TOTAL_PAYLOAD_BYTES = 2 * 1024 * 1024 * 1024
+
+
+def collect_flow(flow, deadline):
+    """Drain one child concurrently and timestamp when its output is collected."""
+    try:
+        stdout, _stderr = flow["child"].communicate(timeout=max(0.01, deadline - time.monotonic()))
+        flow["metrics"] = core.parse_metrics(stdout)
+        flow["returncode"] = flow["child"].returncode
+    except subprocess.TimeoutExpired:
+        flow["error"] = "outer_timeout"
+    except KeyboardInterrupt:
+        # Real signals are delivered to the main thread; this also supports a
+        # child collector reporting interruption without losing cleanup.
+        flow["error"] = "cancelled"
+    except (OSError, subprocess.SubprocessError):
+        flow["error"] = "test_setup_or_collection_failed"
+    finally:
+        flow["ended_at"] = core.utc_now()
+        flow["elapsed_seconds"] = time.monotonic() - flow["started"]
+        flow["done"].set()
 
 
 def upload_budget(duration, mbps, flows, byte_count=None):
@@ -73,6 +94,7 @@ def main(argv=None):
             payload = Path(handle.name)
             os.fchmod(handle.fileno(), 0o600)
             handle.truncate(count)
+        deadline = started + args.duration + 3
         # Each request has the same complete object and its own explicit rate cap.
         for index in range(args.flows):
             command = core.curl_base(args, executable, args.duration)
@@ -81,20 +103,24 @@ def main(argv=None):
                         "--header", "Expect:", "--request", "POST", "--upload-file", str(payload), "--url", args.url]
             child_started_at, child_started = core.utc_now(), time.monotonic()
             child = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-            children.append((child, child_started_at, child_started))
-        deadline = started + args.duration + 3
-        for index, (child, child_started_at, child_started) in enumerate(children):
-            metrics, returncode, error = None, None, None
-            try:
-                stdout, _stderr = child.communicate(timeout=max(0.01, deadline - time.monotonic()))
-                metrics, returncode = core.parse_metrics(stdout), child.returncode
-            except subprocess.TimeoutExpired:
-                error = "outer_timeout"
-                core.stop_processes([item[0] for item in children])
-                returncode = child.returncode
-            row = dict(common, type="flow", flow=index + 1, started_at=child_started_at,
-                       ended_at=core.utc_now(), elapsed_seconds=time.monotonic() - child_started,
-                       **core.evaluate_result(metrics, returncode, count, "upload", args.source, error))
+            flow = {"child": child, "started_at": child_started_at, "started": child_started,
+                    "done": threading.Event(), "metrics": None, "returncode": None,
+                    "error": None, "thread": None}
+            children.append(flow)
+            thread = threading.Thread(target=collect_flow, args=(flow, deadline), daemon=True)
+            thread.start()
+            flow["thread"] = thread
+        for index, flow in enumerate(children):
+            flow["done"].wait()
+            if flow["error"] == "cancelled":
+                raise KeyboardInterrupt
+            if flow["error"] == "outer_timeout":
+                core.stop_processes([item["child"] for item in children])
+                flow["returncode"] = flow["child"].returncode
+            row = dict(common, type="flow", flow=index + 1, started_at=flow["started_at"],
+                       ended_at=flow["ended_at"], elapsed_seconds=flow["elapsed_seconds"],
+                       **core.evaluate_result(flow["metrics"], flow["returncode"], count,
+                                              "upload", args.source, flow["error"]))
             core.emit(row)
             rows.append(row)
     except KeyboardInterrupt:
@@ -102,14 +128,24 @@ def main(argv=None):
     except (OSError, RuntimeError, subprocess.SubprocessError) as error:
         group_error = str(error) if isinstance(error, RuntimeError) else "test_setup_or_collection_failed"
     finally:
-        core.stop_processes([item[0] for item in children])
+        # Keep results collected before a later launch failure or cancellation.
+        # Children still running at this point are marked with the group error.
+        collected_before_cleanup = [item["done"].is_set() for item in children]
+        core.stop_processes([item["child"] for item in children])
+        for flow in children:
+            if flow["thread"] is not None:
+                flow["thread"].join()
         # Cancellation and setup failures are retained for every launched flow.
         for index in range(len(rows), len(children)):
-            child, child_started_at, child_started = children[index]
-            row = dict(common, type="flow", flow=index + 1, started_at=child_started_at,
-                       ended_at=core.utc_now(), elapsed_seconds=time.monotonic() - child_started,
-                       **core.evaluate_result(None, child.returncode, count, "upload", args.source,
-                                              group_error or "collection_failed"))
+            flow = children[index]
+            collected = collected_before_cleanup[index] and flow["error"] != "cancelled"
+            metrics = flow["metrics"] if collected else None
+            returncode = flow["returncode"] if collected else flow["child"].returncode
+            error = flow["error"] if collected else (group_error or "collection_failed")
+            row = dict(common, type="flow", flow=index + 1, started_at=flow["started_at"],
+                       ended_at=flow.get("ended_at", core.utc_now()),
+                       elapsed_seconds=flow.get("elapsed_seconds", time.monotonic() - flow["started"]),
+                       **core.evaluate_result(metrics, returncode, count, "upload", args.source, error))
             core.emit(row)
             rows.append(row)
         if payload:
